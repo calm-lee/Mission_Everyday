@@ -9,9 +9,17 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping("/user")
 public class UserController {
 
+	// 로그인하기
+	@RequestMapping("/sign_in")
+	public String SignIn(Model model) {
+		model.addAttribute("viewName", "user/sign_in");
+		return "layout/template";
+	}
+	
+	// 회원가입
 	@RequestMapping("/sign_up")
 	public String SignUp(Model model) {
-		model.addAttribute("viewName", "sign_up");
+		model.addAttribute("viewName", "user/sign_up");
 		return "layout/template";
 	}
 	
