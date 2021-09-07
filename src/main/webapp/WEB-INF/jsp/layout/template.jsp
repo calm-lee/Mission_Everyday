@@ -21,7 +21,7 @@
 <body>
 	<div id="wrap">
 		<header>
-			헤더!
+			<jsp:include page="../include/gnb.jsp" />			
 		</header>
 		<section>
 			<jsp:include page="../#{viewName}.jsp" />

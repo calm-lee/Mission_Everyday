@@ -7,7 +7,7 @@
 	<form id="signUpForm" method="post" action="/user/sign_up_for_submit">
 		<div class="sign-up-box">
 		<div class="d-flex justify-content-center">
-			<h3 class="logo_bk mt-3">회원가입</h3>
+			<h3 class="font-weight-bold mt-3">회원가입</h3>
 		</div>
 			<div style="font-size:14px; color:#3f3f40" class="text-center">매일 함께 도전해요!</div>	
 			<div class="d-flex">

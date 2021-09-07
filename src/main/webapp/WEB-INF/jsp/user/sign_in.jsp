@@ -13,8 +13,8 @@
 	<div class="login-box form-control">
 		
 		<div>	
-		<h3 class="text-center logo_bk mt-3">로그인하기</h3>
-		<div style="font-size:14px; color:3f3f40" class="text-center" >오늘도 함께 해봐요!</div>
+		<h3 class="text-center mt-3 font-weight-bold">로그인</h3>
+		<div style="font-size:14px; color:3f3f40" class="text-center" >오늘도 함께 도전해봐요!</div>
 		</div>		
 			<div class="d-flex justify-content-center align-items-center mt-4">
 				<div class="mark-id input-group-prepand form-control">ID</div>
@@ -67,7 +67,7 @@ $(document).ready(function(){
 		$.post(url,data).done(function(data){
 			if(data.result == "success"){
 				alert("환영합니다!");
-				location.href="/timeline/timeline_view";
+				location.href="/mission/main";
 			} else {
 				alert("아이디와 비밀번호를 확인해주세요.");
 			}
