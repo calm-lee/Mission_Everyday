@@ -4,7 +4,8 @@
 <mapper namespace="com.mission_everyday.mission.DAO.MissionDAO">
 
 <select id="selectByCategoryId" resultType="com.mission_everyday.mission.Model.Mission">
-	select
+
+	SELECT
 		id
 		,categoryId
 		,categoryName
@@ -16,17 +17,98 @@
 		,missionPeriod
 		,createdAt
 		,updatedAt
-	from `mission`
-	where `categoryId` = #{categoryId};
+	FROM 
+		`mission`
+	WHERE 
+		`categoryId` = #{categoryId};
 
 </select>
 
 
 <select id="selectCategoryNameOnly" resultType="com.mission_everyday.mission.Model.Mission">
-	select
+	SELECT
 		categoryName
-	from `mission`
-		where `categoryId` = #{categoryId}
-		limit 1;
+	FROM 
+		`mission`
+	WHERE 
+		`categoryId` = #{categoryId}
+	limit 1;
 </select>
+
+
+<!-- 개별 미션 가져오기 -->
+<select id="selectMissionByMissionId" resultType="com.mission_everyday.mission.Model.Mission">
+	SELECT
+		id
+		, categoryId
+		, categoryName
+		, missionName
+		, missionIntroduction
+		, missionImage
+		, missionStartDate
+		,missionFinishDate
+		,missionPeriod
+		, createdAt
+		, updatedAt
+	FROM 
+		`mission`
+	WHERE 
+		`id` = #{id};
+</select>
+
+<!-- 미션 가입하기 -->
+<insert id="insertUserIntoMission" parameterType="map">
+	INSERT INTO `mission_user`
+		(
+			`missionId`
+			,`missionName`
+			,`userId`
+			,`userName`
+			,`createdAt`
+			)
+		VALUES
+		(
+			#{missionId}
+			,#{missionName}
+			,#{userId}
+			,#{userName}
+			,now()
+		);
+</insert>
+
+<!-- 미션 가입한 유저 인원 가져오기 -->
+<select id="selectMemberCountByMissionId" resultType="int">
+	SELECT
+		count(1)
+	FROM 
+		`mission_user`
+	WHERE 
+		`missionId` = #{id};
+</select>
+
+<!-- 미션 가입한 유저 정보 다 가져오기 -->
+<select id="selectMemberByMissionId" resultType="com.mission_everyday.mission.Model.Member">
+	SELECT
+		`missionId`
+		,`missionName`
+		,`userId`
+		,`userName`
+		,`createdAt`
+	FROM 
+		`mission_user`
+	WHERE 
+		`missionId` = #{id};
+</select>
+
+
+<!-- 미션 탈퇴하기 -->
+<delete id="deleteMemberFromMission" parameterType="map">
+	DELETE 
+	FROM 
+		`mission_user`
+	WHERE 
+		`missionId` = #{missionId}
+		AND `userId` = #{userId};
+</delete>
+
 </mapper>

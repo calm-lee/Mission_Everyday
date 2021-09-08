@@ -15,6 +15,7 @@ public class Mission {
 	private int missionPeriod;
 	private Date createdAt;
 	private Date updatedAt;
+	
 	public int getId() {
 		return id;
 	}

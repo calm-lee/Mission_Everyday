@@ -57,7 +57,13 @@ header .login-info{width: 900px; height: 100px;}
 .contents{height: 500px;}
 .categories{width:740px; margin: auto;}
 
-.post-box{width: 392px; height: 180px; 	border: 2px solid #E7E9EC;}
+
+.missionPage{margin: auto;}
+#missionBar{width: 300px;}
+#missionTimeline{width: 500px;}
+
+
+.post-box{width: 392px; height: 180px; 	border: 1px solid  silver; border-radius: 2%;}
 textarea {
     border: none;
     background-color: transparent;
