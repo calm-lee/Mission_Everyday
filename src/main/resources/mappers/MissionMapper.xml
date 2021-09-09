@@ -89,15 +89,28 @@
 <!-- 미션 가입한 유저 정보 다 가져오기 -->
 <select id="selectMemberByMissionId" resultType="com.mission_everyday.mission.Model.Member">
 	SELECT
+		(
 		`missionId`
 		,`missionName`
 		,`userId`
 		,`userName`
 		,`createdAt`
+		)
 	FROM 
 		`mission_user`
 	WHERE 
 		`missionId` = #{id};
+</select>
+
+<!-- 세션 접속 유저가 미션 가입했는지 여부 확인하기 -->
+<select id="selectExistedMember" resultType="int">
+	SELECT
+		count(1)
+	FROM 
+		`mission_user`
+	WHERE 
+		`missionId` = #{missionId}
+		AND `userId` = #{userId};
 </select>
 
 

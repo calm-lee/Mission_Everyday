@@ -1,10 +1,14 @@
 package com.mission_everyday.mission;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,6 +22,8 @@ import com.mission_everyday.mission.Model.Mission;
 @Controller
 @RequestMapping("/mission")
 public class MissionController {
+	
+	private Logger logger = LoggerFactory.getLogger(this.getClass());
 	
 	@Autowired
 	private MissionBO missionBO;
@@ -48,11 +54,20 @@ public class MissionController {
 		
 		Mission mission  = missionBO.getMissionByMissionId(id); //미션 id에 맞는 미션 정보 가져오기
 		int memberCount = missionBO.getMemberCountByMissionId(id); // 미션에 가입한 멤버 인원수 가져오기
-		List<Member> memberList = missionBO.getMemberByMissionId(id);
 		
-		model.addAttribute("mission", mission);
-		model.addAttribute("memberCount", memberCount);
-		model.addAttribute("memberList", memberList);
+		int missionId = id; 
+		int member = missionBO.getExistedMember(missionId, userId); // 미션 가입했는지 여부 가져옴
+		Map<String, String> result = new HashMap<>();
+		
+		if(member > 0) {
+			result.put("result", "member");
+		} else {
+			result.put("result", "no-member");
+		}
+		
+		model.addAttribute("mission", mission); //미션정보
+		model.addAttribute("memberCount", memberCount); // 가입 멤버 수
+		model.addAttribute("result", result); // 미션 가입 여부 정보 (가입/탈퇴버튼 노출 목적)
 		model.addAttribute("viewName", "mission/timeline");
 		return "layout/template";		
 	}

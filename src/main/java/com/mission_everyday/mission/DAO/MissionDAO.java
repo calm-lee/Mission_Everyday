@@ -27,8 +27,12 @@ public interface MissionDAO {
 	//미션 가입한 유저 수 가져오기
 	public int selectMemberCountByMissionId(int missionId);
 	
-	//미션 가입한 유저 가져오기
-	public List<Member> selectMemberByMissionId(int missionId);
+	//미션 가입한 유저 정보 가져오기
+	public List<Member> selectMemberByMissionId(@Param("missionId") int missionId);
+	
+	
+	//미션에 가입했는지 확인하기
+	public int selectExistedMember(@Param("missionId") int missionId, @Param("userId") int userId);
 	
 	//미션 탈퇴하기
 	public int deleteMemberFromMission(@Param("missionId") int missionId, @Param("userId") int userId);

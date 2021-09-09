@@ -2,6 +2,7 @@ package com.mission_everyday.mission.BO;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -45,6 +46,10 @@ public class MissionBO {
 		return missionDAO.selectMemberByMissionId(missionId);
 	}
 	
+	// 미션에 가입했는지 확인하기
+	public int getExistedMember(int missionId, int userId) {
+		return missionDAO.selectExistedMember(missionId, userId);
+	}
 	//미션 탈퇴하기
 	public int deleteMemberFromMission(int missionId, int userId) {
 		return missionDAO.deleteMemberFromMission(missionId, userId);
