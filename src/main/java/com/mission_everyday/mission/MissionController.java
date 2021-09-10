@@ -60,9 +60,9 @@ public class MissionController {
 		Map<String, String> result = new HashMap<>();
 		
 		if(member > 0) {
-			result.put("result", "member");
+			result.put("check", "member");
 		} else {
-			result.put("result", "no-member");
+			result.put("check", "no-member");
 		}
 		
 		model.addAttribute("mission", mission); //미션정보

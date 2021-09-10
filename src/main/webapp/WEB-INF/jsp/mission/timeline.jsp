@@ -14,7 +14,7 @@
 			
 			<!-- 가입 및 탈퇴버튼 -->		
 			<c:choose>
-			<c:when test="${result eq 'no-member'}"> <!--  가입하지 않은 상태일 때 -->
+			<c:when test="${result.check eq 'no-member'}"> <!--  가입하지 않은 상태일 때 -->
 						<!-- 미션 가입하기 버튼 -->
 						<div class="d-flex justify-content-center">	
 						<button class="joinBtn col-6 bg-primary form-control text-white" data-mission-id="${mission.id}" data-member-userId="${member.userId}">미션 참여하기</button></div>						
@@ -34,8 +34,45 @@
 	<div id="missionTimeline" class="ml-5">
 	<div class="d-flex justify-content-center">
 	
+	
 	<!-- 포스트박스 -->
+	
+	<!--  가입하지 않은 상태일 때 노출 안함 -->
+	<c:if test="${result.check eq 'no-member'}">
+		
+		<div class="post-box d-none">
+			
+			<!-- 텍스트 박스 -->
+			<textarea name="content" cols="50" rows="4"
+				placeholder="내용을 입력해주세요."></textarea>
+			
+				<!--  이미지 버튼 -->
+				<div class="d-flex justify-content-between mt-4">
+				<div class="ml-2">
+					<input type="file" name="image" id="file"
+						accept=".jpg, .jpeg, .png, .gif" class="d-none"> <a
+						href="#" id="fileUploadBtn"><img
+						src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-image-512.png"
+						width="35"></a>
+				</div>
+
+				<!-- 업로드 버튼 -->
+				<div class="mr-2">
+					<button type="button" id="uploadBtn"
+						class="btn uploadBtn form-control bg-info" style="color:white; font-size:12px">
+						업로드
+					</button>
+				</div>
+			</div>
+		</div>
+	</c:if>
+	
+	<!--  가입한 상태일 때 노출함 -->
+	<c:if test="${result.check eq 'member'}">
+		
 		<div class="post-box">
+		
+			<!-- 텍스트 박스 -->
 			<textarea name="content" cols="50" rows="4"
 				placeholder="내용을 입력해주세요."></textarea>
 
@@ -52,12 +89,15 @@
 				<!-- 업로드 버튼 -->
 				<div class="mr-2">
 					<button type="button" id="uploadBtn"
-						class="btn form-control bg-info" style="color:white; font-size:12px">
+						class="btn uploadBtn form-control bg-info" style="color:white; font-size:12px" data-mission-id="${mission.id}" data-mission-name="${mission.missionName}">
 						업로드
 					</button>
 				</div>
 			</div>
 		</div>
+	</c:if>	
+	
+	
 	</div>
 	</div>
 	</div>
@@ -115,5 +155,69 @@ $(document).ready(function(){
 			}
 		});	
 	});			
+	
+	// 파일 업로드
+	$('#fileUploadBtn').on('click',function(e){		
+		e.preventDefault();
+		$('#file').click();
+	});
+	
+	// 글 업로드
+	$('.uploadBtn').on('click', function(e){
+		e.preventDefault();
+		
+		let missionId = $(this).data('mission-id');
+		let missionName = $(this).data('mission-name');
+		let content = $('textera[name=content]').val();
+		let imgPath = $('input[name=image]').val();
+		
+		alert(missionId);
+		alert(missionName);
+		
+		// 확장자 체크
+		if(imgPath != ''){
+			var ext = imgPath.split('.').pop().toLowerCase();
+			if($.inArray(ext, ['jpg', 'jpeg', 'png', 'gif']) == -1){ //확장자가 배열에 없을 경우 (-1로 반환)
+				alert("jpg, jpeg, png, gif 파일만 업로드할 수 있습니다.");
+				let imgPath = $('input[name=image]').val().empty(); // input에 있는 내용 초기화
+				return;
+			}
+		}
+		
+		// formData에 content, file 추가
+		let formData = new FormData();
+		
+		formData.append("missionId", missionId);
+		formData.append("missionName", missionName);
+		formData.append("content", content);
+		formData.append("file", $('input[name=image]')[0].files[0]);
+
+		$.ajax({
+			url: "/post/create"
+			, method: "post"
+			, data: formData
+			
+			// 파일 업로드 시 필수 파라미터 
+			, processData: false // 기본은 true(json, String)로 넘어갔으나 이번에는 formData로 넘어가므로 false
+			, contentType: false
+			, enctype: 'multipart/form-data'
+			
+			, success: function(data){
+				if(data.result == 'success'){
+					alert("오늘의 미션 성공!");
+					location.reload();
+				}
+			}
+			, error: function(request,status,error){
+			alert("code = "+ request.status + " message = " + request.responseText + " error = " + error); // 실패 시 처리
+		}
+			
+		});
+	
+	});
+	
+
+
+
 }); 
 </script>

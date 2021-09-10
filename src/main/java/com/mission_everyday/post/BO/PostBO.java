@@ -1,0 +1,36 @@
+package com.mission_everyday.post.BO;
+
+import java.io.IOException;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+
+import com.mission_everyday.common.FileManagerService;
+import com.mission_everyday.post.DAO.PostDAO;
+
+@Service
+public class PostBO {
+	
+	@Autowired
+	private PostDAO postDAO;
+	
+	@Autowired
+	private FileManagerService fileManagerService;
+	
+	//글쓰기
+	public int addPost(int userId, String userName, int missionId, String missionName, String content, MultipartFile file) {
+		
+		String imgPath = null;
+		
+		try {
+			imgPath = fileManagerService.saveFile(userId, file);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return postDAO.insertPost(userId, userName, missionId, missionName, content, imgPath);
+	}
+
+}
