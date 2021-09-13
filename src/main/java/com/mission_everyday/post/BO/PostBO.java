@@ -32,5 +32,25 @@ public class PostBO {
 		
 		return postDAO.insertPost(userId, userName, missionId, missionName, content, imgPath);
 	}
+	
+	//글 수정
+	public int updatePost(int id, int userId, String content, MultipartFile file) {
+		
+		String imgPath = null;
+		
+		try {
+			imgPath = fileManagerService.saveFile(userId, file);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return postDAO.updatePost(id, userId, content, imgPath);
+	}
+	
+	//글 삭제
+	public int deletePost(int id, int userId) {
+		return postDAO.deletePost(id, userId);
+	}
 
 }

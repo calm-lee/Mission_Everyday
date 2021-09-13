@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.mission_everyday.post.BO.LikeBO;
 import com.mission_everyday.post.BO.PostBO;
 
 @RestController
@@ -21,6 +22,9 @@ public class PostRestController {
 
 	@Autowired
 	private PostBO postBO;
+	
+	@Autowired
+	private LikeBO likeBO;
 	
 	//글쓰기
 	@RequestMapping("/create")
@@ -51,4 +55,90 @@ public class PostRestController {
 		
 		return result;				
 	}
+	
+	
+	//글 수정
+	@RequestMapping("/update")
+	public Map<String, Object> updatePost(
+			@RequestParam("id") int id
+			, @RequestParam(value="content", required=false) String content
+			, @RequestParam("file") MultipartFile file
+			, HttpServletRequest request
+			, Model model){
+		
+		HttpSession session = request.getSession();
+		
+		int userId = (int) session.getAttribute("userId");
+		
+		Map<String, Object> result = new HashMap<>();
+		
+		int row = postBO.updatePost(id, userId, content, file);
+		
+		if(row > 0) {
+			result.put("result", "success");
+		} else {
+			result.put("result", "fail");
+		}
+		
+		model.addAttribute("result", result);
+		
+		return result;				
+	}
+	
+	// 글 삭제
+	@RequestMapping("/delete")
+	public Map<String, Object> deletePost(
+			@RequestParam("id") int id
+			, HttpServletRequest request
+			, Model model){
+		
+		HttpSession session = request.getSession();
+		
+		int userId = (int) session.getAttribute("userId");
+		
+		
+		Map<String, Object> result = new HashMap<>();
+		
+		int row = postBO.deletePost(id, userId);
+		
+		if(row > 0) {
+			likeBO.deleteLikeByPostId(id);
+			result.put("result", "success");
+		} else {
+			result.put("result", "fail");
+		}
+		
+		model.addAttribute("result", result);
+		
+		return result;
+	}
+	
+	
+	// 좋아요 반영
+	@RequestMapping("/like_status")
+	public Map<String, Object> likeStatus(
+			@RequestParam("postId") int postId
+			, HttpServletRequest request
+			, Model model){
+		
+		HttpSession session = request.getSession();
+		Integer userId = (Integer) session.getAttribute("userId");
+		
+		
+		Map<String, Object> result = new HashMap<>();
+		
+		
+		if(userId == null) { // 로그인이 안된 상태이면
+			result.put("result", "fail"); // 상태 반영 안함
+		} else { // 로그인이 된 상태이면
+			likeBO.likeStatus(userId, postId); // 동작 반영함
+			result.put("result", "success");
+		}
+		
+		model.addAttribute("result", result);
+		
+		return result;
+		
+	}
+	
 }

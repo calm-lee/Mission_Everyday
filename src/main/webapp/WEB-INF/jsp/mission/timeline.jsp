@@ -98,6 +98,88 @@
 	</c:if>	
 	
 	
+<!-- 피드 -->	
+<c:forEach var="content" items="${contentList}" varStatus="status"> <!-- contentList 반복문으로 노출 -->
+<div class="d-flex justify-content-center mt-5">
+	<div class="feed-box form-control">
+	
+	<!-- 글쓴이 아이디, 삭제(...)버튼 -->
+		
+		<div class="feed-header d-flex justify-content-between mt-2">
+			<b>${content.post.userName}</b></span>
+			
+		<!-- userName이 post의 userName과 일치할 때만 노출 -->
+			<c:if test="${content.post.userName eq userName}">
+				<a href="#" class="btn moreBtn" data-toggle="modal" data-target="#moreModal" data-post-id="${content.post.id}">
+				<img src="https://www.iconninja.com/files/860/824/939/more-icon.png" width="35"></a>
+			</c:if>
+		</div>
+		
+	<!-- 피드 이미지 -->
+		<c:if test="${not empty content.post.imgPath}">
+		<div class="mt-3">
+			<img src="${content.post.imgPath}" width="350">
+		</div>
+		</c:if>
+		 
+	<!-- 좋아요 영역 -->
+		<div class="like-feed d-flex mt-1 align-items-center">
+		
+		<!-- filledLike이 false이면 빈하트가 보이게 -->
+		<c:if test="${content.filledLike eq false}">
+			<a href="#" class="btn likeBtn" data-post-id="${content.post.id}"  data-user-id="${userId}">
+			<img src="https://www.iconninja.com/files/214/518/441/heart-icon.png" width="20" height="20"></a>
+		</c:if>	
+		
+		<!-- filledLike이 true이면 채운하트가 보이게 -->
+		<c:if test="${content.filledLike eq true}">
+			<a href="#" class="btn likeBtn" data-post-id="${content.post.id}"  data-user-id="${userId}"><img src="https://www.iconninja.com/files/527/809/128/heart-icon.png" width="20" height="20"></a>		
+		</c:if>
+		좋아요 ${content.likeCount}개
+		</div>
+		
+	<!-- 글 영역 -->	
+		<div class="post-feed mt-2">
+			<span class="font-weight-bold">${content.post.userName}</span>
+			<span>
+				${content.post.content}
+			</span>
+		</div>
+		
+	<!-- 댓글 영역 -->			
+		<div class="comment-feed mt-4 border-bottom">
+			<div style="font-size:16px; color: #808080">댓글</div>
+			
+		</div>
+		
+		<!-- 댓글 목록 -->
+	<c:forEach var="comment" items="${content.commentList}">
+
+		<div class="comment-list mt-2 clearfix">
+			<div class="commentBlock">
+	            <span class="font-weight-bold">${comment.userName}</span>	
+				<span>${comment.content}</span>
+			
+			<!-- 댓글 삭제 버튼 -->
+				<a href="#" class="commentDelBtn float-right mr-3" data-comment-userName="${comment.userName}">
+				<img src="https://www.iconninja.com/files/603/22/506/x-icon.png" width="10px" height="10px">
+				</a>
+			</div>
+		</div>
+	</c:forEach>
+		
+	<!-- 댓글 쓰기 영역 -->	
+	<c:if test="${not empty content.post.userName}">
+		<div class="comment-create d-flex mt-2">
+			<input type="text" placeholder="댓글을 입력해주세요." id="commentTxt${content.post.id}" class="form-control">
+			<button type="button" class="btn btn-light commentBtn" data-post-id="${content.post.id}">게시</button>
+		</div>
+	</c:if>
+	</div>
+</div>
+</c:forEach>
+	
+	
 	</div>
 	</div>
 	</div>

@@ -30,4 +30,25 @@
 
 </insert>
 
+<update id="updatePost" parameterType="map">
+	
+	UPDATE `post`
+	SET
+		content = #{content}
+		, imgPath = #{imgPath}
+		, updatedAt = now()
+	WHERE 
+		`id` = #{id};
+
+</update>
+
+<delete id="deletePost" parameterType="map">
+	
+	DELETE FROM `post`
+	WHERE
+		`id` = #{id}
+		AND `userId` = #{userId}
+	
+</delete>
+
 </mapper>
