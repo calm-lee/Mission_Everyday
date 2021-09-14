@@ -1,6 +1,7 @@
 package com.mission_everyday.post.BO;
 
 import java.io.IOException;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -8,6 +9,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.mission_everyday.common.FileManagerService;
 import com.mission_everyday.post.DAO.PostDAO;
+import com.mission_everyday.post.Model.Post;
 
 @Service
 public class PostBO {
@@ -17,6 +19,11 @@ public class PostBO {
 	
 	@Autowired
 	private FileManagerService fileManagerService;
+	
+	//글 조회
+	public List<Post> getPostList(int missionId){
+		return postDAO.selectPostList(missionId);
+	}
 	
 	//글쓰기
 	public int addPost(int userId, String userName, int missionId, String missionName, String content, MultipartFile file) {

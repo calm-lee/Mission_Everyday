@@ -1,9 +1,11 @@
 package com.mission_everyday.post.BO;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.mission_everyday.post.DAO.LikeDAO;
 
+@Service
 public class LikeBO {
 
 	@Autowired

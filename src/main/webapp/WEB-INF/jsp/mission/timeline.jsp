@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 
 <div class="missionPage d-flex flex-wrap mt-5">
-	<div>
+
 		<div id="missionBar" class="text-center ml-4">
 		
 			<!-- 미션 소개 -->
@@ -26,14 +26,12 @@
 			</c:otherwise>
 			</c:choose>
 			
-		</div>
-	</div>			
+		</div>	
 	
 <!-- 타임라인 -->
+<div id="missionTimeline" class="ml-5">
+
 	<div class="d-flex justify-content-center">
-	<div id="missionTimeline" class="ml-5">
-	<div class="d-flex justify-content-center">
-	
 	
 	<!-- 포스트박스 -->
 	
@@ -67,9 +65,8 @@
 		</div>
 	</c:if>
 	
-	<!--  가입한 상태일 때 노출함 -->
+	<!--  미션 가입한 상태일 때 노출함 -->
 	<c:if test="${result.check eq 'member'}">
-		
 		<div class="post-box">
 		
 			<!-- 텍스트 박스 -->
@@ -96,12 +93,18 @@
 			</div>
 		</div>
 	</c:if>	
-	
+	</div>
 	
 <!-- 피드 -->	
-<c:forEach var="content" items="${contentList}" varStatus="status"> <!-- contentList 반복문으로 노출 -->
 <div class="d-flex justify-content-center mt-5">
-	<div class="feed-box form-control">
+<div>
+
+	<c:forEach var="content" items="${contentList}" varStatus="status"> <!-- contentList 반복문으로 노출 -->
+	<c:if test="${content.post.missionId eq mission.id}">
+
+	<div class="feed-box form-control mt-3">
+<!-- 미션 아이디가 현재 접속한 미션과 같을 때만 피드 노출 -->
+
 	
 	<!-- 글쓴이 아이디, 삭제(...)버튼 -->
 		
@@ -166,23 +169,21 @@
 				</a>
 			</div>
 		</div>
-	</c:forEach>
-		
+	</c:forEach>	
+	
 	<!-- 댓글 쓰기 영역 -->	
 	<c:if test="${not empty content.post.userName}">
 		<div class="comment-create d-flex mt-2">
 			<input type="text" placeholder="댓글을 입력해주세요." id="commentTxt${content.post.id}" class="form-control">
-			<button type="button" class="btn btn-light commentBtn" data-post-id="${content.post.id}">게시</button>
+			<button type="button" class="btn btn-light commentBtn" data-mission-id="${content.post.missionId}" data-post-id="${content.post.id}">게시</button>
 		</div>
 	</c:if>
 	</div>
+	</c:if>
+	</c:forEach>
+	</div>
+	</div>
 </div>
-</c:forEach>
-	
-	
-	</div>
-	</div>
-	</div>
 </div>
 
 <script>
@@ -298,8 +299,34 @@ $(document).ready(function(){
 	
 	});
 	
-
-
+	// 댓글 업로드
+	$('.commentBtn').on('click', function(e){
+		e.preventDefault();
+		
+		let missionId = $(this).data('mission-id'); 
+		let postId = $(this).data('post-id'); 
+		let commentContent = $('#commentTxt' + postId).val();
+		
+		if(commentContent == ''){
+			return;
+		}
+		
+		$.ajax({
+			url: "/comment/create"
+			, type: 'POST'
+			, data: {"missioId":missionId, "postId":postId, "content":commentContent}
+			, success: function(data){
+				if(data.result == "success"){
+					location.reload();
+				} else { 
+					alert("댓글 작성에 실패했습니다.");
+				}
+			}
+			, error: function(e){
+				alert("댓글 작성에 실패했습니다. 관리자에게 문의해주십시오." + e);
+			}
+		});	
+	});		
 
 }); 
 </script>
