@@ -19,15 +19,16 @@
 			`postId` = #{postId};
 	
 	</select>
+	
 	<insert id="insertComment" parameterType="map">
 		INSERT INTO `comment`
 			(`userId`
-			`userName`
-			`missionId`
-			`postId`
-			`content`
-			`createdAt`
-			`updatedAt`
+			,`userName`
+			,`missionId`
+			,`postId`
+			,`content`
+			,`createdAt`
+			,`updatedAt`
 			)
 			VALUES
 			(
@@ -44,10 +45,8 @@
 	<delete id="deleteComment" parameterType="map">
 		DELETE FROM `comment`
 		WHERE
-			`userId`=#{userId}
-			AND `missionId`#{missionId}
-			AND `postId`=#{postId}
-			AND `content=#{content}
+			id = #{id}
+			AND userId = #{userId};
 	</delete>
 	
 	<delete id="deleteLikeByPostId">

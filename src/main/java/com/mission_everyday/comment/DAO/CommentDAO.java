@@ -14,14 +14,17 @@ public interface CommentDAO {
 	public List<Comment> selectCommentList(int postId);
 
 	// 댓글 쓰기
-	public int insertComment(@Param("missionId") int missionId, 
+	public int insertComment(
+			@Param("userId") int userId,
+			@Param("userName") String userName,
+			@Param("missionId") int missionId, 
 			@Param("postId") int postId, 
 			@Param("content") String content);
 	
 	// 댓글 삭제하기 by 댓글 작성자
-	public int deleteComment(@Param("missionId") int missionId, 
-			@Param("postId") int postId, 
-			@Param("content") String content);
+	public int deleteComment(
+			@Param("id") int id
+			,@Param("userId") int userId);
 	
 	// 댓글 삭제하기 by 글쓴이
 	public int deleteCommentByPostId(int postId);

@@ -31,8 +31,10 @@
 		FROM
 			`like`
 		WHERE
-			`userId` = #{userId}
-			AND `postId` = #{postId}
+			`postId` = #{postId}
+			<if test="userId != null"> <!-- login이 된 경우 -->
+			AND `userId` = #{userId} 
+			</if>
 	</select>
 	
 	<delete id="deleteLikeByPostId">

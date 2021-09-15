@@ -21,13 +21,13 @@ public class CommentBO {
 	}
 	
 	// 댓글 쓰기
-	public int addComment(int missionId, int postId, String content) {
-		return commentDAO.insertComment(missionId, postId, content);
+	public int addComment(int userId, String userName, int missionId, int postId, String content) {
+		return commentDAO.insertComment(userId, userName, missionId, postId, content);
 	}
 	
 	// 댓글 삭제하기 by 댓글 작성자
-	public int deleteComment(int missionId, int postId, String content) {
-		return commentDAO.deleteComment(missionId, postId, content);
+	public int deleteComment(int id, int userId) {
+		return commentDAO.deleteComment(id, userId);
 	}
 	
 	// 댓글 삭제하기 by 글쓴이

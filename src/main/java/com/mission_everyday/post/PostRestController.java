@@ -131,7 +131,7 @@ public class PostRestController {
 		if(userId == null) { // 로그인이 안된 상태이면
 			result.put("result", "fail"); // 상태 반영 안함
 		} else { // 로그인이 된 상태이면
-			likeBO.likeStatus(userId, postId); // 동작 반영함
+			likeBO.likeStatus(userId, postId); // 좋아요 동작 반영함
 			result.put("result", "success");
 		}
 		
