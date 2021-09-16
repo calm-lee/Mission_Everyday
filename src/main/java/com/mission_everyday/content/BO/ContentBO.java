@@ -26,9 +26,6 @@ public class ContentBO {
 	@Autowired
 	private LikeBO likeBO;
 
-	private Comment comment;
-
-	private Like like;
 
 	public List<Content> getContentList(Integer userId, int missionId) {
 

@@ -12,7 +12,7 @@ import com.mission_everyday.mission.Model.Mission;
 public interface MissionDAO {
 
 	//미션 리스트 가져오기
-	public List<Mission> selectByCategoryId(@Param("categoryId") int categoryId);
+	public List<Mission> selectMissionListByCategoryId(@Param("categoryId") int categoryId);
 
 	//카테고리 이름 가져오기
 	public Mission selectCategoryNameOnly(@Param("categoryId") int categoryId);
@@ -28,7 +28,7 @@ public interface MissionDAO {
 	public int selectMemberCountByMissionId(int missionId);
 	
 	//미션 가입한 유저 정보 가져오기
-	public List<Member> selectMemberByMissionId(@Param("missionId") int missionId);
+	public List<Member> selectMemberListByMissionId(@Param("missionId") int missionId);
 	
 	
 	//미션에 가입했는지 확인하기

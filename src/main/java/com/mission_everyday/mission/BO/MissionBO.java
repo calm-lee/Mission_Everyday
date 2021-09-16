@@ -17,8 +17,8 @@ public class MissionBO {
 	private MissionDAO missionDAO;
 	
 	//미션 리스트 가져오기
-	public List<Mission> getMissionByCategoryId(int categoryId) {
-		return missionDAO.selectByCategoryId(categoryId);
+	public List<Mission> getMissionListByCategoryId(int categoryId) {
+		return missionDAO.selectMissionListByCategoryId(categoryId);
 	}
 	
 	//카테고리 이름만 가져오기
@@ -42,8 +42,8 @@ public class MissionBO {
 	}
 	
 	//미션 가입한 유저 수 가져오기
-	public List<Member> getMemberByMissionId(int missionId) {
-		return missionDAO.selectMemberByMissionId(missionId);
+	public List<Member> getMemberListByMissionId(int missionId) {
+		return missionDAO.selectMemberListByMissionId(missionId);
 	}
 	
 	// 미션에 가입했는지 확인하기

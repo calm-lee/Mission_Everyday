@@ -10,12 +10,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.mission_everyday.mission.BO.MissionBO;
-import com.mission_everyday.mission.Model.Member;
 
 @RestController
 @RequestMapping("/mission")
@@ -26,7 +26,7 @@ public class MissionRestController {
 	@Autowired
 	private MissionBO missionBO;
 	
-	@RequestMapping("/join")
+	@PostMapping("/join")
 	public Map<String, Object> joinIn(@RequestParam("missionId") int missionId, @RequestParam("missionName") String missionName, HttpServletRequest request) {
 		
 		HttpSession session = request.getSession(); //세션 불러오기
@@ -47,7 +47,7 @@ public class MissionRestController {
 		return result;
 	}
 	
-	@RequestMapping("/out")
+	@PostMapping("/out")
 	public Map<String,Object> joinOut(@RequestParam("missionId") int missionId, Model model, HttpServletRequest request){
 		
 		HttpSession session = request.getSession(); //세션 불러오기		

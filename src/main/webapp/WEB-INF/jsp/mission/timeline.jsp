@@ -103,6 +103,7 @@
 		<c:if test="${content.post.missionId eq mission.id}">
 	
 		<div class="feed-box form-control mt-3">
+		
 	<!-- 미션 아이디가 현재 접속한 미션과 같을 때만 피드 노출 -->
 	
 		
@@ -113,9 +114,16 @@
 				
 			<!-- userName이 post의 userName과 일치할 때만 노출 -->
 				<c:if test="${content.post.userName eq userName}">
-					<a href="#" class="btn moreBtn" data-toggle="modal" data-target="#moreModal" data-post-id="${content.post.id}">
+					<a href="#" class="btn moreBtn" data-toggle="popover" data-post-id="${content.post.id}">
 					<img src="https://www.iconninja.com/files/860/824/939/more-icon.png" width="35"></a>
 				</c:if>
+			</div>
+
+	
+ 			<div class="moreDetailBtn d-none">
+				<nav><a href="#" class="btn updatePost text-center d-block" style="font-size:14px;">글 수정</a></nav>
+				<hr>
+				<nav><a href="#" class="btn deletePost text-center d-block" style="font-size:14px;">글 삭제</a></nav>
 			</div>
 			
 		<!-- 피드 이미지 -->
@@ -184,10 +192,9 @@
 		</div>
 		</div>
 	</div>
-
 </div>
-
 <script>
+
 $(document).ready(function(){
 	
 	//미션 가입
@@ -365,6 +372,40 @@ $(document).ready(function(){
 					location.reload(); // 새로고침
 				} else {
 					alert("로그인해주세요.");
+				}
+			},
+			error: function(jqXHR, textStatus, errorThrown) {
+				var errorMsg = jqXHR.responseJSON.status;
+				alert(errorMsg + ":" + textStatus);
+			}
+		});
+	});
+	
+	// 더보기(...) 버튼 - 수정/삭제
+	$('.moreBtn').popover({
+		    container: 'body',
+		    placement: 'left',
+		    html: true, 
+		    content: function(){
+		          return $('.moreDetailBtn').html();
+		    }
+	}).on('click', function(e){
+		e.preventDefault();
+	});
+	
+	// 삭제하기
+	$('.deletePost').on('click', function(e){
+		e.preventDefault();
+		let postId = $(this).data('post-id');
+		
+		$.ajax({
+			type:'POST',
+			url:'/post/delete',
+			data: {"id": postId},
+			success: function(data) {
+				if (data.result == 'success') {
+					alert("삭제가 완료되었습니다.");
+					location.reload(); // 새로고침
 				}
 			},
 			error: function(jqXHR, textStatus, errorThrown) {
