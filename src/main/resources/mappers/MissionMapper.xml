@@ -60,16 +60,20 @@
 <insert id="insertUserIntoMission" parameterType="map">
 	INSERT INTO `mission_user`
 		(
-			`missionId`
+			`categoryId`
+			,`missionId`
 			,`missionName`
+			,`missionImage`
 			,`userId`
 			,`userName`
 			,`createdAt`
 			)
 		VALUES
 		(
-			#{missionId}
+			#{categoryId}
+			,#{missionId}
 			,#{missionName}
+			,#{missionImage}
 			,#{userId}
 			,#{userName}
 			,now()

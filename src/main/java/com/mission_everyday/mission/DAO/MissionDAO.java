@@ -21,8 +21,8 @@ public interface MissionDAO {
 	public Mission selectMissionByMissionId(int id);
 	
 	//미션 가입하기
-	public int insertUserIntoMission(@Param("missionId") int missionId, @Param("missionName") String missionName,
-			@Param("userId") int userId, @Param("userName") String userName);
+	public int insertUserIntoMission(@Param("categoryId") int categoryId, @Param("missionId") int missionId, @Param("missionName") String missionName,
+			@Param("missionImage") String missionImage, @Param("userId") int userId, @Param("userName") String userName);
 	
 	//미션 가입한 유저 수 가져오기
 	public int selectMemberCountByMissionId(int missionId);

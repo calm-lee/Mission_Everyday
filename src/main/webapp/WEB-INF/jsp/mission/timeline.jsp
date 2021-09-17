@@ -7,7 +7,7 @@
 	<div id="missionBar" class="text-center ml-4">
 		
 			<!-- 미션 소개 -->
-			<img src="${mission.missionImage}" width="260px">
+			<img src="${mission.missionImage}" width="260px" class="missionImage" data-mission-image="${mission.missionImage}">
 			<div class="missionName m-2" style="font-size: 18px" data-mission-name="${mission.missionName}"><b>${mission.missionName}</b></div>
 			<div class="m-2" style="font-size: 12px; color:#6f706f">${mission.missionIntroduction}</div>
 			<div class="m-2" style="font-size: 12px">참가자 수 ${memberCount}명</div>		
@@ -17,7 +17,7 @@
 			<c:when test="${result.check eq 'no-member'}"> <!--  가입하지 않은 상태일 때 -->
 						<!-- 미션 가입하기 버튼 -->
 						<div class="d-flex justify-content-center">	
-						<button class="joinBtn col-6 bg-primary form-control text-white" data-mission-id="${mission.id}" data-member-userId="${member.userId}">미션 참여하기</button></div>						
+						<button class="joinBtn col-6 bg-primary form-control text-white" data-mission-id="${mission.id}" data-member-userId="${member.userId}" data-category-id="${mission.categoryId}">미션 참여하기</button></div>						
 			</c:when>		
 			<c:otherwise> <!--  가입된 상태일 때 -->
 						<!-- 미션 탈퇴하기 버튼 -->
@@ -120,7 +120,13 @@
 			</div>
 
 	
- 			<div class="moreDetailBtn d-none">
+ 			<div id="moreDetailBtn" class="d-none">
+				<nav><a href="#" class="btn text-center updatePost d-block" style="font-size:14px;">글 수정</a></nav>
+				<hr>
+				<nav><a href="#" class="btn text-center deletePost d-block" style="font-size:14px;">글 삭제</a></nav>
+			</div>
+			
+			 <div class="moreDetaileBtn">
 				<nav><a href="#" class="btn updatePost text-center d-block" style="font-size:14px;">글 수정</a></nav>
 				<hr>
 				<nav><a href="#" class="btn deletePost text-center d-block" style="font-size:14px;">글 삭제</a></nav>
@@ -202,13 +208,15 @@ $(document).ready(function(){
 	$('.joinBtn').on('click',function(e){
 		e.preventDefault; // submit 기본동작 중단
 
+		let categoryId = $(this).data('category-id');
 		let missionId = $(this).data('mission-id');
 		let missionName = $('.missionName').data('mission-name');
+		let missionImage = $('.missionImage').data('mission-image');
 		
 		$.ajax({
 			url: "/mission/join"
 			, type: 'POST'
-			, data: {"missionId":missionId,"missionName":missionName}
+			, data: {"categoryId":categoryId, "missionId":missionId, "missionName":missionName, "missionImage":missionImage}
 			, success: function(data){
 				if(data.result == "success"){
 					alert("미션 가입이 완료됐습니다.");
@@ -387,18 +395,17 @@ $(document).ready(function(){
 		    placement: 'left',
 		    html: true, 
 		    content: function(){
-		          return $('.moreDetailBtn').html();
+		          return $('#moreDetailBtn').html();
 		    }
 	}).on('click', function(e){
-		e.preventDefault();
+		e.preventDefault(); // 위로 올라가기 방지
 	});
 	
 	// 삭제하기
-	$('.deletePost').on('click', function(e){
-		e.preventDefault();
-		let postId = $(this).data('post-id');
+	$('#moreDetailBtn .deletePost').on('click', function(e){
+		alert("dd");
 		
-		$.ajax({
+/* 		$.ajax({
 			type:'POST',
 			url:'/post/delete',
 			data: {"id": postId},
@@ -412,8 +419,11 @@ $(document).ready(function(){
 				var errorMsg = jqXHR.responseJSON.status;
 				alert(errorMsg + ":" + textStatus);
 			}
-		});
+		}); */
 	});
 	
+	$('#moreDetailBtn .updatePost').on('click', function(e){
+		alert("dd");
+	});
 }); 
 </script>

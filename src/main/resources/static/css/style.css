@@ -75,5 +75,16 @@ textarea {
 
 
 #commentBtn{background-color: #808080;}
+
+
+.myPage{margin: auto;}
+#myPageBar{width: 200px;}
+#myPageView{width: 700px;}
+
+.menu-text{color:#303030; font-size: 14px;}
+.menu-text:hover{text-decoration:none; color:#303030; font-weight: bold;}
+.nav-item{height: 30px;}
+.nav-item:hover{background-color: #e6e4e1;}
+
 .feed-box{width: 392px;}
 footer{height: 100px;}

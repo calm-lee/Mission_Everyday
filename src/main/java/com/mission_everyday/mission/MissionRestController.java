@@ -27,7 +27,7 @@ public class MissionRestController {
 	private MissionBO missionBO;
 	
 	@PostMapping("/join")
-	public Map<String, Object> joinIn(@RequestParam("missionId") int missionId, @RequestParam("missionName") String missionName, HttpServletRequest request) {
+	public Map<String, Object> joinIn(@RequestParam("categoryId") int categoryId, @RequestParam("missionId") int missionId, @RequestParam("missionName") String missionName, @RequestParam("missionImage") String missionImage,HttpServletRequest request) {
 		
 		HttpSession session = request.getSession(); //세션 불러오기
 		
@@ -36,7 +36,7 @@ public class MissionRestController {
 		
 		Map<String, Object> result = new HashMap<String,Object>();
 		
-		int row = missionBO.addUserIntoMission(missionId,missionName,userId,userName);
+		int row = missionBO.addUserIntoMission(categoryId,missionId,missionName,missionImage,userId,userName);
 		
 		if(row > 0) {
 			result.put("result", "success");

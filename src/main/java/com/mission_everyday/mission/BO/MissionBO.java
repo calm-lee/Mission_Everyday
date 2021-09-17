@@ -32,8 +32,8 @@ public class MissionBO {
 	}
 	
 	//미션 가입하기
-	public int addUserIntoMission(int missionId, String missionName, int userId, String userName) {
-		return missionDAO.insertUserIntoMission(missionId, missionName, userId, userName);
+	public int addUserIntoMission(int categoryId, int missionId, String missionName, String missionImage, int userId, String userName) {
+		return missionDAO.insertUserIntoMission(categoryId, missionId, missionName, missionImage, userId, userName);
 	}
 	
 	//미션 가입한 유저 수 가져오기
