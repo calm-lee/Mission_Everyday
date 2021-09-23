@@ -22,6 +22,24 @@
 	ORDER BY `id` DESC
 	LIMIT 5;
 </select>
+
+
+<select id="selectPostByPostId" resultType="com.mission_everyday.post.Model.Post">
+	SELECT	
+		`id`
+		,`userId`
+		,`userName`
+		,`missionId`
+		,`missionName`
+		,`content`
+		,`imgPath`
+		,`createdAt`
+		,`updatedAt`
+	FROM 
+		`post`
+	WHERE
+		`id` = #{id}
+</select>
 	
 <insert id="insertPost" parameterType="map">
 

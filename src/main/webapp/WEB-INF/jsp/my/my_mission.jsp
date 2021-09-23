@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%> 
 <div class="myPage d-flex flex-wrap mt-5">
 	
 	<div id="myPageBar" class="ml-5">
@@ -29,13 +29,14 @@
 				<c:forEach var="myMission" items="${myMissionList}">
 						<div class="m-4">
 						<a href="/mission/${myMission.categoryId}/${myMission.missionId}">
-						<img src="${myMission.missionImage}" width="180px">
-							<div class="m-3">
+						<img src="${myMission.missionImage}" width="160px">
+							<div class="mt-1" style="font-size:16px">
 							${myMission.missionName}
 							</div>
-							</a>
-						</div>
-						<div>가입일: ${myMission.createdAt}</div>				
+						<div class="mt-1" style="font-size:12px; color:#524e4e"><fmt:formatDate value="${myMission.createdAt}" var="pattern1" pattern="yyyy년 MM월 dd일" />
+						가입일: ${pattern1}</div>	
+						</a>
+						</div>			
 				</c:forEach>
 			</div>
 		</div>	

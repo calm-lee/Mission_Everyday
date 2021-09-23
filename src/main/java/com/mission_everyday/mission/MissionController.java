@@ -14,11 +14,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.mission_everyday.content.BO.ContentBO;
 import com.mission_everyday.content.Model.Content;
 import com.mission_everyday.mission.BO.MissionBO;
 import com.mission_everyday.mission.Model.Mission;
+import com.mission_everyday.post.BO.PostBO;
+import com.mission_everyday.post.Model.Post;
 
 @Controller
 @RequestMapping("/mission")
@@ -31,6 +34,9 @@ public class MissionController {
 	
 	@Autowired
 	private MissionBO missionBO;
+	
+	@Autowired
+	private PostBO postBO;
 	
 	private Content content;
 	
@@ -51,7 +57,7 @@ public class MissionController {
 	// 미션 타임라인 가져오기
 	@RequestMapping("/{categoryId}/{id}") //@PathVariable 사용
 	public String missionTimeline(@PathVariable(value="categoryId") int categoryId
-			,@PathVariable(value="id") int missionId 
+			,@PathVariable(value="id") int missionId
 			,HttpServletRequest request
 			,Model model) {
 		
@@ -62,6 +68,7 @@ public class MissionController {
 		Mission mission  = missionBO.getMissionByMissionId(missionId); //미션 id에 맞는 미션 정보 가져오기
 		int memberCount = missionBO.getMemberCountByMissionId(missionId); // 미션에 가입한 멤버 인원수 가져오기
 		List<Content> contentList = contentBO.getContentList(userId, missionId);
+		List<Post> postList = postBO.getPostList(missionId);// 포스트 모달 조회용
 		
 		Map<String, String> result = new HashMap<>();
 		
@@ -72,14 +79,13 @@ public class MissionController {
 			result.put("check", "no-member");
 		}
 		
-		
 		model.addAttribute("mission", mission); //미션정보
 		model.addAttribute("memberCount", memberCount); // 가입 멤버 수
 		model.addAttribute("result", result); // 미션 가입 여부 정보 (가입/탈퇴버튼 노출 목적)
 		model.addAttribute("contentList", contentList); // 타임라인 컨텐트 리스트
+		model.addAttribute("postList", postList); // 포스트 모달 조회용
 		model.addAttribute("viewName", "mission/timeline");
 		return "layout/template";		
 	}
-	
 	
 }

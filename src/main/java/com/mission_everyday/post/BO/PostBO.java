@@ -20,7 +20,7 @@ public class PostBO {
 	@Autowired
 	private FileManagerService fileManagerService;
 	
-	//글 조회
+	//글 타임라인 조회
 	public List<Post> getPostList(int missionId){
 		return postDAO.selectPostList(missionId);
 	}

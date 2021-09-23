@@ -10,7 +10,7 @@ import com.mission_everyday.post.Model.Post;
 @Repository
 public interface PostDAO {
 
-	//글 조회
+	//글 타임라인 조회
 	public List<Post> selectPostList(int missionId);
 	
 	//글쓰기

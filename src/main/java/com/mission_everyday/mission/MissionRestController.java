@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.mission_everyday.mission.BO.MissionBO;
+import com.mission_everyday.post.BO.PostBO;
 
 @RestController
 @RequestMapping("/mission")

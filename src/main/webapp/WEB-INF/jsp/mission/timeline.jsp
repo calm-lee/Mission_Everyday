@@ -107,34 +107,25 @@
 	<!-- 미션 아이디가 현재 접속한 미션과 같을 때만 피드 노출 -->
 	
 		
-		<!-- 글쓴이 아이디, 삭제(...)버튼 -->
+		<!-- 글쓴이 아이디, 수정/삭제 버튼 -->
 			
 			<div class="feed-header d-flex justify-content-between mt-2">
-				<b>${content.post.userName}</b></span>
+				<b>${content.post.userName}</b>
 				
 			<!-- userName이 post의 userName과 일치할 때만 노출 -->
 				<c:if test="${content.post.userName eq userName}">
-					<a href="#" class="btn moreBtn" data-toggle="popover" data-post-id="${content.post.id}">
-					<img src="https://www.iconninja.com/files/860/824/939/more-icon.png" width="35"></a>
+		 			<div id="moreDetailBtn" class="d-flex mt-1">
+						<a href="#" class="btn updatePost mr-2" data-toggle="modal" data-target="#updateModal" style="padding: 1px; font-size: 12px; color:#524e4e;" data-post-id="${content.post.id}">수정</a>
+						<hr>
+						<a href="#" class="btn deletePost  mr-2" style="padding: 1px; font-size: 12px; color:#524e4e" data-post-id="${content.post.id}">삭제</a>
+					</div>
 				</c:if>
 			</div>
 
-	
- 			<div id="moreDetailBtn" class="d-none">
-				<nav><a href="#" class="btn text-center updatePost d-block" style="font-size:14px;">글 수정</a></nav>
-				<hr>
-				<nav><a href="#" class="btn text-center deletePost d-block" style="font-size:14px;">글 삭제</a></nav>
-			</div>
-			
-			 <div class="moreDetaileBtn">
-				<nav><a href="#" class="btn updatePost text-center d-block" style="font-size:14px;">글 수정</a></nav>
-				<hr>
-				<nav><a href="#" class="btn deletePost text-center d-block" style="font-size:14px;">글 삭제</a></nav>
-			</div>
 			
 		<!-- 피드 이미지 -->
 			<c:if test="${not empty content.post.imgPath}">
-			<div class="mt-3">
+			<div class="d-flex justify-content-center mt-3">
 				<img src="${content.post.imgPath}" width="350">
 			</div>
 			</c:if>
@@ -194,11 +185,45 @@
 		</c:if>
 		</div>
 		</c:if>
+
 		</c:forEach>
 		</div>
 		</div>
 	</div>
 </div>
+
+<c:forEach var="content" items="${contentList}">
+	<div class="modal" id="updateModal" tabindex="-1" role="dialog">				
+	<div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header text-center">
+	        <h5 class="modal-title">글 수정</h5>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body">
+	        <textarea name="contentUdate">${post.content}</textarea>
+	        					<div class="d-flex justify-content-between mt-4">
+					<div class="ml-2">
+						<input type="file" name="image" id="file"
+							accept=".jpg, .jpeg, .png, .gif" class="d-none"> <a
+							href="#" id="fileUploadBtn"><img
+							src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-image-512.png"
+							width="35"></a>
+					</div>
+	      </div>
+	      
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+	        <button type="button" class="btn btn-primary">Save changes</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+</div>
+</c:forEach>
+
 <script>
 
 $(document).ready(function(){
@@ -287,8 +312,8 @@ $(document).ready(function(){
 		formData.append("missionName", missionName);
 		formData.append("content", content);
 		formData.append("file", $('input[name=image]')[0].files[0]);
+
 		
-		alert(content);
 		$.ajax({
 			url: "/post/create"
 			, method: "post"
@@ -389,23 +414,36 @@ $(document).ready(function(){
 		});
 	});
 	
-	// 더보기(...) 버튼 - 수정/삭제
-	$('.moreBtn').popover({
-		    container: 'body',
-		    placement: 'left',
-		    html: true, 
-		    content: function(){
-		          return $('#moreDetailBtn').html();
-		    }
-	}).on('click', function(e){
-		e.preventDefault(); // 위로 올라가기 방지
+	// 수정하기
+	$('.updatePost').on('click', function(e){
+		e.preventDefault();
+		
+		let postId = $(this).data('post-id');
+		$('#updateModal').data('post-id', postId);
+		alert(postId);
+		
+  		$.ajax({
+			type:'POST',
+			url: "/mission/1/1",
+			data: {"postId": postId},
+			success: function(data) {
+			},
+			error: function(jqXHR, textStatus, errorThrown) {
+				var errorMsg = jqXHR.responseJSON.status;
+				alert(errorMsg + ":" + textStatus);
+			}
+		});  
+
 	});
 	
+	
 	// 삭제하기
-	$('#moreDetailBtn .deletePost').on('click', function(e){
-		alert("dd");
+	$('.deletePost').on('click', function(e){
+		e.preventDefault();
 		
-/* 		$.ajax({
+		let postId = $(this).data('post-id');
+		
+  		$.ajax({
 			type:'POST',
 			url:'/post/delete',
 			data: {"id": postId},
@@ -419,11 +457,8 @@ $(document).ready(function(){
 				var errorMsg = jqXHR.responseJSON.status;
 				alert(errorMsg + ":" + textStatus);
 			}
-		}); */
+		});  
 	});
 	
-	$('#moreDetailBtn .updatePost').on('click', function(e){
-		alert("dd");
-	});
 }); 
 </script>

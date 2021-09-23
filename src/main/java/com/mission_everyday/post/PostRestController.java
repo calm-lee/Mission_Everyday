@@ -15,6 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.mission_everyday.post.BO.LikeBO;
 import com.mission_everyday.post.BO.PostBO;
+import com.mission_everyday.post.Model.Post;
 
 @RestController
 @RequestMapping("/post")
@@ -25,6 +26,7 @@ public class PostRestController {
 	
 	@Autowired
 	private LikeBO likeBO;
+	
 	
 	//글쓰기
 	@RequestMapping("/create")
@@ -55,7 +57,6 @@ public class PostRestController {
 		
 		return result;				
 	}
-	
 	
 	//글 수정
 	@RequestMapping("/update")
