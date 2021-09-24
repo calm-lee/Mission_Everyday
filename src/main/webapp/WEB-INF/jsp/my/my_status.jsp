@@ -46,29 +46,30 @@
 					<!-- myContentList로 인증현황 정리 -->
 					<div class="ml-4 mt-3">
 					
-									<!-- 인증현황 text -->
-									<div style="font-size:12px">
-									인증 성공: i개 / 인증 실패: i개 / 남은 인증: i개
-									</div>					
+						<!-- 인증현황 text -->
+						<div style="font-size:12px">
+						인증 성공: i개 / 인증 실패: i개 / 남은 인증: i개
+						</div>					
 					
 
 													
-									<!-- 인증 체크박스 -->
-									<div class="mt-3">
-							
-										<c:forEach var="myContent" items="${myContentList}">
-										<c:forEach var="i" begin="0" end="${myContent.post.missionPeriod}">
-										 <c:if test="${myContent.post.missionId eq myMission.missionId}">									
+						<!-- 인증 체크박스 -->
+						<div class="mt-3">						
+						<c:forEach var="myContent" items="${myContentList}">
+							<c:forEach var="i" begin="0" end="${myContent.post.missionPeriod}">
+							 <c:if test="${myContent.post.missionId eq myMission.missionId}">									
 																		
-										 <img src="https://cdn-icons-png.flaticon.com/512/1168/1168610.png" width="30px">
-<!--  									 <img src="https://cdn-icons-png.flaticon.com/512/1828/1828666.png" width="25px">
-										 <img src="https://cdn-icons-png.flaticon.com/512/136/136831.png"  width="30px">	 -->			
+							  <img src="https://cdn-icons-png.flaticon.com/512/1168/1168610.png" alt="success" width="30px">
+<!--  						  <img src="https://cdn-icons-png.flaticon.com/512/1828/1828666.png" alt="fail" width="25px">
+							  <img src="https://cdn-icons-png.flaticon.com/512/136/136831.png"  alt="left" width="30px">	 -->			
 									
-										 </c:if>
-										</c:forEach>
-									</c:forEach>
-							</div>
-					</div>											
+							 </c:if>
+							</c:forEach>
+						</c:forEach>
+						</div>
+						
+					</div>		
+														
 				 </div>
 				</c:forEach>
 				
