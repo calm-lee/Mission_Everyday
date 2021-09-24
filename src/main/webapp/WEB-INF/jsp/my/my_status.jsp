@@ -29,41 +29,51 @@
 		<!-- My 인증 현황 -->
 		<div class="contents d-flex justify-content-center">
 			<div>
-				<div class="statusBox">
-				
+			
+				<!-- My mission별로 정리 -->
 				<c:forEach var="myMission" items="${myMissionList}">
-					<!-- 미션 이미지 -->
-					<a href="/mission/${myMission.categoryId}/${myMission.missionId}">
-					<img src="${myMission.missionImage}" width="160px">
-					${myMission.missionName}
-					</a>
-					
-					<!-- 인증 text -->
+				 <div class="statusBox d-flex mt-4">
+				
+					<!-- 미션 이미지&이름 -->
 					<div>
-					인증 성공: ㅇㅇ개 / 인증 실패: ㅇㅇ개 / 남은 인증: ㅇㅇ개
-					</div>
-					
-					<!-- 인증 체크박스 -->
-					<div class="mb-3">
-					월${myPostList.id}
-						<div>
-						<img src="https://cdn-icons-png.flaticon.com/512/1168/1168610.png" width="30px">
-						<img src="https://cdn-icons-png.flaticon.com/512/1828/1828666.png" width="25px">
-						<img src="https://cdn-icons-png.flaticon.com/512/136/136831.png"  width="30px">
+						<img src="${myMission.missionImage}" width="160px">
+						<div class="mt-1 text-center" style="font-size:14px">
+						${myMission.missionName}
 						</div>
-						
 					</div>
-
 					
-					</c:forEach>																		
-				</div>
-	
+					
+					<!-- myContentList로 인증현황 정리 -->
+					<div class="ml-4 mt-3">
+					
+									<!-- 인증현황 text -->
+									<div style="font-size:12px">
+									인증 성공: i개 / 인증 실패: i개 / 남은 인증: i개
+									</div>					
+					
+
+													
+									<!-- 인증 체크박스 -->
+									<div class="mt-3">
+							
+										<c:forEach var="myContent" items="${myContentList}">
+										<c:forEach var="i" begin="0" end="${myContent.post.missionPeriod}">
+										 <c:if test="${myContent.post.missionId eq myMission.missionId}">									
+																		
+										 <img src="https://cdn-icons-png.flaticon.com/512/1168/1168610.png" width="30px">
+<!--  									 <img src="https://cdn-icons-png.flaticon.com/512/1828/1828666.png" width="25px">
+										 <img src="https://cdn-icons-png.flaticon.com/512/136/136831.png"  width="30px">	 -->			
+									
+										 </c:if>
+										</c:forEach>
+									</c:forEach>
+							</div>
+					</div>											
+				 </div>
+				</c:forEach>
+				
 			</div>
 		</div>
 		
-		</div>
+	</div>
 </div>
-
-</div>	
-
-<script>

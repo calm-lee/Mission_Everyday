@@ -301,8 +301,8 @@ $(document).ready(function(){
 
 		let missionId = $(this).data('mission-id');
 		let missionName = $(this).data('mission-name');
-		let missionStartDate = $('.wtf').val();
-		let missionFinishDate = $('.wtf2').val();
+		let missionStartDate = $('.missionStartDate').val();
+		let missionFinishDate = $('.missionFinishDate').val();
 		let missionPeriod = $(this).data('mission-period');
 		let content = $('textarea[name=content]').val();
 		let imgPath = $('input[name=image]').val();

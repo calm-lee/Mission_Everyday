@@ -63,29 +63,5 @@ public class MyBO {
 		return myContentList;
 	}
 	
-	/*
-	 * // 내 성공현황 조회하기 public List<MyStatus> getMyStatusByUserId(int userId) {
-	 * 
-	 * List<Content> myStatusList = new ArrayList<>(); List<Post> myPostList =
-	 * postBO.getPostListByUserId(userId);
-	 * 
-	 * for (Post post : myPostList) {
-	 * 
-	 * MyStatus myStatus = new MyStatus();
-	 * 
-	 * // 1. myStatus에 현재 포스트 넣기 myStatus.setPost(post);
-	 * 
-	 * // 2. myStatus에 현재 미션 넣기 myStatus.setMission(df);
-	 * myStatus.setCommentList(commentBO.getCommentList(post.getId()));
-	 * 
-	 * // 3. content에 현재 좋아요 상태 넣기 content.setFilledLike(likeBO.existedLike(userId,
-	 * post.getId()));
-	 * 
-	 * // 4. content에 현재 좋아요 개수 넣기
-	 * content.setLikeCount(likeBO.getLikeCountByPostId(post.getId()));
-	 * 
-	 * myContentList.add(content); }
-	 * 
-	 * return myContentList; }
-	 */
+
 }

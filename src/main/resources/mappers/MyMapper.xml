@@ -5,7 +5,8 @@
 
 <select id="selectMyMissionListByUserId" resultType="com.mission_everyday.my.model.MyMission">
 	SELECT
-		missionId
+		categoryId
+		,missionId
 		,missionName
 		,missionImage
 		,createdAt

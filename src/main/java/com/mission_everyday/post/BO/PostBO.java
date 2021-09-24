@@ -66,7 +66,7 @@ public class PostBO {
 		return postDAO.selectPostListByUserId(userId);
 	};
 	
-	// //내가 쓴 글 미션별 현황 조회 (마이 페이지)
+	// 내가 쓴 글 미션별 현황 조회 (마이 페이지)
 	public List<Post> getPostListByUserIdAndMissionId(int userId, int missionId){
 		return postDAO.selectPostListByUserIdAndMissionId(userId, missionId);
 	};
