@@ -67,7 +67,7 @@ public class MissionController {
 		
 		Mission mission  = missionBO.getMissionByMissionId(missionId); //미션 id에 맞는 미션 정보 가져오기
 		int memberCount = missionBO.getMemberCountByMissionId(missionId); // 미션에 가입한 멤버 인원수 가져오기
-		List<Content> contentList = contentBO.getContentList(userId, missionId);
+		List<Content> contentList = contentBO.getContentList(userId, missionId); // 미션 타임라인 조회용
 		List<Post> postList = postBO.getPostList(missionId);// 포스트 모달 조회용
 		
 		Map<String, String> result = new HashMap<>();

@@ -25,8 +25,9 @@ public class ContentBO {
 
 	@Autowired
 	private LikeBO likeBO;
-
-
+	
+	
+	// 미션 타임라인에서 조회하기
 	public List<Content> getContentList(Integer userId, int missionId) {
 
 		List<Content> contentList = new ArrayList<>();

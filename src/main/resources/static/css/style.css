@@ -77,8 +77,8 @@ textarea {
 #commentBtn{background-color: #808080;}
 
 
-.myPage{margin: auto;}
-#myPageBar{width: 200px;}
+.myPage{width: 1000px; margin: auto;}
+#myPageBar{width: 150px;}
 #myPageView{width: 700px;}
 
 .menu-text{color:#303030; font-size: 14px;}

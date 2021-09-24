@@ -1,5 +1,7 @@
 package com.mission_everyday.post;
 
+import java.text.ParseException;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -7,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -15,7 +18,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.mission_everyday.post.BO.LikeBO;
 import com.mission_everyday.post.BO.PostBO;
-import com.mission_everyday.post.Model.Post;
 
 @RestController
 @RequestMapping("/post")
@@ -33,10 +35,13 @@ public class PostRestController {
 	public Map<String, Object> createPost(
 			@RequestParam("missionId") int missionId
 			, @RequestParam("missionName") String missionName
+			, @RequestParam("missionStartDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date missionStartDate
+			, @RequestParam("missionFinishDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date missionFinishDate
+			, @RequestParam("missionPeriod") int missionPeriod			
 			, @RequestParam(value="content", required=false) String content
 			, @RequestParam("file") MultipartFile file
 			, HttpServletRequest request
-			, Model model){
+			, Model model) throws ParseException{
 		
 		HttpSession session = request.getSession();
 		
@@ -44,8 +49,8 @@ public class PostRestController {
 		String userName = (String) session.getAttribute("userName");
 		
 		Map<String, Object> result = new HashMap<>();
-		
-		int row = postBO.addPost(userId, userName, missionId, missionName, content, file);
+				
+		int row = postBO.addPost(userId, userName, missionId, missionName, content, file, missionStartDate, missionFinishDate, missionPeriod);
 		
 		if(row > 0) {
 			result.put("result", "success");

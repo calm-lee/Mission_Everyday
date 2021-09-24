@@ -49,6 +49,9 @@
 			,`userName`
 			,`missionId`
 			,`missionName`
+			,`missionStartDate`
+			,`missionFinishDate`
+			,`missionPeriod`			
 			,`content`
 			,`imgPath`
 			,`createdAt`
@@ -60,6 +63,9 @@
 			,#{userName}
 			,#{missionId}
 			,#{missionName}
+			,#{missionStartDate}
+			,#{missionFinishDate}
+			,#{missionPeriod}			
 			,#{content}
 			,#{imgPath}
 			,now()
@@ -88,5 +94,25 @@
 		AND `userId` = #{userId}
 	
 </delete>
+
+
+<select id="selectPostListByUserId" resultType="com.mission_everyday.post.Model.Post">
+	SELECT	
+		`id`
+		,`userId`
+		,`userName`
+		,`missionId`
+		,`missionName`
+		,`content`
+		,`imgPath`
+		,`createdAt`
+		,`updatedAt`
+	FROM 
+		`post`
+	WHERE
+		`userId` = #{userId}
+	ORDER BY `id` DESC;		
+</select>
+
 
 </mapper>

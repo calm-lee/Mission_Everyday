@@ -6,12 +6,12 @@
 	
 	<div id="myPageBar" class="ml-5">
 		<nav class="side-menu">
-		 <h2 class="mb-4" style="color: #727273">My Page</h2>
-		 <hr align="left" style="width: 50%;">
+		 <h4 class="mb-2" style="color: #727273;"><b>MY PAGE</b></h4>
+		 <hr align="left" style="width:50%">
 		 <ul class="nav flex-column">
-		 	<li class="nav-item mt-2"><a href="#" class="menu-text">참여 중인 미션</a></li>
-		 	<li class="nav-item mt-4"><a href="#" class="menu-text">My 인증 포스트</a></li>
-		 	<li class="nav-item mt-4"><a href="#" class="menu-text">인증 성공 현황</a></li>
+		 	<li class="nav-item mt-2"><a href="/my/mission" class="menu-text">My 참여 중인 미션</a></li>
+		 	<li class="nav-item mt-4"><a href="/my/post" class="menu-text">My 인증 포스트</a></li>
+		 	<li class="nav-item mt-4"><a href="/my/status" class="menu-text">My 인증 성공 현황</a></li>
 		 </ul>
 		</nav>
 	</div>
@@ -20,7 +20,7 @@
 	<div id="myPageView" class="container">
 		
 		<div class="my-header">
-			<h2 class="ml-2" style="color:#524e4e"><b>참여 중인 미션</b></h2>
+			<h2 class="ml-2" style="color:#524e4e"><b>My 참여 중인 미션</b></h2>
 			<hr>
 		</div>
 		
@@ -33,14 +33,14 @@
 							<div class="mt-1" style="font-size:16px">
 							${myMission.missionName}
 							</div>
-						<div class="mt-1" style="font-size:12px; color:#524e4e"><fmt:formatDate value="${myMission.createdAt}" var="pattern1" pattern="yyyy년 MM월 dd일" />
+						<div class="mt-1" style="font-size:12px; color:#524e4e">
+						<fmt:formatDate value="${myMission.createdAt}" var="pattern1" pattern="yyyy년 MM월 dd일" />
 						가입일: ${pattern1}</div>	
 						</a>
 						</div>			
 				</c:forEach>
 			</div>
 		</div>	
-		
 	</div>
 	
 </div>

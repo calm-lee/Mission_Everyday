@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%> 
 
 <div class="missionPage d-flex flex-wrap mt-5">
 
@@ -72,10 +73,9 @@
 				<!-- 텍스트 박스 -->
 				<textarea name="content" cols="50" rows="4"
 					placeholder="내용을 입력해주세요."></textarea>
-	
 				<div class="d-flex justify-content-between mt-4">
 					<!--  이미지 버튼 -->
-					<div class="ml-2">
+					<div class="ml-2">${missionStartDate}
 						<input type="file" name="image" id="file"
 							accept=".jpg, .jpeg, .png, .gif" class="d-none"> <a
 							href="#" id="fileUploadBtn"><img
@@ -85,10 +85,19 @@
 	
 					<!-- 업로드 버튼 -->
 					<div class="mr-2">
+					
+					<!-- 미션 생성/종료날짜 Date -> String 변환 -->
+					<fmt:formatDate  var="missionStartDate" value="${mission.missionStartDate}" pattern="yyyy-MM-dd"/>
+					<fmt:formatDate  var="missionFinishDate" value="${mission.missionFinishDate}" pattern="yyyy-MM-dd"/>
+																					
 						<button type="button" id="uploadBtn"
-							class="btn uploadBtn form-control bg-info" style="color:white; font-size:12px" data-mission-id="${mission.id}" data-mission-name="${mission.missionName}">
+							class="btn uploadBtn form-control bg-info" 											
+							style="color:white; font-size:12px" data-mission-id="${mission.id}" data-mission-name="${mission.missionName}" data-mission-startDate="${missionStartDate}" data-mission-finishDate="${missionFinishDate}" data-mission-period="${mission.missionPeriod}">
 							업로드
 						</button>
+						
+					<input class="missionStartDate d-none" value="${missionStartDate}">
+					<input class="missionFinishDate d-none" value="${missionFinishDate}">
 					</div>
 				</div>
 			</div>
@@ -289,11 +298,16 @@ $(document).ready(function(){
 	// 글 업로드
 	$('.uploadBtn').on('click', function(e){
 		e.preventDefault();
-		
+
 		let missionId = $(this).data('mission-id');
 		let missionName = $(this).data('mission-name');
+		let missionStartDate = $('.wtf').val();
+		let missionFinishDate = $('.wtf2').val();
+		let missionPeriod = $(this).data('mission-period');
 		let content = $('textarea[name=content]').val();
 		let imgPath = $('input[name=image]').val();
+		
+		alert(missionStartDate);
 		
 		// 확장자 체크
 		if(imgPath != ''){
@@ -310,6 +324,9 @@ $(document).ready(function(){
 		
 		formData.append("missionId", missionId);
 		formData.append("missionName", missionName);
+		formData.append("missionStartDate", missionStartDate);
+		formData.append("missionFinishDate", missionFinishDate);
+		formData.append("missionPeriod", missionPeriod);
 		formData.append("content", content);
 		formData.append("file", $('input[name=image]')[0].files[0]);
 

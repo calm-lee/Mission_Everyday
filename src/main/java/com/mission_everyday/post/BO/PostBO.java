@@ -1,6 +1,7 @@
 package com.mission_everyday.post.BO;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +27,7 @@ public class PostBO {
 	}
 	
 	//글쓰기
-	public int addPost(int userId, String userName, int missionId, String missionName, String content, MultipartFile file) {
+	public int addPost(int userId, String userName, int missionId, String missionName, String content, MultipartFile file, Date missionStartDate, Date missionFinishDate, int missionPeriod) {
 		
 		String imgPath = null;
 		
@@ -37,7 +38,7 @@ public class PostBO {
 			e.printStackTrace();
 		}
 		
-		return postDAO.insertPost(userId, userName, missionId, missionName, content, imgPath);
+		return postDAO.insertPost(userId, userName, missionId, missionName, content, imgPath, missionStartDate, missionFinishDate, missionPeriod);
 	}
 	
 	//글 수정
@@ -59,5 +60,15 @@ public class PostBO {
 	public int deletePost(int id, int userId) {
 		return postDAO.deletePost(id, userId);
 	}
+	
+	// 내가 쓴 글 조회 (마이페이지)
+	public List<Post> getPostListByUserId(int userId){
+		return postDAO.selectPostListByUserId(userId);
+	};
+	
+	// //내가 쓴 글 미션별 현황 조회 (마이 페이지)
+	public List<Post> getPostListByUserIdAndMissionId(int userId, int missionId){
+		return postDAO.selectPostListByUserIdAndMissionId(userId, missionId);
+	};
 
 }

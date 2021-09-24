@@ -10,10 +10,32 @@ public class Post {
 	private String missionName;
 	private String content;
 	private String imgPath;
+	private Date missionStartDate;
+	private Date missionFinishDate;
+	private int missionPeriod;
 	private Date createdAt;
 	private Date updatedAt;
+	
 	public int getId() {
 		return id;
+	}
+	public Date getMissionStartDate() {
+		return missionStartDate;
+	}
+	public void setMissionStartDate(Date missionStartDate) {
+		this.missionStartDate = missionStartDate;
+	}
+	public Date getMissionFinishDate() {
+		return missionFinishDate;
+	}
+	public void setMissionFinishDate(Date missionFinishDate) {
+		this.missionFinishDate = missionFinishDate;
+	}
+	public int getMissionPeriod() {
+		return missionPeriod;
+	}
+	public void setMissionPeriod(int missionPeriod) {
+		this.missionPeriod = missionPeriod;
 	}
 	public void setId(int id) {
 		this.id = id;
