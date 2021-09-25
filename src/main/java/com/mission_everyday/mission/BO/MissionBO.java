@@ -1,8 +1,8 @@
 package com.mission_everyday.mission.BO;
 
+import java.util.Date;
 import java.util.List;
 
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,8 +32,26 @@ public class MissionBO {
 	}
 	
 	//미션 가입하기
-	public int addUserIntoMission(int categoryId, int missionId, String missionName, String missionImage, int userId, String userName) {
-		return missionDAO.insertUserIntoMission(categoryId, missionId, missionName, missionImage, userId, userName);
+	public int addUserIntoMission(
+			int categoryId, 
+			int missionId, 
+			String missionName, 
+			Date missionStartDate,
+			Date missionFinishDate,
+			int missionPeriod,
+			String missionImage, 
+			int userId, 
+			String userName) {
+		return missionDAO.insertUserIntoMission(
+				categoryId, 
+				missionId, 
+				missionName, 
+				missionStartDate,
+				missionFinishDate,
+				missionPeriod, 
+				missionImage, 
+				userId, 
+				userName);
 	}
 	
 	//미션 가입한 유저 수 가져오기

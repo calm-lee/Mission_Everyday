@@ -17,12 +17,12 @@
 		<div style="font-size:14px; color:3f3f40" class="text-center" >오늘도 함께 도전해봐요!</div>
 		</div>		
 			<div class="d-flex justify-content-center align-items-center mt-4">
-				<div class="mark-id input-group-prepand form-control">ID</div>
+				<div class="mark input-group-prepand form-control text-center">ID</div>
 				<input type="text" class="form-control col-7" id="loginId" name="loginId" placeholder="Username">
 			</div>
 			
 			<div class="d-flex justify-content-center align-items-center mt-1">
-				<div class="mark-pw input-group-prepand form-control">PW</div>
+				<div class="mark input-group-prepand form-control text-center">PW</div>
 				<input type="password" class="form-control col-7" id="password" name="password" placeholder="password">
 			</div>
 		</div>

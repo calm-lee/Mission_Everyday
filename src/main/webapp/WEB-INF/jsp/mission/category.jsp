@@ -1,19 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<div class="d-flex justify-content-center m-5">
+<div class="d-flex justify-content-center mt-5">
 
-<div id="category-box" class="container">
+<div id="category-box" class="container" style="background-color: white">
 		
-		<div class="category-header">
+		<div class="category-header mt-3">
 		<h2 class="ml-2" style="color:#524e4e"><b>미션 카테고리</b></h2>
 		<hr>
 		</div>
 		
 		<div class="contents d-flex justify-content-center">
 			<div class="categories d-flex flex-wrap text-center">
-			
-							
+										
 				<div class="excercise m-4">
 				<a href="/mission/mission_detail/1" data-category-id=1>
 				<img src="https://cdn-icons-png.flaticon.com/512/3043/3043196.png" width="180px">

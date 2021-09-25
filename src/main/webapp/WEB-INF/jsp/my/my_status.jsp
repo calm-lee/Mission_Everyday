@@ -4,9 +4,9 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%> 
 <div class="myPage d-flex flex-wrap mt-5">
 	
-	<div id="myPageBar">
+	<div id="myPageBar" class="ml-2 form-control" style="background-color: white">
 		<nav class="side-menu">
-		 <h4 class="mb-2" style="color: #727273"><b>MY PAGE</b></h4>
+		 <h4 class="mt-2" style="color: #727273"><b>MY PAGE</b></h4>
 		 <hr>
 		 <ul class="nav flex-column">
 		 	<li class="nav-item mt-2"><a href="/my/mission" class="menu-text">My 참여 중인 미션</a></li>
@@ -18,16 +18,16 @@
 
 
 	<!-- 페이지 뷰 -->
-	<div id="myPageView" class="container">
+	<div id="myPageView" class="container form-control">
 		
 		<!-- 헤더 -->
-		<div class="my-header">
-			<h2 class="ml-2" style="color:#524e4e"><b>My 인증 포스트</b></h2>
+		<div class="my-header mt-2">
+			<h2 class="ml-2" style="color:#524e4e"><b>My 인증 성공 현황</b></h2>
 			<hr>
 		</div>
 		
 		<!-- My 인증 현황 -->
-		<div class="contents d-flex justify-content-center">
+		<div class="myStatus d-flex justify-content-center">
 			<div>
 			
 				<!-- My mission별로 정리 -->
@@ -52,26 +52,27 @@
 						</div>					
 													
 						<!-- 인증 체크박스 -->
-						<div class="statusCheckBox mt-3">
-						<!-- myContentList로 post 현황 불러오기 -->						
+						<div class="statusCheckBox mt-3 d-flex">
+												
+						<c:forEach var="i" begin="1" end="${myMission.missionPeriod}">
 						<c:forEach var="myContent" items="${myContentList}">
-							<c:forEach var="i" begin="0" end="${myContent.post.missionPeriod}">
-							 <c:if test="${myContent.post.missionId eq myMission.missionId}">																											
+						<c:if test="${myContent.post.missionId eq myMission.missionId}"> 
+						<br>																											
 							  <img src="https://cdn-icons-png.flaticon.com/512/1168/1168610.png" alt="success" width="30px">
 <!--  						  <img src="https://cdn-icons-png.flaticon.com/512/1828/1828666.png" alt="fail" width="25px">
 							  <img src="https://cdn-icons-png.flaticon.com/512/136/136831.png"  alt="left" width="30px">	 -->												
-							 </c:if>
-							</c:forEach>
+						</c:if>
+						</c:forEach>
 						</c:forEach>
 						</div>
 						
-					</div>		
-														
-				 </div>
-				</c:forEach>
-				
-			</div>
+					</div>
+				</div>
+			</c:forEach>
 		</div>
-		
+						
+		</div>		
+														
 	</div>
+
 </div>

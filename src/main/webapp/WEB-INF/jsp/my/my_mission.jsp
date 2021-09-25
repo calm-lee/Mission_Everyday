@@ -2,11 +2,12 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%> 
+
 <div class="myPage d-flex flex-wrap mt-5">
-	
-	<div id="myPageBar" class="ml-5">
+
+	<div id="myPageBar" class="ml-2 form-control" style="background-color: white">
 		<nav class="side-menu">
-		 <h4 class="mb-2" style="color: #727273;"><b>MY PAGE</b></h4>
+		 <h4 class="mt-2" style="color: #727273;"><b>MY PAGE</b></h4>
 		 <hr align="left" style="width:50%">
 		 <ul class="nav flex-column">
 		 	<li class="nav-item mt-2"><a href="/my/mission" class="menu-text">My 참여 중인 미션</a></li>
@@ -17,9 +18,9 @@
 	</div>
 
 
-	<div id="myPageView" class="container">
+	<div id="myPageView" class="container form-control" style="background-color: white">
 		
-		<div class="my-header">
+		<div class="my-header mt-2">
 			<h2 class="ml-2" style="color:#524e4e"><b>My 참여 중인 미션</b></h2>
 			<hr>
 		</div>

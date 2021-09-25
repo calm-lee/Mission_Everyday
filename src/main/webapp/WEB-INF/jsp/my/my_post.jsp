@@ -5,9 +5,9 @@
 
 <div class="myPage d-flex flex-wrap mt-5">
 	
-	<div id="myPageBar" class="ml-5">
+	<div id="myPageBar" class="ml-2 form-control" style="background-color: white">
 		<nav class="side-menu">
-		 <h4 class="mb-2" style="color: #727273"><b>MY PAGE</b></h4>
+		 <h4 class="mt-2" style="color: #727273"><b>MY PAGE</b></h4>
 		 <hr align="left" style="width:50%">
 		 <ul class="nav flex-column">
 		 	<li class="nav-item mt-2"><a href="/my/mission" class="menu-text">My 참여 중인 미션</a></li>
@@ -19,11 +19,11 @@
 
 
 	<!-- 페이지 뷰 -->
-	<div id="myPageView" class="container">
+	<div id="myPage" class="ml-5">
 		
 		<!-- 헤더 -->
-		<div class="my-header">
-			<h2 class="ml-2" style="color:#524e4e"><b>My 인증 포스트</b></h2>
+		<div class="my-header form-control">
+			<h2 class="ml-2 mt-1" style="color:#524e4e"><b>My 인증 포스트</b></h2>
 			<hr>
 		</div>
 		

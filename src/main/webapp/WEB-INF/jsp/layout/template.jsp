@@ -20,7 +20,7 @@
 	
 </head>
 <body>
-	<div id="wrap">
+	<div id="wrap" style="background-color: #f0f0f0">
 		<header>
 			<jsp:include page="../include/gnb.jsp" />			
 		</header>

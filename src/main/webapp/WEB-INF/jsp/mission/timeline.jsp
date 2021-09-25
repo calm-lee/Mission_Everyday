@@ -3,12 +3,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%> 
 
-<div class="missionPage d-flex flex-wrap mt-5">
+<div class="missionPage d-flex flex-wrap mt-4">
 
-	<div id="missionBar" class="text-center ml-4">
+	<div id="missionBar" class="text-center ml-5 form-control">
 		
 			<!-- 미션 소개 -->
-			<img src="${mission.missionImage}" width="260px" class="missionImage" data-mission-image="${mission.missionImage}">
+			<img src="${mission.missionImage}" width="180px" class="missionImage mt-3" data-mission-image="${mission.missionImage}">
 			<div class="missionName m-2" style="font-size: 18px" data-mission-name="${mission.missionName}"><b>${mission.missionName}</b></div>
 			<div class="m-2" style="font-size: 12px; color:#6f706f">${mission.missionIntroduction}</div>
 			<div class="m-2" style="font-size: 12px">참가자 수 ${memberCount}명</div>		
@@ -18,14 +18,21 @@
 			<c:when test="${result.check eq 'no-member'}"> <!--  가입하지 않은 상태일 때 -->
 						<!-- 미션 가입하기 버튼 -->
 						<div class="d-flex justify-content-center">	
-						<button class="joinBtn col-6 bg-primary form-control text-white" data-mission-id="${mission.id}" data-member-userId="${member.userId}" data-category-id="${mission.categoryId}">미션 참여하기</button></div>						
+						<button class="joinBtn mt-2" data-mission-id="${mission.id}" data-member-userId="${member.userId}" data-category-id="${mission.categoryId}" data-mission-period="${mission.missionPeriod}">미션 참여하기</button></div>						
 			</c:when>		
 			<c:otherwise> <!--  가입된 상태일 때 -->
 						<!-- 미션 탈퇴하기 버튼 -->
 						<div class="d-flex justify-content-center">
-						<button class="joinOutBtn col-6 bg-danger form-control text-white" data-mission-id="${mission.id}" data-member-userId="${member.userId}">미션 탈퇴하기</button></div>	
+						<button class="joinOutBtn mt-2" data-mission-id="${mission.id}" data-member-userId="${member.userId}">미션 탈퇴하기</button></div>	
 			</c:otherwise>
 			</c:choose>
+			
+			<!-- 미션 생성/종료날짜 Date -> String 변환 -->
+			<fmt:formatDate  var="missionStartDate" value="${mission.missionStartDate}" pattern="yyyy-MM-dd"/>
+			<fmt:formatDate  var="missionFinishDate" value="${mission.missionFinishDate}" pattern="yyyy-MM-dd"/>
+					
+			<input type="text" value="${missionStartDate}" class="missionStartDate d-none">
+			<input type="text" value="${missionFinishDate}" class="missionFinishDate d-none">			
 			
 	</div>	
 	
@@ -35,18 +42,16 @@
 		<div class="d-flex justify-content-center">
 		
 		<!-- 포스트박스 -->
-		
-		<!--  가입하지 않은 상태일 때 노출 안함 -->
-		<c:if test="${result.check eq 'no-member'}">
+
+		<!--  미션 가입한 상태일 때 노출함 -->
+		<c:if test="${result.check eq 'member'}">
+			<div class="post-box form-control ml-5">
 			
-			<div class="post-box d-none">
-				
 				<!-- 텍스트 박스 -->
-				<textarea name="content" cols="50" rows="4"
+				<textarea name="content" cols="68" rows="4"
 					placeholder="내용을 입력해주세요."></textarea>
-				
+				<div class="d-flex justify-content-between mt-3">
 					<!--  이미지 버튼 -->
-					<div class="d-flex justify-content-between mt-4">
 					<div class="ml-2">
 						<input type="file" name="image" id="file"
 							accept=".jpg, .jpeg, .png, .gif" class="d-none"> <a
@@ -57,47 +62,13 @@
 	
 					<!-- 업로드 버튼 -->
 					<div class="mr-2">
-						<button type="button" id="uploadBtn"
-							class="btn uploadBtn form-control bg-info" style="color:white; font-size:12px">
-							업로드
-						</button>
-					</div>
-				</div>
-			</div>
-		</c:if>
-		
-		<!--  미션 가입한 상태일 때 노출함 -->
-		<c:if test="${result.check eq 'member'}">
-			<div class="post-box">
-			
-				<!-- 텍스트 박스 -->
-				<textarea name="content" cols="50" rows="4"
-					placeholder="내용을 입력해주세요."></textarea>
-				<div class="d-flex justify-content-between mt-4">
-					<!--  이미지 버튼 -->
-					<div class="ml-2">${missionStartDate}
-						<input type="file" name="image" id="file"
-							accept=".jpg, .jpeg, .png, .gif" class="d-none"> <a
-							href="#" id="fileUploadBtn"><img
-							src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-image-512.png"
-							width="35"></a>
-					</div>
-	
-					<!-- 업로드 버튼 -->
-					<div class="mr-2">
-					
-					<!-- 미션 생성/종료날짜 Date -> String 변환 -->
-					<fmt:formatDate  var="missionStartDate" value="${mission.missionStartDate}" pattern="yyyy-MM-dd"/>
-					<fmt:formatDate  var="missionFinishDate" value="${mission.missionFinishDate}" pattern="yyyy-MM-dd"/>
 																					
 						<button type="button" id="uploadBtn"
 							class="btn uploadBtn form-control bg-info" 											
-							style="color:white; font-size:12px" data-mission-id="${mission.id}" data-mission-name="${mission.missionName}" data-mission-startDate="${missionStartDate}" data-mission-finishDate="${missionFinishDate}" data-mission-period="${mission.missionPeriod}">
+							style="color:white; font-size:12px" data-mission-id="${mission.id}" data-mission-name="${mission.missionName}" data-mission-startdate="${missionStartDate}" data-mission-finishdate="${missionFinishDate}" data-mission-period="${mission.missionPeriod}">
 							업로드
 						</button>
 						
-					<input class="missionStartDate d-none" value="${missionStartDate}">
-					<input class="missionFinishDate d-none" value="${missionFinishDate}">
 					</div>
 				</div>
 			</div>
@@ -105,7 +76,7 @@
 		</div>
 		
 	<!-- 피드 -->	
-	<div class="d-flex justify-content-center mt-5">
+	<div class="d-flex justify-content-center mt-2 ml-5">
 	<div>
 	
 	<c:forEach var="content" items="${contentList}" varStatus="status"> <!-- contentList 반복문으로 노출 -->
@@ -118,7 +89,7 @@
 		
 		<!-- 글쓴이 아이디, 수정/삭제 버튼 -->
 			
-			<div class="feed-header d-flex justify-content-between mt-2">
+			<div class="feed-header d-flex justify-content-between mt-3 ml-3">
 				<b>${content.post.userName}</b>
 				
 			<!-- userName이 post의 userName과 일치할 때만 노출 -->
@@ -140,23 +111,23 @@
 			</c:if>
 			 
 		<!-- 좋아요 영역 -->
-			<div class="like-feed d-flex mt-1 align-items-center">
+			<div class="like-feed d-flex mt-3 ml-3 align-items-center">
 			
 			<!-- filledLike이 false이면 빈하트가 보이게 -->
 			<c:if test="${content.filledLike eq false}">
-				<a href="#" class="btn likeBtn" data-post-id="${content.post.id}"  data-user-id="${userId}">
+				<a href="#" class="btn likeBtn" style="padding: 0px 4px;" data-post-id="${content.post.id}"  data-user-id="${userId}">
 				<img src="https://www.iconninja.com/files/214/518/441/heart-icon.png" width="20" height="20"></a>
 			</c:if>	
 			
 			<!-- filledLike이 true이면 채운하트가 보이게 -->
 			<c:if test="${content.filledLike eq true}">
-				<a href="#" class="btn likeBtn" data-post-id="${content.post.id}"  data-user-id="${userId}"><img src="https://www.iconninja.com/files/527/809/128/heart-icon.png" width="20" height="20"></a>		
+				<a href="#" class="btn likeBtn" style="padding: 0px 4px;" data-post-id="${content.post.id}"  data-user-id="${userId}"><img src="https://www.iconninja.com/files/527/809/128/heart-icon.png" width="20" height="20"></a>		
 			</c:if>
-			좋아요 ${content.likeCount}개
+			<span style="font-size: 16px">좋아요 ${content.likeCount}개</span>
 			</div>
 			
 		<!-- 글 영역 -->	
-			<div class="post-feed mt-2">
+			<div class="post-feed mt-3 ml-3">
 				<span class="font-weight-bold">${content.post.userName}</span>
 				<span>
 					${content.post.content}
@@ -164,8 +135,8 @@
 			</div>
 			
 		<!-- 댓글 영역 -->			
-			<div class="comment-feed mt-4 border-bottom">
-				<div style="font-size:14px; color: #808080" class="mb-1">댓글</div>
+			<div class="comment-feed mt-3 border-bottom">
+				<div style="font-size:14px; color: #808080" class="ml-1 mb-2">댓글</div>
 				
 			</div>
 			
@@ -187,7 +158,7 @@
 		
 		<!-- 댓글 쓰기 영역 -->	
 		<c:if test="${not empty content.post.userName}">
-			<div class="comment-create d-flex mt-2">
+			<div class="comment-create d-flex mt-2 mb-2">
 				<input type="text" placeholder="댓글을 입력해주세요." id="commentTxt${content.post.id}" class="form-control">
 				<button type="button" class="btn commentBtn ml-1" data-mission-id="${content.post.missionId}" data-post-id="${content.post.id}">게시</button>
 			</div>
@@ -213,7 +184,7 @@
 	      </div>
 	      <div class="modal-body">
 	        <textarea name="contentUdate">${post.content}</textarea>
-	        					<div class="d-flex justify-content-between mt-4">
+	        	<div class="d-flex justify-content-between mt-4">
 					<div class="ml-2">
 						<input type="file" name="image" id="file"
 							accept=".jpg, .jpeg, .png, .gif" class="d-none"> <a
@@ -245,12 +216,15 @@ $(document).ready(function(){
 		let categoryId = $(this).data('category-id');
 		let missionId = $(this).data('mission-id');
 		let missionName = $('.missionName').data('mission-name');
+		let missionStartDate = $('.missionStartDate').val();
+		let missionFinishDate = $('.missionFinishDate').val();
+		let missionPeriod = $(this).data('mission-period');
 		let missionImage = $('.missionImage').data('mission-image');
 		
 		$.ajax({
 			url: "/mission/join"
 			, type: 'POST'
-			, data: {"categoryId":categoryId, "missionId":missionId, "missionName":missionName, "missionImage":missionImage}
+			, data: {"categoryId":categoryId, "missionId":missionId, "missionName":missionName, "missionStartDate": missionStartDate, "missionFinishDate": missionFinishDate, "missionPeriod": missionPeriod, "missionImage":missionImage}
 			, success: function(data){
 				if(data.result == "success"){
 					alert("미션 가입이 완료됐습니다.");
@@ -306,8 +280,6 @@ $(document).ready(function(){
 		let missionPeriod = $(this).data('mission-period');
 		let content = $('textarea[name=content]').val();
 		let imgPath = $('input[name=image]').val();
-		
-		alert(missionStartDate);
 		
 		// 확장자 체크
 		if(imgPath != ''){
@@ -437,7 +409,6 @@ $(document).ready(function(){
 		
 		let postId = $(this).data('post-id');
 		$('#updateModal').data('post-id', postId);
-		alert(postId);
 		
   		$.ajax({
 			type:'POST',

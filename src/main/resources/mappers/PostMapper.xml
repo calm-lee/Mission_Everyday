@@ -6,15 +6,18 @@
 
 <select id="selectPostList" resultType="com.mission_everyday.post.Model.Post">
 	SELECT	
-		`id`
-		,`userId`
-		,`userName`
-		,`missionId`
-		,`missionName`
-		,`content`
-		,`imgPath`
-		,`createdAt`
-		,`updatedAt`
+		id
+		,userId
+		,userName
+		,missionId
+		,missionName
+		,missionStartDate
+		,missionFinishDate
+		,missionPeriod
+		,content
+		,imgPath
+		,createdAt
+		,updatedAt
 	FROM 
 		`post`
 	WHERE
@@ -26,15 +29,18 @@
 
 <select id="selectPostByPostId" resultType="com.mission_everyday.post.Model.Post">
 	SELECT	
-		`id`
-		,`userId`
-		,`userName`
-		,`missionId`
-		,`missionName`
-		,`content`
-		,`imgPath`
-		,`createdAt`
-		,`updatedAt`
+		id
+		,userId
+		,userName
+		,missionId
+		,missionName
+		,missionStartDate
+		,missionFinishDate
+		,missionPeriod
+		,content
+		,imgPath
+		,createdAt
+		,updatedAt
 	FROM 
 		`post`
 	WHERE
@@ -98,15 +104,18 @@
 
 <select id="selectPostListByUserId" resultType="com.mission_everyday.post.Model.Post">
 	SELECT	
-		`id`
-		,`userId`
-		,`userName`
-		,`missionId`
-		,`missionName`
-		,`content`
-		,`imgPath`
-		,`createdAt`
-		,`updatedAt`
+		id
+		,userId
+		,userName
+		,missionId
+		,missionName
+		,missionStartDate
+		,missionFinishDate
+		,missionPeriod
+		,content
+		,imgPath
+		,createdAt
+		,updatedAt
 	FROM 
 		`post`
 	WHERE

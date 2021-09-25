@@ -8,7 +8,12 @@
 		categoryId
 		,missionId
 		,missionName
+		,missionStartDate
+		,missionFinishDate
+		,missionPeriod
 		,missionImage
+		,userId
+		,userName
 		,createdAt
 	FROM 
 		`mission_user`

@@ -3,6 +3,7 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mission_everyday.mission.DAO.MissionDAO">
 
+<!-- 미션 카테고리별로 가져오기 -->
 <select id="selectMissionListByCategoryId" resultType="com.mission_everyday.mission.Model.Mission">
 
 	SELECT
@@ -24,7 +25,7 @@
 
 </select>
 
-
+<!-- 카테고리 이름만 가져오기 -->
 <select id="selectCategoryNameOnly" resultType="com.mission_everyday.mission.Model.Mission">
 	SELECT
 		categoryName
@@ -60,19 +61,25 @@
 <insert id="insertUserIntoMission" parameterType="map">
 	INSERT INTO `mission_user`
 		(
-			`categoryId`
-			,`missionId`
-			,`missionName`
-			,`missionImage`
-			,`userId`
-			,`userName`
-			,`createdAt`
+			categoryId
+			,missionId
+			,missionName
+			,missionStartDate
+			,missionFinishDate
+			,missionPeriod
+			,missionImage
+			,userId
+			,userName
+			,createdAt
 			)
 		VALUES
 		(
 			#{categoryId}
 			,#{missionId}
 			,#{missionName}
+			,#{missionStartDate}
+			,#{missionFinishDate}
+			,#{missionPeriod}
 			,#{missionImage}
 			,#{userId}
 			,#{userName}

@@ -2,10 +2,10 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<div class="d-flex justify-content-center m-5">
+<div class="d-flex justify-content-center mt-5">
 
-<div id="category-box" class="container">	
-	<div class="category-header">
+<div id="mission-box" class="container" style="background-color: white">	
+	<div class="category-header mt-3">
 		<h2 class="ml-5" style="color:#524e4e"><b>${mission.categoryName}</b></h2>
 			<hr>
 	</div>
@@ -15,7 +15,7 @@
 		<c:forEach var="mission" items="${missionList}">
 				<div class="m-4">
 				<a href="/mission/${mission.categoryId}/${mission.id}">
-				<img src="${mission.missionImage}" width="180px">
+				<img src="${mission.missionImage}" width="180px" height="120px">
 					<div class="m-3">
 					${mission.missionName}
 					</div></a>

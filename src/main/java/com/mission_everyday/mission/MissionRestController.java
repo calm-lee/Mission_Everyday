@@ -1,14 +1,17 @@
 package com.mission_everyday.mission;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.ibatis.annotations.Param;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,7 +31,15 @@ public class MissionRestController {
 	private MissionBO missionBO;
 	
 	@PostMapping("/join")
-	public Map<String, Object> joinIn(@RequestParam("categoryId") int categoryId, @RequestParam("missionId") int missionId, @RequestParam("missionName") String missionName, @RequestParam("missionImage") String missionImage,HttpServletRequest request) {
+	public Map<String, Object> joinIn(
+			@RequestParam("categoryId") int categoryId, 
+			@RequestParam("missionId") int missionId, 
+			@RequestParam("missionName") String missionName, 
+			@RequestParam("missionStartDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date missionStartDate,
+			@RequestParam("missionFinishDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date missionFinishDate,
+			@RequestParam("missionPeriod") int missionPeriod,
+			@RequestParam("missionImage") String missionImage,
+			HttpServletRequest request) {
 		
 		HttpSession session = request.getSession(); //세션 불러오기
 		
@@ -37,7 +48,7 @@ public class MissionRestController {
 		
 		Map<String, Object> result = new HashMap<String,Object>();
 		
-		int row = missionBO.addUserIntoMission(categoryId,missionId,missionName,missionImage,userId,userName);
+		int row = missionBO.addUserIntoMission(categoryId,missionId,missionName,missionStartDate,missionFinishDate,missionPeriod,missionImage,userId,userName);
 		
 		if(row > 0) {
 			result.put("result", "success");

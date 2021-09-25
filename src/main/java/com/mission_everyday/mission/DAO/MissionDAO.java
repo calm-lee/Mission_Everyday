@@ -1,5 +1,6 @@
 package com.mission_everyday.mission.DAO;
 
+import java.util.Date;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
@@ -21,8 +22,16 @@ public interface MissionDAO {
 	public Mission selectMissionByMissionId(int id);
 	
 	//미션 가입하기
-	public int insertUserIntoMission(@Param("categoryId") int categoryId, @Param("missionId") int missionId, @Param("missionName") String missionName,
-			@Param("missionImage") String missionImage, @Param("userId") int userId, @Param("userName") String userName);
+	public int insertUserIntoMission(
+			@Param("categoryId") int categoryId, 
+			@Param("missionId") int missionId, 
+			@Param("missionName") String missionName,
+			@Param("missionStartDate") Date missionStartDate,
+			@Param("missionFinishDate") Date missionFinishDate,
+			@Param("missionPeriod") int missionPeriod,
+			@Param("missionImage") String missionImage, 
+			@Param("userId") int userId, 
+			@Param("userName") String userName);
 	
 	//미션 가입한 유저 수 가져오기
 	public int selectMemberCountByMissionId(int missionId);
