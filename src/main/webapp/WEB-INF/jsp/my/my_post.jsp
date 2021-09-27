@@ -41,7 +41,7 @@
 				
 				<!-- 미션클럽 정보 -->
 				<div class="text-right" style="font-size:12px">
-					 <span class="mr-2">from <b>${myContent.post.missionName}</b></span>
+					 <span class="mr-2">from <b>${myContent.post.missionName}${myContent.post.createdAt}</b></span>
 					<hr style="margin-top:0.5rem">
 				</div>
 				

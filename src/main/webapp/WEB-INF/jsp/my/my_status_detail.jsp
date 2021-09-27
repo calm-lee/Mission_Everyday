@@ -39,7 +39,7 @@
 						<div class="mt-1 text-center" style="font-size:14px">
 						${myMission.missionName}
 						</div>
-					</div>
+					</div> 
 					
 					
 					<!-- 인증현황 정리 -->
@@ -47,22 +47,25 @@
 					
 						<!-- 인증현황 text -->
 						<div class="info-text" style="font-size:12px">
-						인증 성공: i개 / 인증 실패: i개 / 남은 인증: i개
-						</div>					
+						<c:forEach var="myStatus" items="${myStatusList}" end="0">
+						인증 성공: ${myStatus.successCount}개 / 인증 실패: ${myStatus.failCount}개 / 남은 인증: ${myStatus.blankCount}개
+						</c:forEach>
+						</div>
+											
 													
 						<!-- 인증 체크박스 -->
-						<div class="statusCheckBox mt-3 d-flex">
-												
-						<c:forEach var="myStatus" items="${myStatusList}">
+						<div class="statusCheckBox mt-3 d-flex align-items-center">
+						<c:forEach var="myStatus" items="${myStatusList}">						
 								<c:if test="${myStatus.status eq 'O'}">																										
 								  <img src="https://cdn-icons-png.flaticon.com/512/1168/1168610.png" alt="success" width="30px"></c:if>
 								  
 								<c:if test="${myStatus.status eq 'X'}">	
-		  						  <img src="https://cdn-icons-png.flaticon.com/512/1828/1828666.png" alt="fail" width="25px"></c:if>
+		  						  <img src="https://cdn-icons-png.flaticon.com/512/1828/1828666.png" alt="fail" width="25px" height="25px"></c:if>
 		  						  
 		  						<c:if test="${myStatus.status eq 'blank'}">
 								  <img src="https://cdn-icons-png.flaticon.com/512/136/136831.png"  alt="blank" width="30px"></c:if>												
-								  
+						
+							<div class="mr-2"></div>		  
 						</c:forEach>
 						</div>
 					</div>

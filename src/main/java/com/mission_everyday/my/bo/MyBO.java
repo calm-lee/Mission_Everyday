@@ -104,53 +104,88 @@ public class MyBO {
 		Calendar today = Calendar.getInstance();
 
 		// format 통일하기
-		SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-dd");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		String today_sdf = sdf.format(today.getTime()); // Calendar -> String
-		Date today1 = sdf.parse(today_sdf); // String -> Date
-		today.setTime(today1); // Date -> Calendar
+		Date todayDate = sdf.parse(today_sdf); // String -> Date
+		today.setTime(todayDate); // Date -> Calendar
 
 		List<Post> myPostList = postBO.getPostListByUserIdAndMissionId(userId, missionId);
 
-		logger.info("#$@$@#$#@@#missionStartCal" + missionStartCal);
-		logger.info("#$@$@#$#@@#missionFinishCal" + missionFinishCal);
-		logger.info("#$@$@#$#@@#today" + today);
+		
 		// 미션일수만큼 반복문 돌려서 myStatusList 채우기
 		for (int i = 1; i <= missionPeriod; i++) {
 
 			MyStatus myStatus = new MyStatus();
-
+			
 			// myStatus에 현재 상태 넣기
 			for (Post myPost : myPostList) {
-
+				
 				// 포스트날짜
 				Date postDate = myPost.getCreatedAt();
-
+				
 				// format 통일하기
-				String postDate_sdf = sdf.format(postDate.getTime()); // Date -> String
+				String postDate_sdf = sdf.format(postDate); // Date -> String
 				postDate = sdf.parse(postDate_sdf); // String -> Date
-
-				// 포스트날짜 캘린더 생성
-				Calendar postCal = new GregorianCalendar();
-				postCal.setTime(postDate);
-
-				// O, X, blank 넣기
-				if (postCal != null) {
-					if (postCal.compareTo(missionStartCal) == 0) { // post가 count되는 미션일자와 일치하는 경우
-						myStatus.setStatus("O"); // 성공
-					}
-				} else if(postCal == null) {
-					if (postCal.compareTo(today) == -1) { // post업로드(해야되는) 일자가 오늘보다 과거
-						myStatus.setStatus("X"); // 실패
-					} else if (postCal.compareTo(today) == 2) { // post업로드(해야되는) 일자가 아직 남음
-						myStatus.setStatus("blank"); // 빈칸
-					}
+				
+				// O, X, blank 넣기				
+				if (missionStartDate.compareTo(postDate) == 0) { // post업로드일이 업로드해야되는 일자와 일치하는 경우
+						myStatus.setStatus("O"); // O 표시	
+				} else if (missionStartDate.compareTo(todayDate) == -1) { // 업로드해야되는 일자가 오늘보다 과거일 때
+						myStatus.setStatus("X"); // X 표시
+				} else if (missionStartDate.compareTo(todayDate) == 1) { // 업로드해야되는 일자가 오늘보다 미래일 때
+						myStatus.setStatus("blank"); // 빈칸 표시
 				}
-				logger.info("#$@$@#$#@@#myStatus: " + myStatus.getStatus());
+
+				
 				myStatusList.add(myStatus);
-				missionStartCal.add(missionStartCal.DATE, 1); // missionStart일자가 1일씩 늘어남
+			
+				missionStartCal.setTime(missionStartDate); // Date->Calendar 변환
+				missionStartCal.add(missionStartCal.DATE, 1); // missionStart일자가 1일씩 늘어남	
+				missionStartDate = missionStartCal.getTime();// Calendar->Date 변환
 			}
-		}
-		logger.info("#$@$@#$#@@#myStatusList" + myStatusList);
+		}		
 		return myStatusList; // 미션 수행상태 리스트 반환
+	}
+	
+	// 미션 성공횟수 구하기
+	public int getSuccessCountByUserIdAndMissionId(int userId, int missionId) throws ParseException {
+		
+		List<MyStatus> myStatusList = myBO.getMyMissionStatus(userId, missionId);
+		int successCount = 0;
+		
+		for(MyStatus myStatus : myStatusList) {
+			if(myStatus.getStatus() == "O") {
+				successCount++;
+			}
+		}		
+		return successCount;
+	}
+	
+	// 미션 실패횟수 구하기
+	public int getFailCount(int userId, int missionId) throws ParseException {
+		
+		List<MyStatus> myStatusList = myBO.getMyMissionStatus(userId, missionId);
+		int failCount = 0;
+		
+		for(MyStatus myStatus : myStatusList) {
+			if(myStatus.getStatus() == "X") {
+				failCount++;
+			}
+		}		
+		return failCount;
+	}
+	
+	// 미션 빈칸 개수 구하기
+	public int getBlankCount(int userId, int missionId) throws ParseException {
+		
+		List<MyStatus> myStatusList = myBO.getMyMissionStatus(userId, missionId);
+		int blankCount = 0;
+		
+		for(MyStatus myStatus : myStatusList) {
+			if(myStatus.getStatus() == "blank") {
+				blankCount++;
+			}
+		}		
+		return blankCount;
 	}
 }

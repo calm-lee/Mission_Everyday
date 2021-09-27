@@ -92,7 +92,8 @@ public class MyController {
 		
 		MyMission myMission = myBO.getMyMissionByUserIdAndMissionId(userId, missionId);
 		List<MyStatus> myStatusList = myBO.getMyMissionStatus(userId,missionId); // 내 상태 불러오기
-
+		int successCount = myBO.getSuccessCountByUserIdAndMissionId(userId, missionId);
+		
 		model.addAttribute("myMission", myMission); // 내 미션현황 리스트
 		model.addAttribute("myStatusList", myStatusList); // 내 미션현황 리스트
 		model.addAttribute("viewName", "my/my_status_detail");
