@@ -1,25 +1,26 @@
 package com.mission_everyday.my.model;
 
-import com.mission_everyday.mission.Model.Mission;
-import com.mission_everyday.post.Model.Post;
-
 public class MyStatus {
+
+	// 미션 체크 여부
+	private String Status;
 	
-	private Post Post; //포스트
-	private Mission mission; //미션
+	// 요일
+	private String Mon = "Mon"; 
+	private String Tue = "Tue";
+	private String Wed = "Wed";
+	private String Thu = "Thu";
+	private String Fri = "Fri";
+	private String Sat = "Sat";
+	private String Sun = "Sun";
 	
-	public Post getPost() {
-		return Post;
+	public String getStatus() {
+		return Status;
 	}
-	public void setPost(Post post) {
-		Post = post;
+	public void setStatus(String status) {
+		Status = status;
 	}
-	public Mission getMission() {
-		return mission;
-	}
-	public void setMission(Mission mission) {
-		this.mission = mission;
-	}
+
 	
 	
 	

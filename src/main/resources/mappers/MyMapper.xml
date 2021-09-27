@@ -20,5 +20,24 @@
 	WHERE 
 		`userId` = #{userId};
 </select>
+
+<select id="selectMyMissionByUserIdAndMissionId" parameterType="map" resultType="com.mission_everyday.my.model.MyMission">
+	SELECT
+		categoryId
+		,missionId
+		,missionName
+		,missionStartDate
+		,missionFinishDate
+		,missionPeriod
+		,missionImage
+		,userId
+		,userName
+		,createdAt
+	FROM 
+		`mission_user`
+	WHERE 
+		`userId` = #{userId}
+		AND `missionId` = #{missionId};
+</select>
 		
 </mapper>

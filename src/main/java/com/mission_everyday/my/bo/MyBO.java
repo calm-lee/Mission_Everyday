@@ -1,8 +1,15 @@
 package com.mission_everyday.my.bo;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,7 +27,7 @@ public class MyBO {
 
 	@Autowired
 	private MyDAO myDAO;
-	
+
 	@Autowired
 	private PostBO postBO;
 
@@ -29,12 +36,21 @@ public class MyBO {
 
 	@Autowired
 	private LikeBO likeBO;
-	
+
+	@Autowired
+	private MyBO myBO;
+
+	private Logger logger = LoggerFactory.getLogger(this.getClass());
+
 	// 가입한 미션 목록 가져오기
-	public List<MyMission> getMyMissionListByUserId(int userId){
+	public List<MyMission> getMyMissionListByUserId(int userId) {
 		return myDAO.selectMyMissionListByUserId(userId);
 	}
-		
+
+	public MyMission getMyMissionByUserIdAndMissionId(int userId, int missionId) {
+		return myDAO.selectMyMissionByUserIdAndMissionId(userId, missionId);
+	}
+
 	// 내가 쓴 글 조회하기
 	public List<Content> getContentListByUserId(int userId) {
 
@@ -62,6 +78,79 @@ public class MyBO {
 
 		return myContentList;
 	}
-	
 
+	// 내 미션 수행 상태 소환
+	public List<MyStatus> getMyMissionStatus(int userId, int missionId) throws ParseException {
+
+		// 내 미션 수행 상태 리스트
+		List<MyStatus> myStatusList = new ArrayList<>();
+
+		// 내가 가입한 미션의 스케줄 소환
+		MyMission myMission = myBO.getMyMissionByUserIdAndMissionId(userId, missionId);
+
+		Date missionStartDate = myMission.getMissionStartDate();// 시작일
+		Date missionFinishDate = myMission.getMissionFinishDate();// 종료일
+		int missionPeriod = myMission.getMissionPeriod();// 일수
+
+		// 미션체크용 캘린더 생성
+		Calendar missionStartCal = new GregorianCalendar();
+		Calendar missionFinishCal = new GregorianCalendar();
+
+		// Date->Calendar 변환
+		missionStartCal.setTime(missionStartDate);
+		missionFinishCal.setTime(missionFinishDate);
+
+		// 오늘 날짜
+		Calendar today = Calendar.getInstance();
+
+		// format 통일하기
+		SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-dd");
+		String today_sdf = sdf.format(today.getTime()); // Calendar -> String
+		Date today1 = sdf.parse(today_sdf); // String -> Date
+		today.setTime(today1); // Date -> Calendar
+
+		List<Post> myPostList = postBO.getPostListByUserIdAndMissionId(userId, missionId);
+
+		logger.info("#$@$@#$#@@#missionStartCal" + missionStartCal);
+		logger.info("#$@$@#$#@@#missionFinishCal" + missionFinishCal);
+		logger.info("#$@$@#$#@@#today" + today);
+		// 미션일수만큼 반복문 돌려서 myStatusList 채우기
+		for (int i = 1; i <= missionPeriod; i++) {
+
+			MyStatus myStatus = new MyStatus();
+
+			// myStatus에 현재 상태 넣기
+			for (Post myPost : myPostList) {
+
+				// 포스트날짜
+				Date postDate = myPost.getCreatedAt();
+
+				// format 통일하기
+				String postDate_sdf = sdf.format(postDate.getTime()); // Date -> String
+				postDate = sdf.parse(postDate_sdf); // String -> Date
+
+				// 포스트날짜 캘린더 생성
+				Calendar postCal = new GregorianCalendar();
+				postCal.setTime(postDate);
+
+				// O, X, blank 넣기
+				if (postCal != null) {
+					if (postCal.compareTo(missionStartCal) == 0) { // post가 count되는 미션일자와 일치하는 경우
+						myStatus.setStatus("O"); // 성공
+					}
+				} else if(postCal == null) {
+					if (postCal.compareTo(today) == -1) { // post업로드(해야되는) 일자가 오늘보다 과거
+						myStatus.setStatus("X"); // 실패
+					} else if (postCal.compareTo(today) == 2) { // post업로드(해야되는) 일자가 아직 남음
+						myStatus.setStatus("blank"); // 빈칸
+					}
+				}
+				logger.info("#$@$@#$#@@#myStatus: " + myStatus.getStatus());
+				myStatusList.add(myStatus);
+				missionStartCal.add(missionStartCal.DATE, 1); // missionStart일자가 1일씩 늘어남
+			}
+		}
+		logger.info("#$@$@#$#@@#myStatusList" + myStatusList);
+		return myStatusList; // 미션 수행상태 리스트 반환
+	}
 }

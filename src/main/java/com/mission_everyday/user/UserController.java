@@ -36,6 +36,6 @@ public class UserController {
 		session.removeAttribute("userName");
 
 		model.addAttribute("viewName", "mission/category");
-		return "layout/template";
+		return "redirect:/user/sign_in";
 	}
 }

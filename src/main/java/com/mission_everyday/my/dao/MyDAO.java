@@ -12,5 +12,7 @@ import com.mission_everyday.my.model.MyMission;
 public interface MyDAO {
 
 	public List<MyMission> selectMyMissionListByUserId(@Param("userId") int userId);
+	
+	public MyMission selectMyMissionByUserIdAndMissionId(@Param("userId") int userId, @Param("missionId") int missionId);
 
 }
