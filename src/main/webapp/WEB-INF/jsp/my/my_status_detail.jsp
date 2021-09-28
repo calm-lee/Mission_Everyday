@@ -47,9 +47,9 @@
 					
 						<!-- 인증현황 text -->
 						<div class="info-text" style="font-size:12px">
-						<c:forEach var="myStatus" items="${myStatusList}" end="0">
-						인증 성공: ${myStatus.successCount}개 / 인증 실패: ${myStatus.failCount}개 / 남은 인증: ${myStatus.blankCount}개
-						</c:forEach>
+						
+						인증 성공: ${successCount}개 / 인증 실패: ${failCount}개 / 남은 인증: ${blankCount}개
+						
 						</div>
 											
 													

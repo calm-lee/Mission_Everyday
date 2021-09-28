@@ -114,12 +114,12 @@ public class MyBO {
 		
 		// 미션일수만큼 반복문 돌려서 myStatusList 채우기
 		for (int i = 1; i <= missionPeriod; i++) {
-
+			logger.info("########missionPeriod: "+missionPeriod);
 			MyStatus myStatus = new MyStatus();
 			
-			// myStatus에 현재 상태 넣기
+			// post 업로드 날짜와 비교하기 위한 for문 돌리기
 			for (Post myPost : myPostList) {
-				
+			
 				// 포스트날짜
 				Date postDate = myPost.getCreatedAt();
 				
@@ -129,20 +129,27 @@ public class MyBO {
 				
 				// O, X, blank 넣기				
 				if (missionStartDate.compareTo(postDate) == 0) { // post업로드일이 업로드해야되는 일자와 일치하는 경우
-						myStatus.setStatus("O"); // O 표시	
+						myStatus.setStatus("O"); // O 표시
+						logger.info("########missionStartDate_O:"+missionStartDate);
+						logger.info("########postDate_O: "+postDate);
+						continue;						
 				} else if (missionStartDate.compareTo(todayDate) == -1) { // 업로드해야되는 일자가 오늘보다 과거일 때
 						myStatus.setStatus("X"); // X 표시
-				} else if (missionStartDate.compareTo(todayDate) == 1) { // 업로드해야되는 일자가 오늘보다 미래일 때
+						logger.info("########missionStartDate_X:"+missionStartDate);
+						continue;
+				} else if (missionStartDate.compareTo(todayDate) == 1) { // 업로드해야되는 일자가 미래일 때
 						myStatus.setStatus("blank"); // 빈칸 표시
-				}
-
-				
-				myStatusList.add(myStatus);
-			
-				missionStartCal.setTime(missionStartDate); // Date->Calendar 변환
-				missionStartCal.add(missionStartCal.DATE, 1); // missionStart일자가 1일씩 늘어남	
-				missionStartDate = missionStartCal.getTime();// Calendar->Date 변환
+						logger.info("########missionStartDate_blank:"+missionStartDate);
+				}		
 			}
+			
+			// myStatusList에 myStatus 넣기
+			myStatusList.add(myStatus);
+			
+			// missionStartCal 하루 더하기
+			missionStartCal.setTime(missionStartDate); // Date->Calendar 변환
+			missionStartCal.add(missionStartCal.DATE, 1); // missionStart일자가 1일씩 늘어남	
+			missionStartDate = missionStartCal.getTime();// Calendar->Date 변환
 		}		
 		return myStatusList; // 미션 수행상태 리스트 반환
 	}
@@ -162,7 +169,7 @@ public class MyBO {
 	}
 	
 	// 미션 실패횟수 구하기
-	public int getFailCount(int userId, int missionId) throws ParseException {
+	public int getFailCountByUserIdAndMissionId(int userId, int missionId) throws ParseException {
 		
 		List<MyStatus> myStatusList = myBO.getMyMissionStatus(userId, missionId);
 		int failCount = 0;
@@ -176,7 +183,7 @@ public class MyBO {
 	}
 	
 	// 미션 빈칸 개수 구하기
-	public int getBlankCount(int userId, int missionId) throws ParseException {
+	public int getBlankCountByUserIdAndMissionId(int userId, int missionId) throws ParseException {
 		
 		List<MyStatus> myStatusList = myBO.getMyMissionStatus(userId, missionId);
 		int blankCount = 0;

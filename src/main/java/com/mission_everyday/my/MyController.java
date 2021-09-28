@@ -74,7 +74,6 @@ public class MyController {
 		String userName = (String) session.getAttribute("userName"); //세션상 로그인 아이디 저장
 		
 		List<MyMission> myMissionList = myBO.getMyMissionListByUserId(userId);
-			
 		model.addAttribute("viewName", "my/my_status");
 		model.addAttribute("myMissionList", myMissionList);
 		return "layout/template";
@@ -93,9 +92,14 @@ public class MyController {
 		MyMission myMission = myBO.getMyMissionByUserIdAndMissionId(userId, missionId);
 		List<MyStatus> myStatusList = myBO.getMyMissionStatus(userId,missionId); // 내 상태 불러오기
 		int successCount = myBO.getSuccessCountByUserIdAndMissionId(userId, missionId);
+		int failCount = myBO.getFailCountByUserIdAndMissionId(userId, missionId);
+		int blankCount = myBO.getBlankCountByUserIdAndMissionId(userId, missionId);
 		
 		model.addAttribute("myMission", myMission); // 내 미션현황 리스트
 		model.addAttribute("myStatusList", myStatusList); // 내 미션현황 리스트
+		model.addAttribute("successCount", successCount); // 미션 성공 개수
+		model.addAttribute("failCount", failCount); // 미션 실패 개수
+		model.addAttribute("blankCount", blankCount); // 미션 남은 개수
 		model.addAttribute("viewName", "my/my_status_detail");
 		return "layout/template";
 	}
