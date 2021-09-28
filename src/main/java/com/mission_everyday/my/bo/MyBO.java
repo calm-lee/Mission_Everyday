@@ -12,6 +12,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 
 import com.mission_everyday.comment.BO.CommentBO;
 import com.mission_everyday.content.Model.Content;
@@ -111,88 +112,99 @@ public class MyBO {
 
 		List<Post> myPostList = postBO.getPostListByUserIdAndMissionId(userId, missionId);
 
-		
 		// 미션일수만큼 반복문 돌려서 myStatusList 채우기
 		for (int i = 1; i <= missionPeriod; i++) {
-			logger.info("########missionPeriod: "+missionPeriod);
+
 			MyStatus myStatus = new MyStatus();
-			
-			// post 업로드 날짜와 비교하기 위한 for문 돌리기
+
+			// post가 있는 경우 - post 업로드 날짜와 비교하기 위한 for문 돌리기
 			for (Post myPost : myPostList) {
-			
+
 				// 포스트날짜
 				Date postDate = myPost.getCreatedAt();
-				
+
 				// format 통일하기
 				String postDate_sdf = sdf.format(postDate); // Date -> String
 				postDate = sdf.parse(postDate_sdf); // String -> Date
-				
-				// O, X, blank 넣기				
-				if (missionStartDate.compareTo(postDate) == 0) { // post업로드일이 업로드해야되는 일자와 일치하는 경우
-						myStatus.setStatus("O"); // O 표시
-						logger.info("########missionStartDate_O:"+missionStartDate);
-						logger.info("########postDate_O: "+postDate);
-						continue;						
+
+				// O, X, blank 넣기
+				if (missionStartDate.compareTo(postDate) == 0 && missionStartDate.compareTo(todayDate) == -1) { // post업로드일이																												// // 경우
+					myStatus.setStatus("O"); // O 표시
+					break;
 				} else if (missionStartDate.compareTo(todayDate) == -1) { // 업로드해야되는 일자가 오늘보다 과거일 때
-						myStatus.setStatus("X"); // X 표시
-						logger.info("########missionStartDate_X:"+missionStartDate);
-						continue;
+					myStatus.setStatus("X"); // X 표시
 				} else if (missionStartDate.compareTo(todayDate) == 1) { // 업로드해야되는 일자가 미래일 때
+					myStatus.setStatus("blank"); // 빈칸 표시
+				} else if (missionStartDate.compareTo(todayDate) == 0) { // 업로드해야되는 일자가 오늘일 때
+					if (missionStartDate.compareTo(postDate) == 0) { // post 업로드했을 경우
+						myStatus.setStatus("O"); // O 표시
+					} else {// post 업로드 안 했을 경우
 						myStatus.setStatus("blank"); // 빈칸 표시
-						logger.info("########missionStartDate_blank:"+missionStartDate);
-				}		
+					}
+				}
 			}
 			
+			// myPostList가 empty인 경우
+			if (CollectionUtils.isEmpty(myPostList) == true) {
+				if (missionStartDate.compareTo(todayDate) == -1) { // 업로드해야되는 일자가 오늘보다 과거일 때
+					myStatus.setStatus("X"); // X 표시
+				} else if (missionStartDate.compareTo(todayDate) == 0) { // 업로드해야되는 일자가 오늘일 때
+					myStatus.setStatus("blank"); // 빈칸 표시
+				} else if (missionStartDate.compareTo(todayDate) == 1) { // 업로드해야되는 일자가 미래일 때
+					myStatus.setStatus("blank"); // 빈칸 표시
+				}
+			}
+
 			// myStatusList에 myStatus 넣기
 			myStatusList.add(myStatus);
-			
+
 			// missionStartCal 하루 더하기
 			missionStartCal.setTime(missionStartDate); // Date->Calendar 변환
-			missionStartCal.add(missionStartCal.DATE, 1); // missionStart일자가 1일씩 늘어남	
+			missionStartCal.add(missionStartCal.DATE, 1); // missionStart일자가 1일씩 늘어남
 			missionStartDate = missionStartCal.getTime();// Calendar->Date 변환
-		}		
+		}
 		return myStatusList; // 미션 수행상태 리스트 반환
 	}
-	
+
 	// 미션 성공횟수 구하기
 	public int getSuccessCountByUserIdAndMissionId(int userId, int missionId) throws ParseException {
-		
+
 		List<MyStatus> myStatusList = myBO.getMyMissionStatus(userId, missionId);
 		int successCount = 0;
-		
-		for(MyStatus myStatus : myStatusList) {
-			if(myStatus.getStatus() == "O") {
+
+		for (MyStatus myStatus : myStatusList) {
+			if (myStatus.getStatus() == "O") {
 				successCount++;
 			}
-		}		
+		}
 		return successCount;
 	}
-	
+
 	// 미션 실패횟수 구하기
 	public int getFailCountByUserIdAndMissionId(int userId, int missionId) throws ParseException {
-		
+
 		List<MyStatus> myStatusList = myBO.getMyMissionStatus(userId, missionId);
 		int failCount = 0;
-		
-		for(MyStatus myStatus : myStatusList) {
-			if(myStatus.getStatus() == "X") {
+
+		for (MyStatus myStatus : myStatusList) {
+			if (myStatus.getStatus() == "X") {
 				failCount++;
 			}
-		}		
+		}
 		return failCount;
 	}
-	
+
 	// 미션 빈칸 개수 구하기
 	public int getBlankCountByUserIdAndMissionId(int userId, int missionId) throws ParseException {
-		
+
 		List<MyStatus> myStatusList = myBO.getMyMissionStatus(userId, missionId);
 		int blankCount = 0;
-		
-		for(MyStatus myStatus : myStatusList) {
-			if(myStatus.getStatus() == "blank") {
+
+		for (MyStatus myStatus : myStatusList) {
+			if (myStatus.getStatus() == "blank") {
 				blankCount++;
 			}
-		}		
+		}
 		return blankCount;
 	}
 }

@@ -18,6 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.mission_everyday.post.BO.LikeBO;
 import com.mission_everyday.post.BO.PostBO;
+import com.mission_everyday.post.Model.Post;
 
 @RestController
 @RequestMapping("/post")
@@ -68,17 +69,16 @@ public class PostRestController {
 	public Map<String, Object> updatePost(
 			@RequestParam("id") int id
 			, @RequestParam(value="content", required=false) String content
-			, @RequestParam("file") MultipartFile file
+			, @RequestParam(value="content", required=false) MultipartFile file
 			, HttpServletRequest request
 			, Model model){
 		
 		HttpSession session = request.getSession();
-		
 		int userId = (int) session.getAttribute("userId");
-		
 		Map<String, Object> result = new HashMap<>();
 		
 		int row = postBO.updatePost(id, userId, content, file);
+		
 		
 		if(row > 0) {
 			result.put("result", "success");

@@ -43,18 +43,22 @@
 					
 					
 					<!-- 인증현황 정리 -->
-					<div class="statusInfo ml-4 mt-3">
-					
+					<div class="statusInfo ml-4 mt-1">
+						
 						<!-- 인증현황 text -->
 						<div class="info-text" style="font-size:12px">
 						
-						인증 성공: ${successCount}개 / 인증 실패: ${failCount}개 / 남은 인증: ${blankCount}개
-						
+						<!-- 미션기간 날짜 변환 -->
+						<fmt:formatDate value="${myMission.missionStartDate}" var="missionStartDate" pattern="yyyy-MM-dd" />
+						<fmt:formatDate value="${myMission.missionFinishDate}" var="missionFinishDate" pattern="yyyy-MM-dd" />
+						<b>미션 기간: ${missionStartDate} ~ ${missionFinishDate}</b>
+						<br>
+						<div class="mt-2">인증 성공: ${successCount}개 / 인증 실패: ${failCount}개 / 남은 인증: ${blankCount}개</div>					
 						</div>
 											
 													
 						<!-- 인증 체크박스 -->
-						<div class="statusCheckBox mt-3 d-flex align-items-center">
+						<div class="statusCheckBox mt-2 d-flex align-items-center">
 						<c:forEach var="myStatus" items="${myStatusList}">						
 								<c:if test="${myStatus.status eq 'O'}">																										
 								  <img src="https://cdn-icons-png.flaticon.com/512/1168/1168610.png" alt="success" width="30px"></c:if>

@@ -73,31 +73,44 @@
 				</div>
 			</div>
 		</c:if>	
+	
+		<!-- 아무도 가입하지 않은 경우 (웰컴 이미지) -->
+		<c:if test="${memberCount eq 0}">
+			<div class="ml-5 mt-4">
+			<img src="https://cdn-icons-png.flaticon.com/512/5331/5331946.png" width="250" alt="welcome">
+			<div class="text-center mt-2">가입해서 첫 포스트를 남겨보세요.</div>
+			</div>
+		</c:if>
+		
 		</div>
 		
 	<!-- 피드 -->	
 	<div class="d-flex justify-content-center mt-2 ml-5">
-	<div>
+
+	</div>
 	
 	<c:forEach var="content" items="${contentList}" varStatus="status"> <!-- contentList 반복문으로 노출 -->
-		<c:if test="${content.post.missionId eq mission.id}">
 	
-		<div class="feed-box form-control mt-3">
+		<!-- 미션 아이디가 현재 접속한 미션과 같을 때만 피드 노출 -->
+		<c:if test="${content.post.missionId eq mission.id}">	
 		
-	<!-- 미션 아이디가 현재 접속한 미션과 같을 때만 피드 노출 -->
-	
+		<div class="feed-box form-control mt-3">	
 		
-		<!-- 글쓴이 아이디, 수정/삭제 버튼 -->
-			
+		<!-- 글쓴이 아이디, 수정/삭제 버튼 -->			
 			<div class="feed-header d-flex justify-content-between mt-3 ml-3">
+			
+			<div>
 				<b>${content.post.userName}</b>
+				<br><fmt:formatDate var="postCreatedAt" value="${content.post.createdAt}" pattern="yyyy년 MM월 dd일 HH:mm"/>
+				<span style="font-size: 11px; color:#808080">${postCreatedAt}</span>
+			</div>
 				
 			<!-- userName이 post의 userName과 일치할 때만 노출 -->
 				<c:if test="${content.post.userName eq userName}">
-		 			<div id="moreDetailBtn" class="d-flex mt-1">
-						<a href="#" class="btn updatePost mr-2" data-toggle="modal" data-target="#updateModal" style="padding: 1px; font-size: 12px; color:#524e4e;" data-post-id="${content.post.id}">수정</a>
+		 			<div class="d-flex mt-1 algin-items-center">
+						<a href="/post/update_view?id=${content.post.id}" class="btn mr-2" style="padding: 1px; font-size: 12px; color:#524e4e;" data-post-id="${content.post.id}">수정</a>
 						<hr>
-						<a href="#" class="btn deletePost  mr-2" style="padding: 1px; font-size: 12px; color:#524e4e" data-post-id="${content.post.id}">삭제</a>
+						<a href="#" class="btn deletePost mr-2" style="padding: 1px; font-size: 12px; color:#524e4e" data-post-id="${content.post.id}">삭제</a>
 					</div>
 				</c:if>
 			</div>
@@ -171,39 +184,6 @@
 		</div>
 	</div>
 </div>
-
-<c:forEach var="content" items="${contentList}">
-	<div class="modal" id="updateModal" tabindex="-1" role="dialog">				
-	<div class="modal-dialog" role="document">
-	    <div class="modal-content">
-	      <div class="modal-header text-center">
-	        <h5 class="modal-title">글 수정</h5>
-	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-	          <span aria-hidden="true">&times;</span>
-	        </button>
-	      </div>
-	      <div class="modal-body">
-	        <textarea name="contentUdate">${post.content}</textarea>
-	        	<div class="d-flex justify-content-between mt-4">
-					<div class="ml-2">
-						<input type="file" name="image" id="file"
-							accept=".jpg, .jpeg, .png, .gif" class="d-none"> <a
-							href="#" id="fileUploadBtn"><img
-							src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-image-512.png"
-							width="35"></a>
-					</div>
-	      </div>
-	      
-	      <div class="modal-footer">
-	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-	        <button type="button" class="btn btn-primary">Save changes</button>
-	      </div>
-	    </div>
-	  </div>
-	</div>
-</div>
-</c:forEach>
-
 <script>
 
 $(document).ready(function(){

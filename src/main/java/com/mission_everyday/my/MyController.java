@@ -38,6 +38,10 @@ public class MyController {
 		HttpSession session = request.getSession(); //세션 불러오기
 		Integer userId = (Integer) session.getAttribute("userId"); //세션상 로그인 아이디 저장
 		String userName = (String) session.getAttribute("userName"); //세션상 로그인 아이디 저장
+		if (userId == null) {
+			// 세션에 로그인 아이디가 없다면 로그인이 안된 것이므로 로그인 페이지로 리다이렉트
+			return "redirect:/user/sign_in";
+		}
 		
 		List<MyMission> myMissionList = myBO.getMyMissionListByUserId(userId);
 			
@@ -55,6 +59,10 @@ public class MyController {
 		HttpSession session = request.getSession(); //세션 불러오기
 		Integer userId = (Integer) session.getAttribute("userId"); //세션상 로그인 아이디 저장
 		String userName = (String) session.getAttribute("userName"); //세션상 로그인 아이디 저장
+		if (userId == null) {
+			// 세션에 로그인 아이디가 없다면 로그인이 안된 것이므로 로그인 페이지로 리다이렉트
+			return "redirect:/user/sign_in";
+		}
 		
 		List<Content> myContentList = myBO.getContentListByUserId(userId);
 		
@@ -72,6 +80,10 @@ public class MyController {
 		HttpSession session = request.getSession(); //세션 불러오기
 		Integer userId = (Integer) session.getAttribute("userId"); //세션상 로그인 아이디 저장
 		String userName = (String) session.getAttribute("userName"); //세션상 로그인 아이디 저장
+		if (userId == null) {
+			// 세션에 로그인 아이디가 없다면 로그인이 안된 것이므로 로그인 페이지로 리다이렉트
+			return "redirect:/user/sign_in";
+		}
 		
 		List<MyMission> myMissionList = myBO.getMyMissionListByUserId(userId);
 		model.addAttribute("viewName", "my/my_status");
@@ -88,6 +100,10 @@ public class MyController {
 		
 		HttpSession session = request.getSession(); //세션 불러오기
 		Integer userId = (Integer) session.getAttribute("userId"); //세션상 로그인 아이디 저장
+		if (userId == null) {
+			// 세션에 로그인 아이디가 없다면 로그인이 안된 것이므로 로그인 페이지로 리다이렉트
+			return "redirect:/user/sign_in";
+		}
 		
 		MyMission myMission = myBO.getMyMissionByUserIdAndMissionId(userId, missionId);
 		List<MyStatus> myStatusList = myBO.getMyMissionStatus(userId,missionId); // 내 상태 불러오기

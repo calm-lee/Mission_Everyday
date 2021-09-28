@@ -70,5 +70,10 @@ public class PostBO {
 	public List<Post> getPostListByUserIdAndMissionId(int userId, int missionId){
 		return postDAO.selectPostListByUserIdAndMissionId(userId, missionId);
 	};
+	
+	// 내가 수정할 글 조회
+	public Post getPostByUserIdAndPostId(int userId, int id){
+		return postDAO.selectPostByUserIdAndPostId(userId, id);
+	};
 
 }

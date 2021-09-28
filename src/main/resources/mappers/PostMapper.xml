@@ -47,6 +47,28 @@
 		`id` = #{id}
 </select>
 
+
+<select id="selectPostByUserIdAndPostId" parameterType="map" resultType="com.mission_everyday.post.Model.Post">
+	SELECT	
+		id
+		,userId
+		,userName
+		,missionId
+		,missionName
+		,missionStartDate
+		,missionFinishDate
+		,missionPeriod
+		,content
+		,imgPath
+		,createdAt
+		,updatedAt
+	FROM 
+		`post`
+	WHERE
+		`userId` = #{userId}
+		AND `id` = #{id}
+</select>
+
 <select id="selectPostListByUserIdAndMissionId" resultType="com.mission_everyday.post.Model.Post">
 	SELECT	
 		id

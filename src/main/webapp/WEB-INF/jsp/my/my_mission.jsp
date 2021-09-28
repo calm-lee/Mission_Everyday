@@ -29,7 +29,7 @@
 			<div class="myMissions d-flex flex-wrap text-center mr-3">
 				<c:forEach var="myMission" items="${myMissionList}">
 						<div class="m-4">
-						<a href="/mission/${myMission.categoryId}/${myMission.missionId}">
+						<a href="/mission/mission_club/${myMission.missionId}">
 						<img src="${myMission.missionImage}" width="160px">
 							<div class="mt-1" style="font-size:16px">
 							${myMission.missionName}

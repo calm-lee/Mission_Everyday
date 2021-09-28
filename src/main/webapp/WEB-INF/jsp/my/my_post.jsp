@@ -41,21 +41,23 @@
 				
 				<!-- 미션클럽 정보 -->
 				<div class="text-right" style="font-size:12px">
-					 <span class="mr-2">from <b>${myContent.post.missionName}${myContent.post.createdAt}</b></span>
+					<span class="mr-2">from <a href="/mission/mission_club/${myContent.post.missionId}"><b>${myContent.post.missionName}</b></a></span>
 					<hr style="margin-top:0.5rem">
 				</div>
 				
 				<!-- 글쓴이 아이디, 수정/삭제 버튼 -->
 					
 					<div class="feed-header d-flex justify-content-between mt-2">
-						<b>${myContent.post.userName}</b>
-						
+					<div class="ml-3">
+						<b>${myContent.post.userName}</b><br>
+						<fmt:formatDate var="postCreatedAt" value="${myContent.post.createdAt}" pattern="yyyy년 MM월 dd일 HH:mm"/>
+					 	<span class="mt-1" style="font-size: 11px; color:#808080">${postCreatedAt}</span>
+					</div>	
 					<!-- userName이 post의 userName과 일치할 때만 노출 -->
 						<c:if test="${myContent.post.userName eq userName}">
-				 			<div id="moreDetailBtn" class="d-flex mt-1">
-								<a href="#" class="btn updatePost mr-2" data-toggle="modal" data-target="#updateModal" style="padding: 1px; font-size: 12px; color:#524e4e;" data-post-id="${content.post.id}">수정</a>
-								<hr>
-								<a href="#" class="btn deletePost  mr-2" style="padding: 1px; font-size: 12px; color:#524e4e" data-post-id="${content.post.id}">삭제</a>
+				 			<div class="d-flex mt-1">
+								<a href="/post/update_view?id=${myContent.post.id}" class="btn mr-2" style="padding: 1px; font-size: 12px; color:#524e4e;" data-post-id="${myContent.post.id}">수정</a>
+								<a href="#" class="btn deletePost mr-2" style="padding: 1px; font-size: 12px; color:#524e4e" data-post-id="${myContent.post.id}">삭제</a>
 							</div>
 						</c:if>
 					</div>
@@ -208,30 +210,7 @@ $(document).ready(function(){
 			}
 		});
 	});
-	
-	// 수정하기
-	$('.updatePost').on('click', function(e){
-		e.preventDefault();
-		
-		let postId = $(this).data('post-id');
-		$('#updateModal').data('post-id', postId);
-		alert(postId);
-		
-  		$.ajax({
-			type:'POST',
-			url: "/mission/1/1",
-			data: {"postId": postId},
-			success: function(data) {
-			},
-			error: function(jqXHR, textStatus, errorThrown) {
-				var errorMsg = jqXHR.responseJSON.status;
-				alert(errorMsg + ":" + textStatus);
-			}
-		});  
 
-	});
-	
-	
 	// 삭제하기
 	$('.deletePost').on('click', function(e){
 		e.preventDefault();

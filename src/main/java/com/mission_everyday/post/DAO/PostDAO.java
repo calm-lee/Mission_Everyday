@@ -29,4 +29,6 @@ public interface PostDAO {
 	//내가 쓴 글 미션별 현황 조회 (마이 페이지)
 	public List<Post> selectPostListByUserIdAndMissionId(@Param("userId") int userId, @Param("missionId") int missionId);
 	
+	//내가 수정할 글 조회
+	public Post selectPostByUserIdAndPostId(@Param("userId") int userId, @Param("id") int id);
 }

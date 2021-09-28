@@ -41,11 +41,11 @@ public class MissionController {
 	private Content content;
 	
 	// 카테고리 상세 페이지 가져오기
-	@RequestMapping("/mission_detail/{categoryId}") //@PathVariable 사용
+	@RequestMapping("/category/{categoryId}") //@PathVariable 사용
 	public String categoryDetail(@PathVariable(value="categoryId") int categoryId, Model model) {
 
 		List<Mission> missionList = missionBO.getMissionListByCategoryId(categoryId); // 미션 리스트 가져오기
-		Mission mission = missionBO.getCategoryNameOnly(categoryId); //박스 헤더용 카테고리 이름만 가져올 메소드
+		Mission mission = missionBO.getCategoryNameOnly(categoryId); //박스 헤더용 카테고리 이름만 가져올 메소드		
 		
 		model.addAttribute("missionList", missionList);
 		model.addAttribute("mission", mission);
@@ -55,15 +55,20 @@ public class MissionController {
 	}
 	
 	// 미션 타임라인 가져오기
-	@RequestMapping("/{categoryId}/{id}") //@PathVariable 사용
-	public String missionTimeline(@PathVariable(value="categoryId") int categoryId
-			,@PathVariable(value="id") int missionId
+	@RequestMapping("/mission_club/{id}") //@PathVariable 사용
+	public String missionTimeline(
+			@PathVariable(value="id") int missionId
 			,HttpServletRequest request
 			,Model model) {
 		
 		HttpSession session = request.getSession(); //세션 불러오기
 		Integer userId = (Integer) session.getAttribute("userId"); //세션상 로그인 아이디 저장
 		String userName = (String) session.getAttribute("userName"); //세션상 로그인 아이디 저장
+		
+		if (userId == null) {
+			// 세션에 로그인 아이디가 없다면 로그인이 안된 것이므로 로그인 페이지로 리다이렉트
+			return "redirect:/user/sign_in";
+		}
 		
 		Mission mission  = missionBO.getMissionByMissionId(missionId); //미션 id에 맞는 미션 정보 가져오기
 		int memberCount = missionBO.getMemberCountByMissionId(missionId); // 미션에 가입한 멤버 인원수 가져오기
@@ -85,7 +90,8 @@ public class MissionController {
 		model.addAttribute("contentList", contentList); // 타임라인 컨텐트 리스트
 		model.addAttribute("postList", postList); // 포스트 모달 조회용
 		model.addAttribute("viewName", "mission/timeline");
-		return "layout/template";		
+		return "layout/template";	
+		
 	}
 	
 }

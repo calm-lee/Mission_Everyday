@@ -14,7 +14,7 @@
 			<div class="categories d-flex flex-wrap text-center">
 										
 				<div class="excercise m-4">
-				<a href="/mission/mission_detail/1" data-category-id=1>
+				<a href="/mission/category/1" data-category-id=1>
 				<img src="https://cdn-icons-png.flaticon.com/512/3043/3043196.png" width="180px">
 					<div class="m-3">
 					운동
@@ -22,7 +22,7 @@
 				</div>
 				
 				<div class="study m-4">
-				<a href="/mission/mission_detail/2" data-category-id=2>
+				<a href="/mission/category/2" data-category-id=2>
 				<img src="https://cdn-icons-png.flaticon.com/512/3094/3094216.png" width="180px">
 					<div class="m-3">
 					공부
@@ -30,7 +30,7 @@
 				</div>
 				
 				<div class="language m-4">
-				<a href="/mission/mission_detail/3" data-category-id=3>
+				<a href="/mission/category/3" data-category-id=3>
 				<img src="https://cdn-icons-png.flaticon.com/512/1372/1372756.png" width="180px">
 					<div class="m-3">
 					외국어
@@ -38,7 +38,7 @@
 				</div>
 				
 				<div class="diet m-4">
-				<a href="/mission/mission_detail/4" data-category-id=4>
+				<a href="/mission/category/4" data-category-id=4>
 				<img src="https://cdn-icons-png.flaticon.com/512/3867/3867909.png" width="180px">
 					<div class="m-3">
 					다이어트
