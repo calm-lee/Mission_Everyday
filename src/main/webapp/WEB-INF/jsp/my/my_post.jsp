@@ -41,7 +41,7 @@
 				
 				<!-- 미션클럽 정보 -->
 				<div class="text-right" style="font-size:12px">
-					<span class="mr-2">from <a href="/mission/mission_club/${myContent.post.missionId}"><b>${myContent.post.missionName}</b></a></span>
+					<span class="mr-2" style="color:#524e4e;">from <a href="/mission/mission_club/${myContent.post.missionId}"><span style="color:#524e4e; font-weight:bold;">${myContent.post.missionName}</span></a></span>
 					<hr style="margin-top:0.5rem">
 				</div>
 				

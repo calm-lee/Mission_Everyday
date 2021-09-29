@@ -1,5 +1,9 @@
 package com.mission_everyday.mission;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -42,13 +46,23 @@ public class MissionController {
 	
 	// 카테고리 상세 페이지 가져오기
 	@RequestMapping("/category/{categoryId}") //@PathVariable 사용
-	public String categoryDetail(@PathVariable(value="categoryId") int categoryId, Model model) {
+	public String categoryDetail(@PathVariable(value="categoryId") int categoryId, Model model) throws ParseException {
 
 		List<Mission> missionList = missionBO.getMissionListByCategoryId(categoryId); // 미션 리스트 가져오기
-		Mission mission = missionBO.getCategoryNameOnly(categoryId); //박스 헤더용 카테고리 이름만 가져올 메소드		
+		Mission mission = missionBO.getCategoryNameOnly(categoryId); //박스 헤더용 카테고리 이름만 가져올 메소드	
+		
+		// 오늘날짜 가져오기
+		Calendar today = Calendar.getInstance();
+
+		// format 통일하기
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		String today_sdf = sdf.format(today.getTime()); // Calendar -> String
+		Date todayDate = sdf.parse(today_sdf); // String -> Date
+		
 		
 		model.addAttribute("missionList", missionList);
 		model.addAttribute("mission", mission);
+		model.addAttribute("today", todayDate);
 		model.addAttribute("viewName", "mission/category_detail");
 		return "layout/template";
 		
@@ -59,7 +73,7 @@ public class MissionController {
 	public String missionTimeline(
 			@PathVariable(value="id") int missionId
 			,HttpServletRequest request
-			,Model model) {
+			,Model model) throws ParseException {
 		
 		HttpSession session = request.getSession(); //세션 불러오기
 		Integer userId = (Integer) session.getAttribute("userId"); //세션상 로그인 아이디 저장
@@ -84,11 +98,13 @@ public class MissionController {
 			result.put("check", "no-member");
 		}
 		
+		String checkMissionAvailable = missionBO.CheckExpiredMission(missionId);
+		
 		model.addAttribute("mission", mission); //미션정보
 		model.addAttribute("memberCount", memberCount); // 가입 멤버 수
 		model.addAttribute("result", result); // 미션 가입 여부 정보 (가입/탈퇴버튼 노출 목적)
 		model.addAttribute("contentList", contentList); // 타임라인 컨텐트 리스트
-		model.addAttribute("postList", postList); // 포스트 모달 조회용
+		model.addAttribute("checkMissionAvailable", checkMissionAvailable); // 종료된 미션인지 체크
 		model.addAttribute("viewName", "mission/timeline");
 		return "layout/template";	
 		

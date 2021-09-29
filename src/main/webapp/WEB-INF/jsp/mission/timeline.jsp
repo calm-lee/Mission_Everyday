@@ -7,30 +7,40 @@
 
 	<div id="missionBar" class="text-center ml-5 form-control">
 		
+			
+		
 			<!-- 미션 소개 -->
 			<img src="${mission.missionImage}" width="180px" class="missionImage mt-3" data-mission-image="${mission.missionImage}">
 			<div class="missionName m-2" style="font-size: 18px" data-mission-name="${mission.missionName}"><b>${mission.missionName}</b></div>
+			
+						<!-- 미션 생성/종료날짜 Date -> String 변환 -->
+			<fmt:formatDate  var="missionStartDate" value="${mission.missionStartDate}" pattern="yyyy-MM-dd"/>
+			<fmt:formatDate  var="missionFinishDate" value="${mission.missionFinishDate}" pattern="yyyy-MM-dd"/>
+			
+			<div class="m-2" style="font-size: 12px">${missionStartDate} (월) ~ ${missionFinishDate} (일) <span style="border-radius: 2px; background-color:#989c9a; color:white">&nbsp;${mission.missionPeriod}일&nbsp;</span></div>	
 			<div class="m-2" style="font-size: 12px; color:#6f706f">${mission.missionIntroduction}</div>
 			<div class="m-2" style="font-size: 12px">참가자 수 ${memberCount}명</div>		
 			
-			<!-- 가입 및 탈퇴버튼 -->		
-			<c:choose>
-			<c:when test="${result.check eq 'no-member'}"> <!--  가입하지 않은 상태일 때 -->
-						<!-- 미션 가입하기 버튼 -->
-						<div class="d-flex justify-content-center">	
-						<button class="joinBtn mt-2" data-mission-id="${mission.id}" data-member-userId="${member.userId}" data-category-id="${mission.categoryId}" data-mission-period="${mission.missionPeriod}">미션 참여하기</button></div>						
-			</c:when>		
-			<c:otherwise> <!--  가입된 상태일 때 -->
-						<!-- 미션 탈퇴하기 버튼 -->
-						<div class="d-flex justify-content-center">
-						<button class="joinOutBtn mt-2" data-mission-id="${mission.id}" data-member-userId="${member.userId}">미션 탈퇴하기</button></div>	
-			</c:otherwise>
-			</c:choose>
+			<!-- 가입 및 탈퇴버튼 : 종료되지 않은 미션일 시 보임-->
+			<c:if test="${checkMissionAvailable eq 'open'}">		
+				<c:choose>
+				<c:when test="${result.check eq 'no-member'}"> <!--  가입하지 않은 상태일 때 -->
+							<!-- 미션 가입하기 버튼 -->
+							<div class="d-flex justify-content-center">	
+							<button class="joinBtn mt-2" data-mission-id="${mission.id}" data-member-userId="${member.userId}" data-category-id="${mission.categoryId}" data-mission-period="${mission.missionPeriod}">미션 참여하기</button></div>						
+				</c:when>		
+				<c:otherwise> <!--  가입된 상태일 때 -->
+							<!-- 미션 탈퇴하기 버튼 -->
+							<div class="d-flex justify-content-center">
+							<button class="joinOutBtn mt-2" data-mission-id="${mission.id}" data-member-userId="${member.userId}">미션 탈퇴하기</button></div>	
+				</c:otherwise>
+				</c:choose>
+			</c:if>
 			
-			<!-- 미션 생성/종료날짜 Date -> String 변환 -->
-			<fmt:formatDate  var="missionStartDate" value="${mission.missionStartDate}" pattern="yyyy-MM-dd"/>
-			<fmt:formatDate  var="missionFinishDate" value="${mission.missionFinishDate}" pattern="yyyy-MM-dd"/>
-					
+			
+			<c:if test="${checkMissionAvailable eq 'closed'}">
+				<div class="closedMission mt-2">종료된 미션입니다.</div>
+			</c:if>		
 			<input type="text" value="${missionStartDate}" class="missionStartDate d-none">
 			<input type="text" value="${missionFinishDate}" class="missionFinishDate d-none">			
 			
@@ -77,8 +87,10 @@
 		<!-- 아무도 가입하지 않은 경우 (웰컴 이미지) -->
 		<c:if test="${memberCount eq 0}">
 			<div class="ml-5 mt-4">
-			<img src="https://cdn-icons-png.flaticon.com/512/5331/5331946.png" width="250" alt="welcome">
-			<div class="text-center mt-2">가입해서 첫 포스트를 남겨보세요.</div>
+				<div class="d-flex justify-content-center">
+				<img src="https://cdn-icons-png.flaticon.com/512/5331/5331946.png" width="200" alt="welcome">
+				</div>
+				<div class="text-center mt-3">가입해서 첫 포스트를 남겨보세요.</div>
 			</div>
 		</c:if>
 		

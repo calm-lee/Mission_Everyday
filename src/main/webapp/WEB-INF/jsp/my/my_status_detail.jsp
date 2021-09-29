@@ -58,18 +58,16 @@
 											
 													
 						<!-- 인증 체크박스 -->
-						<div class="statusCheckBox mt-2 d-flex align-items-center">
+						<div class="statusCheckBox mt-2 d-flex align-items-center flex-wrap" style="width:270px;">
 						<c:forEach var="myStatus" items="${myStatusList}">						
 								<c:if test="${myStatus.status eq 'O'}">																										
-								  <img src="https://cdn-icons-png.flaticon.com/512/1168/1168610.png" alt="success" width="30px"></c:if>
+								  <img src="https://cdn-icons-png.flaticon.com/512/1168/1168610.png" alt="success" class="m-1" width="28px"></c:if>
 								  
 								<c:if test="${myStatus.status eq 'X'}">	
-		  						  <img src="https://cdn-icons-png.flaticon.com/512/1828/1828666.png" alt="fail" width="25px" height="25px"></c:if>
+		  						  <img src="https://cdn-icons-png.flaticon.com/512/1828/1828666.png" alt="fail" class="m-1" width="28px" height="28px"></c:if>
 		  						  
 		  						<c:if test="${myStatus.status eq 'blank'}">
-								  <img src="https://cdn-icons-png.flaticon.com/512/136/136831.png"  alt="blank" width="30px"></c:if>												
-						
-							<div class="mr-2"></div>		  
+								  <img src="https://cdn-icons-png.flaticon.com/512/136/136831.png"  alt="blank" class="m-1"  width="28px"></c:if>														  
 						</c:forEach>
 						</div>
 					</div>

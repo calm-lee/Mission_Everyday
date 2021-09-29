@@ -11,15 +11,18 @@
 	</div>
 	
 	<div class="contents d-flex justify-content-center">
-	<div class="categories d-flex flex-wrap text-center mr-3">
+	<div class="categories d-flex flex-wrap text-center mr-3 mt-1">
 		<c:forEach var="mission" items="${missionList}">
 				<div class="m-4">
 				<a href="/mission/mission_club/${mission.id}">
 				<img src="${mission.missionImage}" width="180px" height="120px">
-					<div class="m-3">
+					<div class="m-2">
 					${mission.missionName}
 					</div></a>
-				</div>				
+				<c:if test="${mission.missionFinishDate < today}">
+				<div style="background-color:#989c9a; color:white">종료된 미션</div>
+				</c:if>
+				</div>
 		</c:forEach>
 	</div>
 	</div>

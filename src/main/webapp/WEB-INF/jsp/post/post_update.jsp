@@ -27,7 +27,6 @@
 
 				<!-- 업로드 버튼 -->
 				<div class="mr-2">
-
 					<a href="/mission/mission_club/${post.missionId}"><button
 							type="button" id="updatePost"
 							class="btn updatePost form-control bg-info"
@@ -54,7 +53,6 @@ $(document).ready(function(){
 		let postId = $(this).data('post-id');
 		let content = $('textarea[name=content]').val();
 		let imgPath = $('input[name=image]').val();
-		let originalImgPath = $('input[name=originalImage]').val(); // 수정 이전 이미지
 		
 		// 확장자 체크
 		if(imgPath != ''){
@@ -96,27 +94,7 @@ $(document).ready(function(){
 			alert("code = "+ request.status + " message = " + request.responseText + " error = " + error); // 실패 시 처리
 			}			
 		});
-		/* else { // 이미지 수정 안 하는 경우
-			formData.append("id", postId);
-			formData.append("content", content);
-			formData.append("file", originalImgPath);
-			$.ajax({
-				type : 'POST'
-				,url : "/post/update"
-				,data: formData
-				, success: function(data){
-					if(data.result == 'success'){
-						alert("수정이 완료되었습니다.");
-						location.href="/mission/main";
-					} else {
-						alert("오류가 발생했습니다.")
-					}
-				}
-				, error: function(request,status,error){
-				alert("code = "+ request.status + " message = " + request.responseText + " error = " + error); // 실패 시 처리
-				}			
-				});
-		} */
+
 		
 	});
 });

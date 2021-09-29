@@ -69,7 +69,7 @@ public class PostRestController {
 	public Map<String, Object> updatePost(
 			@RequestParam("id") int id
 			, @RequestParam(value="content", required=false) String content
-			, @RequestParam(value="content", required=false) MultipartFile file
+			, @RequestParam(value="file", required=false) MultipartFile file
 			, HttpServletRequest request
 			, Model model){
 		
