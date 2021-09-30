@@ -46,7 +46,7 @@
 				</div>
 				
 				<div class="hobby m-4">
-				<a href="/mission/mission_detail/5" data-category-id=5>
+				<a href="/mission/category/5" data-category-id=5>
 				<img src="https://cdn-icons-png.flaticon.com/512/4207/4207225.png" width="180px">
 					<div class="m-3">
 					취미
@@ -54,7 +54,7 @@
 				</div>
 				
 				<div class="finance m-4">
-				<a href="/mission/mission_detail/6" data-category-id=6>
+				<a href="/mission/category/6" data-category-id=6>
 				<img src="https://cdn-icons-png.flaticon.com/512/4256/4256900.png" width="180px">
 					<div class="m-3">
 					재테크
