@@ -16,49 +16,48 @@ public class FileManagerService {
 
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
 
-	// ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ç»ï¿½ï¿½ ï¿½ï¿½ï¿½
-	// public final static String FILE_UPLOAD_PATH = "D:\\\\Spring Project\\\\MissionEveryday-project\\\\mission_everyday\\\\MissionEveryday\\\\src\\\\main\\\\resources\\\\static\\\\images"; //ï¿½ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½Ò°ï¿½)ï¿½ï¿½ ï¿½ë¹®ï¿½Ú·ï¿½ Ç¥ï¿½ï¿½ï¿½Ñ´ï¿½.
-	public final static String FILE_UPLOAD_PATH = "/home/ec2-user/upload_images/";
-	
-	// ï¿½Ì¹ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ -> ï¿½Ì¹ï¿½ï¿½ï¿½ï¿½ï¿½ URL path ï¿½ï¿½ï¿½ï¿½
+	// ½ÇÁ¦ ÀÌ¹ÌÁö°¡ ÀúÀåµÉ ÄÄÇ»ÅÍ °æ·Î
+	public final static String FILE_UPLOAD_PATH = "D:\\\\Spring Project\\\\MissionEveryday-project\\\\mission_everyday\\\\MissionEveryday\\\\src\\\\main\\\\resources\\\\static\\\\images"; //»ó¼ö°ª(º¯°æºÒ°¡)Àº ´ë¹®ÀÚ·Î Ç¥½ÃÇÑ´Ù.
+
+	// ÀÌ¹ÌÁö¸¦ ÀúÀå -> ÀÌ¹ÌÁöÀÇ URL path ¸®ÅÏ
 	public String saveFile(int userId, MultipartFile file) throws IOException {
 		
-		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ç»ï¿½Í¿ï¿½ ï¿½ï¿½ï¿½ï¿½
-		// 1. ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ä¸® ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½Ê°ï¿½)  ï¿½ï¿½: marobiana_20210819173033/sun.png (ï¿½ï¿½ï¿½Ìµï¿½_ï¿½ï¿½ï¿½Îµå³¯Â¥ï¿½Ã°ï¿½/ï¿½ï¿½ï¿½Ï¸ï¿½.È®ï¿½ï¿½ï¿½ï¿½)
+		// ÆÄÀÏÀ» ÄÄÇ»ÅÍ¿¡ ÀúÀå
+		// 1. ÆÄÀÏ µð·ºÅä¸® °æ·Î ¸¸µê(°ãÄ¡Áö ¾Ê°Ô)  ¿¹: marobiana_20210819173033/sun.png (¾ÆÀÌµð_¾÷·Îµå³¯Â¥½Ã°¢/ÆÄÀÏ¸í.È®ÀåÀÚ)
 		String directoryName = userId + "_" + System.currentTimeMillis() + "/";
 		String filePath = FILE_UPLOAD_PATH + "/" + directoryName;
 		
 		File directory = new File(filePath);
-		if (directory.mkdir() == false) { // mkdir(): ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Îµï¿½ï¿½ï¿½ filePath ï¿½ï¿½Î¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ñ´ï¿½.
-			// ï¿½ï¿½ï¿½ä¸® ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
-			logger.error("[ï¿½ï¿½ï¿½Ï¾ï¿½ï¿½Îµï¿½] ï¿½ï¿½ï¿½ä¸® ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½" + userId + "," + filePath);
+		if (directory.mkdir() == false) { // mkdir(): ÆÄÀÏÀ» ¾÷·ÎµåÇÒ filePath °æ·Î¿¡ Æú´õ »ý¼ºÀ» ÇÑ´Ù.
+			// µð·ºÅä¸® »ý¼º ½ÇÆÐ
+			logger.error("[ÆÄÀÏ¾÷·Îµå] µð·ºÅä¸® »ý¼º ½ÇÆÐ" + userId + "," + filePath);
 			return null;
 		}; 
 		
-		// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Îµï¿½ => byte ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Îµï¿½
-		byte[] bytes = file.getBytes(); // file -> byte ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¯
-		Path path = Paths.get(filePath + file.getOriginalFilename()); // ï¿½ï¿½ï¿½ ï¿½Ã¸ï¿½ï¿½ï¿½ path ï¿½ï¿½ï¿½ï¿½
-		// originalFileName = > inputï¿½ï¿½ï¿½ï¿½ ï¿½Ã¸ï¿½ ï¿½ï¿½ï¿½Ï¸ï¿½
-		Files.write(path, bytes); // pathï¿½ï¿½ byte ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¯
+		// ÆÄÀÏ ¾÷·Îµå => byte ´ÜÀ§·Î ¾÷·Îµå
+		byte[] bytes = file.getBytes(); // file -> byte ´ÜÀ§·Î º¯È¯
+		Path path = Paths.get(filePath + file.getOriginalFilename()); // ¾îµð¿¡ ¿Ã¸±Áö path ÁöÁ¤
+		// originalFileName = > input¿¡¼­ ¿Ã¸° ÆÄÀÏ¸í
+		Files.write(path, bytes); // path¸¦ byte ´ÜÀ§·Î º¯È¯
 
 		
-		// ï¿½Ì¹ï¿½ï¿½ï¿½ URLï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
-		// ï¿½Ì¹ï¿½ï¿½ï¿½ URL pathï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½. (WebMvcConfigï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½ path)
-		//   ï¿½ï¿½) http://localhost/images/4_1630492273619.jpg
+		// ÀÌ¹ÌÁö URLÀ» ¸¸µé¾î ¸®ÅÏ
+		// ÀÌ¹ÌÁö URL path¸¦ ¸®ÅÏÇÑ´Ù. (WebMvcConfig¿¡¼­ ¸ÅÇÎÇÑ ÀÌ¹ÌÁö path)
+		//   ¿¹) http://localhost/images/4_1630492273619.jpg
 		return "/images/" + directoryName + file.getOriginalFilename();
 	}
 	
 	
-	// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½Þ¼Òµï¿½
+	// ÆÄÀÏ »èÁ¦ÇÏ´Â ¸Þ¼Òµå
 	public void deleteFile(String imgPath) throws IOException {
 		
 	
 		Path path = Paths.get(FILE_UPLOAD_PATH + imgPath.replace("/images/", ""));
-		if(Files.exists(path)){ // ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Î¸ï¿½ booleanï¿½ï¿½ï¿½ï¿½ ï¿½Ë·ï¿½ï¿½ï¿½
+		if(Files.exists(path)){ // Á¸ÀçÇÏ´ÂÁö ¿©ºÎ¸¦ booleanÀ¸·Î ¾Ë·ÁÁÜ
 			Files.delete(path);
 		}
 		
-		// ï¿½ï¿½ï¿½ä¸® ï¿½ï¿½ï¿½ï¿½
+		// µð·ºÅä¸® »èÁ¦
 		path = path.getParent();
 		if(Files.exists(path)) {
 			Files.delete(path);
