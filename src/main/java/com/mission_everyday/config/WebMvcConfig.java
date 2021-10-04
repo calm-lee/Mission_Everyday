@@ -17,14 +17,14 @@ import com.mission_everyday.interceptor.PermissionInterceptor;
 
 		  @Override public void addInterceptors(InterceptorRegistry registry) {
 		  registry.addInterceptor(permissionInterceptor) .addPathPatterns("/**") 
-		  //¾î¶² urlÀÏ ¶§ ¾î¶² interceptor¸¦ Å¸°Ô ÇÒ °ÍÀÎÁö, Áö±Ý /**´Â ¾î¶² urlÀÌ´ø Å¸°Ô ÇÏ°Ú´Ù´Â °Í
-		  .excludePathPatterns("/user/sign_out", "/static/**", "/error"); //¿©±â¿¡ ÇØ´çÇÏ´Â urlÀº interceptorÀ» Å¸Áö ¾Ê´Â´Ù. 
+		  //ï¿½î¶² urlï¿½ï¿½ ï¿½ï¿½ ï¿½î¶² interceptorï¿½ï¿½ Å¸ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ /**ï¿½ï¿½ ï¿½î¶² urlï¿½Ì´ï¿½ Å¸ï¿½ï¿½ ï¿½Ï°Ú´Ù´ï¿½ ï¿½ï¿½
+		  .excludePathPatterns("/user/sign_out", "/static/**", "/error"); //ï¿½ï¿½ï¿½â¿¡ ï¿½Ø´ï¿½ï¿½Ï´ï¿½ urlï¿½ï¿½ interceptorï¿½ï¿½ Å¸ï¿½ï¿½ ï¿½Ê´Â´ï¿½. 
 		  ; }
 
 		@Override
-		public void addResourceHandlers(ResourceHandlerRegistry registry) { //³» ¼­¹ö¿¡ ÀÖ´Â ÀÌ¹ÌÁöÆÄÀÏÀ» °¡Á®¿Í¼­ mappingÀ» ÇÒ ¼ö ÀÖµµ·Ï ÇØÁÜ
-			registry.addResourceHandler("/images/**") // À¥ URI°¡ /images/ ÀÌÇÏÀÇ ÆÄÀÏµéÀ» ¿äÃ»ÇÒ °æ¿ì
-			        .addResourceLocations("file:///D:\\Spring Project\\MissionEveryday-project\\mission_everyday\\MissionEveryday\\src\\main\\resources\\static\\images/"); // ¿©±â¿¡ ÀúÀåµÈ ÆÄÀÏµéÀ» Ã£¾Æ¼­ º¸¿©ÁÜ
+		public void addResourceHandlers(ResourceHandlerRegistry registry) { //ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ mappingï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½Öµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+			registry.addResourceHandler("/images/**") // ï¿½ï¿½ URIï¿½ï¿½ /images/ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ïµï¿½ï¿½ï¿½ ï¿½ï¿½Ã»ï¿½ï¿½ ï¿½ï¿½ï¿½
+			        .addResourceLocations("/home/ec2-user/upload_images/"); // ï¿½ï¿½ï¿½â¿¡ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ïµï¿½ï¿½ï¿½ Ã£ï¿½Æ¼ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		
 		}	
 	}
