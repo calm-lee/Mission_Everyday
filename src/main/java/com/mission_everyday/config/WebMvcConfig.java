@@ -24,7 +24,7 @@ import com.mission_everyday.interceptor.PermissionInterceptor;
 		@Override
 		public void addResourceHandlers(ResourceHandlerRegistry registry) { 
 			registry.addResourceHandler("/images/**")
-			        .addResourceLocations("file:///home/ec2-user/upload_images/"); 
+			        .addResourceLocations("file:/home/ec2-user/upload_images/"); 
 		
 		}	
 	}

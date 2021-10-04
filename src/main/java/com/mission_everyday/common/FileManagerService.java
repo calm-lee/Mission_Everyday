@@ -17,7 +17,7 @@ public class FileManagerService {
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
 
 	
-	public final static String FILE_UPLOAD_PATH = "/home/ec2-user/upload_images/";
+	public final static String FILE_UPLOAD_PATH = "/home/ec2-user/upload_images";
 	
 	public String saveFile(int userId, MultipartFile file) throws IOException {
 		
