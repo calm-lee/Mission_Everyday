@@ -16,49 +16,39 @@ public class FileManagerService {
 
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
 
-	// ���� �̹����� ����� ��ǻ�� ���
-	// public final static String FILE_UPLOAD_PATH = "D:\\\\Spring Project\\\\MissionEveryday-project\\\\mission_everyday\\\\MissionEveryday\\\\src\\\\main\\\\resources\\\\static\\\\images"; //�����(����Ұ�)�� �빮�ڷ� ǥ���Ѵ�.
+	
 	public final static String FILE_UPLOAD_PATH = "/home/ec2-user/upload_images/";
 	
-	// �̹����� ���� -> �̹����� URL path ����
 	public String saveFile(int userId, MultipartFile file) throws IOException {
 		
-		// ������ ��ǻ�Ϳ� ����
-		// 1. ���� ���丮 ��� ����(��ġ�� �ʰ�)  ��: marobiana_20210819173033/sun.png (���̵�_���ε峯¥�ð�/���ϸ�.Ȯ����)
+	
 		String directoryName = userId + "_" + System.currentTimeMillis() + "/";
 		String filePath = FILE_UPLOAD_PATH + "/" + directoryName;
 		
 		File directory = new File(filePath);
-		if (directory.mkdir() == false) { // mkdir(): ������ ���ε��� filePath ��ο� ���� ������ �Ѵ�.
-			// ���丮 ���� ����
+		if (directory.mkdir() == false) { 
 			logger.error("[���Ͼ��ε�] ���丮 ���� ����" + userId + "," + filePath);
 			return null;
 		}; 
 		
-		// ���� ���ε� => byte ������ ���ε�
-		byte[] bytes = file.getBytes(); // file -> byte ������ ��ȯ
-		Path path = Paths.get(filePath + file.getOriginalFilename()); // ��� �ø��� path ����
-		// originalFileName = > input���� �ø� ���ϸ�
-		Files.write(path, bytes); // path�� byte ������ ��ȯ
+		byte[] bytes = file.getBytes(); // file -> byte
+		Path path = Paths.get(filePath + file.getOriginalFilename()); 
+		// originalFileName = > input
+		Files.write(path, bytes); 
 
 		
-		// �̹��� URL�� ����� ����
-		// �̹��� URL path�� �����Ѵ�. (WebMvcConfig���� ������ �̹��� path)
-		//   ��) http://localhost/images/4_1630492273619.jpg
 		return "/images/" + directoryName + file.getOriginalFilename();
 	}
 	
-	
-	// ���� �����ϴ� �޼ҵ�
+
 	public void deleteFile(String imgPath) throws IOException {
 		
 	
 		Path path = Paths.get(FILE_UPLOAD_PATH + imgPath.replace("/images/", ""));
-		if(Files.exists(path)){ // �����ϴ��� ���θ� boolean���� �˷���
+		if(Files.exists(path)){ 
 			Files.delete(path);
 		}
 		
-		// ���丮 ����
 		path = path.getParent();
 		if(Files.exists(path)) {
 			Files.delete(path);

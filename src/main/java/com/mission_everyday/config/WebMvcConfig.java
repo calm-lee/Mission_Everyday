@@ -17,14 +17,14 @@ import com.mission_everyday.interceptor.PermissionInterceptor;
 
 		  @Override public void addInterceptors(InterceptorRegistry registry) {
 		  registry.addInterceptor(permissionInterceptor) .addPathPatterns("/**") 
-		  //� url�� �� � interceptor�� Ÿ�� �� ������, ���� /**�� � url�̴� Ÿ�� �ϰڴٴ� ��
-		  .excludePathPatterns("/user/sign_out", "/static/**", "/error"); //���⿡ �ش��ϴ� url�� interceptor�� Ÿ�� �ʴ´�. 
+		 
+		  .excludePathPatterns("/user/sign_out", "/static/**", "/error"); 
 		  ; }
 
 		@Override
-		public void addResourceHandlers(ResourceHandlerRegistry registry) { //�� ������ �ִ� �̹��������� �����ͼ� mapping�� �� �� �ֵ��� ����
-			registry.addResourceHandler("/images/**") // �� URI�� /images/ ������ ���ϵ��� ��û�� ���
-			        .addResourceLocations("/home/ec2-user/upload_images/"); // ���⿡ ����� ���ϵ��� ã�Ƽ� ������
+		public void addResourceHandlers(ResourceHandlerRegistry registry) { 
+			registry.addResourceHandler("/images/**")
+			        .addResourceLocations("file:///home/ec2-user/upload_images/"); 
 		
 		}	
 	}
