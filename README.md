@@ -25,33 +25,15 @@
 <br />
 <div align="center">
   <a href="https://github.com/othneildrew/Best-README-Template">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+    <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FchOohz%2FbtrgUo5g8Qn%2F6ndFt6zK3jKZbdachkdfDk%2Fimg.png" alt="Logo">
   </a>
-
-  <h3 align="center">Best-README-Template</h3>
-
-  <p align="center">
-    An awesome README template to jumpstart your projects!
-    <br />
-    <a href="https://github.com/othneildrew/Best-README-Template"><strong>Explore the docs »</strong></a>
-    <br />
-    <br />
-    <a href="https://github.com/othneildrew/Best-README-Template">View Demo</a>
-    ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">Request Feature</a>
-  </p>
-</div>
-
-
 
 <!-- TABLE OF CONTENTS -->
 <details>
   <summary>Table of Contents</summary>
   <ol>
     <li>
-      <a href="#미션!에브리데이란?">미션!에브리데이란?</a>
+      <a href="#프로젝트소개">미션! 에브리데이란?</a>
     </li>
     <li>
       <a href="#사용방법">사용방법</a>
@@ -77,20 +59,15 @@
 
 
 <!-- ABOUT THE PROJECT -->
-## About The Project
+## 미션! 에브리데이 소개
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+운동, 독서, 영어공부.. 자기개발이 작심3일에 끝난다면?
+다른 사람들과 함께 할 수 있는 미션!에브리데이와 함께 해보세요!
+사진 인증과 함께 자신의 목표에 강제성을 부여할 수 있어요.
 
-There are many great README templates available on GitHub; however, I didn't find one that really suited my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need -- I think this is it.
-
-Here's why:
-* Your time should be focused on creating something amazing. A project that solves a problem and helps others
-* You shouldn't be doing the same tasks over and over like creating a README from scratch
-* You should implement DRY principles to the rest of your life :smile:
-
-Of course, no one template will serve all projects since your needs may be different. So I'll be adding more in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue. Thanks to all the people have contributed to expanding this template!
-
-Use the `BLANK_README.md` to get started.
+* 같은 목표를 가진 사람들과 함께 함으로써 강제성 자극
+* 평균 2주의 짧은 반복
+* 본인의 미션 인증 현황을 한 눈에 확인할 수 있음
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
