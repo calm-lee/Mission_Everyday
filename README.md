@@ -1,4 +1,4 @@
-# Mission_Everyday
+# Mission!Everyday
 <div id="top"></div>
 <!--
 *** Thanks for checking out the Best-README-Template. If you have a suggestion
@@ -18,12 +18,6 @@
 *** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
 
 
 
@@ -57,24 +51,26 @@
   <summary>Table of Contents</summary>
   <ol>
     <li>
-      <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
+      <a href="#미션!에브리데이란?">미션!에브리데이란?</a>
     </li>
     <li>
-      <a href="#getting-started">Getting Started</a>
+      <a href="#사용방법">사용방법</a>
       <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
+        <li><a href="#로그인">1. 로그인</a></li>
+        <li><a href="#회원가입">2. 회원가입</a></li>
+        <li><a href="#메인홈">3. 메인 홈</a></li>
+        <li><a href="#미션페이지">4. 미션 페이지</a></li>
+        <li><a href="#미션클럽">5. 미션 클럽 페이지</a></li>
+        <li><a href="#미션참여">6. 미션 참여</a></li>
+        <li><a href="#포스팅올리기">7. 포스팅 올리기</a></li>
+        <li><a href="#포스팅목록">8. 포스팅 목록</a></li>
+        <li><a href="#마이페이지1">9-1. 마이페이지 : 내가 가입한 미션 확인하기</a></li>
+        <li><a href="#마이페이지2">9-2. 마이페이지 : 내가 올린 포스트 확인하기</a></li>
+        <li><a href="#마이페이지3">9-3. 마이페이지 : 내 미션 포스트 현황 확인하기</a></li>
       </ul>
     </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
+    <li><a href="#ProjectStructure">Project Structure</a></li>
+    <li><a href="#SpringBoot">Spring Boot</a></li>
   </ol>
 </details>
 
