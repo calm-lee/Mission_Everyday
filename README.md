@@ -60,13 +60,14 @@
 <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbeM2nP%2FbtrgRNj0NxD%2FeOb3NTBa7KrWm5C7QsURD1%2Fimg.png" alt="myStatus">
 
 ## Project Structure
-> Java 기반의 Spring Boot 구조로 개발했습니다. 사용한 기술 스택들은 다음과 같습니다
-* Spring Boot (API Server) 
-* MySQL (RDB)  
-* [Vue.js](https://vuejs.org/)
-* [Angular](https://angular.io/)
-* [Svelte](https://svelte.dev/)
-* [Laravel](https://laravel.com)
+> 본 프로젝트에 사용된 기술 스택들은 다음과 같습니다.
+
+* Java
+* JavaScript
+* AJAX
+* Spring Boot
+* MySQL  
+* Servlet
 * Bootstrap
 * JQuery
-* AWS (Infra)
+* AWS
