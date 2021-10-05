@@ -65,10 +65,10 @@
 * Java
 * JavaScript
 * AJAX
+* CSS
 * Spring Boot
 * MySQL  
 * Servlet
 * Bootstrap
-* CSS
 * JQuery
 * AWS
