@@ -69,5 +69,6 @@
 * MySQL  
 * Servlet
 * Bootstrap
+* CSS
 * JQuery
 * AWS
