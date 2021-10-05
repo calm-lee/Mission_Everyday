@@ -9,22 +9,28 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import com.mission_everyday.interceptor.PermissionInterceptor;
 
 @Configuration
-	public class WebMvcConfig implements WebMvcConfigurer{
-		
-		@Autowired
-		private PermissionInterceptor permissionInterceptor;
-		
+public class WebMvcConfig implements WebMvcConfigurer {
 
-		  @Override public void addInterceptors(InterceptorRegistry registry) {
-		  registry.addInterceptor(permissionInterceptor) .addPathPatterns("/**") 
-		  //¾î¶² urlÀÏ ¶§ ¾î¶² interceptor¸¦ Å¸°Ô ÇÒ °ÍÀÎÁö, Áö±İ /**´Â ¾î¶² urlÀÌ´ø Å¸°Ô ÇÏ°Ú´Ù´Â °Í
-		  .excludePathPatterns("/user/sign_out", "/static/**", "/error"); //¿©±â¿¡ ÇØ´çÇÏ´Â urlÀº interceptorÀ» Å¸Áö ¾Ê´Â´Ù. 
-		  ; }
+	@Autowired
+	private PermissionInterceptor permissionInterceptor;
 
-		@Override
-		public void addResourceHandlers(ResourceHandlerRegistry registry) { //³» ¼­¹ö¿¡ ÀÖ´Â ÀÌ¹ÌÁöÆÄÀÏÀ» °¡Á®¿Í¼­ mappingÀ» ÇÒ ¼ö ÀÖµµ·Ï ÇØÁÜ
-			registry.addResourceHandler("/images/**") // À¥ URI°¡ /images/ ÀÌÇÏÀÇ ÆÄÀÏµéÀ» ¿äÃ»ÇÒ °æ¿ì
-			        .addResourceLocations("file:///D:\\Spring Project\\MissionEveryday-project\\mission_everyday\\MissionEveryday\\src\\main\\resources\\static\\images/"); // ¿©±â¿¡ ÀúÀåµÈ ÆÄÀÏµéÀ» Ã£¾Æ¼­ º¸¿©ÁÜ
-		
-		}	
+	@Override
+	public void addInterceptors(InterceptorRegistry registry) {
+		registry.addInterceptor(permissionInterceptor).addPathPatterns("/**")
+				// ì–´ë–¤ urlì¼ ë•Œ ì–´ë–¤ interceptorë¥¼ íƒ€ê²Œ í•  ê²ƒì¸ì§€, ì§€ê¸ˆ /**ëŠ” ì–´ë–¤ urlì´ë˜ íƒ€ê²Œ í•˜ê² ë‹¤ëŠ” ê²ƒ
+				.excludePathPatterns("/user/sign_out", "/static/**", "/error"); // ì—¬ê¸°ì— í•´ë‹¹í•˜ëŠ” urlì€ interceptorì„ íƒ€ì§€ ì•ŠëŠ”ë‹¤.
+		;
 	}
+
+	@Override
+	public void addResourceHandlers(ResourceHandlerRegistry registry) { // ë‚´ ì„œë²„ì— ìˆëŠ” ì´ë¯¸ì§€íŒŒì¼ì„ ê°€ì ¸ì™€ì„œ mappingì„ í•  ìˆ˜ ìˆë„ë¡ í•´ì¤Œ
+		registry.addResourceHandler("/images/**") // ì›¹ URIê°€ /images/ ì´í•˜ì˜ íŒŒì¼ë“¤ì„ ìš”ì²­í•  ê²½ìš°
+				.addResourceLocations(
+						"file:///D:\\Spring Project\\MissionEveryday-project\\mission_everyday\\MissionEveryday\\src\\main\\resources\\static\\images/"); // ï¿½ï¿½ï¿½â¿¡
+																																							// ï¿½ï¿½ï¿½ï¿½ï¿½
+																																							// ï¿½ï¿½ï¿½Ïµï¿½ï¿½ï¿½
+																																							// Ã£ï¿½Æ¼ï¿½
+																																							// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+
+	}
+}
