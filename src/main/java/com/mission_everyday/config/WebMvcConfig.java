@@ -15,11 +15,12 @@ import com.mission_everyday.interceptor.PermissionInterceptor;
 		private PermissionInterceptor permissionInterceptor;
 		
 
-		  @Override public void addInterceptors(InterceptorRegistry registry) {
+		@Override 
+		public void addInterceptors(InterceptorRegistry registry) {
 		  registry.addInterceptor(permissionInterceptor) .addPathPatterns("/**") 
 		 
 		  .excludePathPatterns("/user/sign_out", "/static/**", "/error"); 
-		  ; }
+		}
 
 		@Override
 		public void addResourceHandlers(ResourceHandlerRegistry registry) { 
