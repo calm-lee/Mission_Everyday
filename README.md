@@ -78,7 +78,7 @@
 > [카카오 오븐](https://ovenapp.io/)을 통해 [기획서](https://ovenapp.io/project/u1vPXyC6FPiBUZFJYClPuW5lQGtSjUf9#1HJPw)를 설계했습니다.
 
 ### 2. DB 설계
-사용 용도에 맞게 다음과 같이 DB를 설계했습니다.
+> 사용 용도에 맞게 다음과 같이 DB를 설계했습니다.
 
 * user : 로그인, 회원가입, 마이페이지에 사용
 * category : 카테고리, 미션 페이지에 사용
