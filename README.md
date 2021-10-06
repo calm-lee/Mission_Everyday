@@ -10,13 +10,29 @@
 
 ## 미션! 에브리데이 소개
 
-작심 3일로 끝나기 쉬운 자기계발에 동기부여를 주는 웹사이트입니다.<br>
+<b>1. 프로젝트 개발 목적</b><br>
+작심 3일로 끝나기 쉬운 자기계발에 동기를 부여하고자 개발했습니다.<br>
 
-* 운동, 공부, 외국어, 재테크, 취미, 다이어트 등 다양한 카테고리의 미션에 가입할 수 있습니다.
-* 미션에 가입하면 사진 업로드를 통해 미션 인증을 할 수 있습니다.
-* 미션 클럽 페이지에 다른 사람들의 포스트를 보며 동기부여를 할 수 있습니다.
-* 좋아요, 댓글달기 등을 통해 친목도모가 가능합니다.
-* 내 미션현황 확인을 통해 수치화된 내 인증현황을 확인할 수 있습니다.
+<b>2. 개발 기간</b><br>
+2021.09.02 - 2021.10.02 (1개월)<br>
+
+<b>3. 주요 기능</b>
+* 운동, 공부, 외국어, 재테크, 취미, 다이어트 등 다양한 카테고리의 미션 가입
+* 1주, 2주 단위의 미션에 매일 인증 포스트 올리기
+* 마이페이지에서 인증현황 확인 가능
+* 좋아요, 댓글달기 등을 통해 친목도모 가능
+
+<b>4. 사용 기술 스택</b>
+* Java
+* JavaScript
+* AJAX
+* CSS
+* Spring Boot
+* MySQL  
+* Servlet
+* Bootstrap
+* JQuery
+* AWS
 
 ## 사용방법
 
@@ -59,20 +75,6 @@
 <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FcX1UXP%2FbtrgWaMgOXX%2F6caqlrrck6WZPbwTHRLff1%2Fimg.png" alt="myPostStatusMain">
 <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbeM2nP%2FbtrgRNj0NxD%2FeOb3NTBa7KrWm5C7QsURD1%2Fimg.png" alt="myStatus">
 
-## Project Structure
-> 본 프로젝트에 사용된 기술 스택들은 다음과 같습니다.
-
-* Java
-* JavaScript
-* AJAX
-* CSS
-* Spring Boot
-* MySQL  
-* Servlet
-* Bootstrap
-* JQuery
-* AWS
-
 ## 프로젝트 설계 과정
 ### 1. 기획서
 > [카카오 오븐](https://ovenapp.io/)을 통해 [기획서](https://ovenapp.io/project/u1vPXyC6FPiBUZFJYClPuW5lQGtSjUf9#1HJPw)를 설계했습니다.
@@ -89,4 +91,33 @@
 * like : 글마다 눌러지는 좋아요 생성, 해제에 사용 
  
 ### 3. URL 설계
-> URL
+> 정적 화면 설계
+* 로그인: user/sign_in_view
+* 회원가입: user/sign_up_view
+* 메인 홈: mission/main
+* 카테고리 상세 페이지: mission/category/[categoryId]
+* 미션클럽 페이지: mission/mission_club/[missionId]
+* 마이페이지 - 참여 중인 미션: my/mission
+* 마이페이지 - 내가 올린 포스트: my/post
+* 마이페이지 - 인증 현황: my/status
+* 마이페이지 - 인증 현황 상세: my/status/[missionId]
+> 동적 API 설계
+1. User
+* 회원가입: /user/sign_up_for_submit
+* 로그인: /user/sign_in_check
+* 로그아웃: /user/sign_out
+* 아이디 중복체크: /user/is_duplicated_id
+
+2. Mission
+* 미션 가입하기: /mission/join
+* 미션 탈퇴하기: /mission/out
+
+3. Post
+* 글 올리기: /post/create
+* 글 수정하기:  /post/update
+* 글 삭제하기: /post/delete
+* 좋아요 반영: /post/like_stauts
+
+4. Comment
+* 댓글 올리기: /comment/create
+* 댓글 삭제하기: /comment/delete
