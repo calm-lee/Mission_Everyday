@@ -13,7 +13,7 @@ public class Application extends SpringBootServletInitializer{
 
     @PostConstruct
     public static void started() {
-        TimeZone.setDefault(TimeZone.getTimeZone("UTC"));
+        TimeZone.setDefault(TimeZone.getTimeZone("Asia/Seoul"));
     }
  
     public static void main(String[] args) {
