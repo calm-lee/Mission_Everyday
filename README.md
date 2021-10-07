@@ -54,44 +54,30 @@
 
 ## 사용방법
 
-### 1. 회원가입
+### 1. 회원가입 & 로그인
 > ID, PW, 이메일 기입 후 가입 가능합니다. (아이디 중복확인 필수)
-<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FAAQro%2FbtrgOurSXEK%2Fd2a5ZCCyLbRgFK3GFJEk51%2Fimg.png" alt="singUp">
+<img src="https://blog.kakaocdn.net/dn/bihAbt/btrg2UXSK0c/Y5KNqtmj8FZKCSW2Q2XV9K/img.gif" alt="user">
 
-### 2. 로그인
->
-<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FcGxxqt%2FbtrgIPpn87v%2F2kSQ3FWUeScRwk8dndCV91%2Fimg.png" alt="logIn">
+### 2. 카테고리 & 미션 페이지
+> 운동, 공부, 외국어, 다이어트, 취미, 재테크 등 다양한 카테고리의 미션들을 확인할 수 있습니다.
+<img src="https://blog.kakaocdn.net/dn/6hMCi/btrg6vi7D5m/GR4H5C1dg9dKNzyu1OM9H1/img.gif" alt="category&mission">
 
-### 3. 메인 홈
-> 운동, 공부, 외국어, 다이어트, 취미, 재테크 등 자기계발 카테고리를 확인할 수 있습니다.
-<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FdgerpX%2FbtrgD3BEteO%2FUeihosVZA5nXjThpW15vVk%2Fimg.png" alt="main">
+### 3. 미션클럽 페이지
+> 미션에 가입해 포스트를 올리고, 좋아요&댓글달기가 가능합니다.
+<img src="https://blog.kakaocdn.net/dn/uQ017/btrg4KHCOL7/KlpwX0t1dZWwkFoWuVuJFk/img.gif" alt="post">
 
-
-### 4. 카테고리별 미션 화면
-> 메인 홈에서 카테고리를 클릭하면 카테고리별 미션들을 확인할 수 있습니다.
-<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FYsX2D%2FbtrgOurS5It%2FCTEZ87P8v4fLiuECHh5KpK%2Fimg.png" alt="category">
-
-### 5. 미션 클럽 페이지
-> 원하는 미션을 클릭해 타임라인을 확인할 수 있습니다.
-<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2F770RV%2FbtrgWEl2xgS%2FXNgF20S90mu5n8e84klABk%2Fimg.png" alt="missionTimeline">
-
-### 6. 포스트 올리기
-> 미션에 가입해 포스트를 올릴 수 있습니다.
-<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FdKU5mT%2FbtrgP4l19tm%2FblBK9ZuYRfK3FkdX8ZriZ0%2Fimg.png" alt="post">
-
-
-### 7-1. 마이 페이지 - 내가 참여한 미션 확인하기
+### 4-1. 마이 페이지 - 내가 참여한 미션 확인하기
 > 내가 참여 중인 미션과 가입일을 확인할 수 있습니다.
-<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fcz8rmc%2FbtrgWE0DTGQ%2Fl0gy3KmTULeTlScij5aFHk%2Fimg.png" alt="myMission">
+<img src="https://blog.kakaocdn.net/dn/t1JY5/btrg10dCx5p/RYAZxoyHPrwk0QNeDVeEx0/img.gif" alt="myMission">
 
-### 7-2. 마이 페이지 - 내가 인증한 포스트 확인하기
+### 4-2. 마이 페이지 - 내가 인증한 포스트 확인하기
 > 내가 올린 포스트를 한눈에 확인할 수 있습니다.
-<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FDfdDq%2FbtrgRTY19GI%2FvyFlB3ecCtPUePcdwpL060%2Fimg.png" alt="myPost">
+<img src="https://blog.kakaocdn.net/dn/cM7yPW/btrg7WUQxkh/0HmdMXc1YQtjWkAvw0Dyk1/img.gif" alt="myPost">
 
-### 7-3. 마이 페이지 - 내 인증현황 확인하기
-> 미션별로 내 인증현황을 확인할 수 있습니다.
-<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FcX1UXP%2FbtrgWaMgOXX%2F6caqlrrck6WZPbwTHRLff1%2Fimg.png" alt="myPostStatusMain">
-<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbeM2nP%2FbtrgRNj0NxD%2FeOb3NTBa7KrWm5C7QsURD1%2Fimg.png" alt="myStatus">
+### 4-3. 마이 페이지 - 내 인증현황 확인하기
+> 미션별로 내 인증현황을 확인할 수 있습니다. (성공/실패/남은 일수)
+<img src="https://blog.kakaocdn.net/dn/cvjdIz/btrg2UDE6oe/8mkEgc0a0m0UnC7sHulUO1/img.gif" alt="myPostStatus">
+
 
 ## 프로젝트 설계 과정
 ### 1. 기획서
