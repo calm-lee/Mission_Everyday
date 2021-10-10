@@ -41,16 +41,10 @@
 * 좋아요, 댓글달기 등을 통해 친목도모 가능
 
 <b>5. 사용 기술 스택</b>
-* Java
-* JavaScript
-* AJAX
-* CSS
-* Spring Boot
-* MySQL  
-* Servlet
-* Bootstrap
-* JQuery
-* AWS
+* Java, JavaScript, jQuery, Bootstrap, HTML, CSS
+* Spring 4.11, Apache Tomcat 9.0, Mybatis, MySQL
+* MVC Pattern, Ajax
+* Git, AWS
 
 ## 사용방법
 
