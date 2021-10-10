@@ -124,7 +124,7 @@
 * 댓글 삭제하기: /comment/delete
 
 ### 4. 트러블  슈팅
-[개인 블로그](https://calm-lee.tistory.com/category/%EA%B0%9C%EB%B0%9C%20%EC%97%AC%EC%A0%95/Error)에 프로젝트에서 발생하는 Error의 원인 및 해결방법을 기록했습니다.<br>
+[개인 블로그](https://calm-lee.tistory.com/category/%EA%B0%9C%EB%B0%9C%20%EC%97%AC%EC%A0%95/Error) 및 [Git Issue 페이지](https://github.com/calm-lee/Mission_Everyday/issues)에 프로젝트에서 발생하는 Error의 원인/해결방법을 기록했습니다.<br>
 이런 기록들이 쌓이다보니, 나중에는 스스로 에러의 원인을 파악하고 해결책을 생각해내는 트러블 슈팅 능력을 기를 수 있었습니다.
 
 ### 5. 향후 추가할 만한 요소
