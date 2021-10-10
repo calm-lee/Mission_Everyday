@@ -33,6 +33,9 @@
   - 마이페이지 마이 미션클럽 조회 기능 구현 
   - 마이페이지 마이 포스트 조회 기능 구현
   - 마이페이지 내 인증 현황 조회 기능 구현
+* 트러블슈팅
+* 동작 테스트
+* AWS 서버 구축
 
 <b>4. 미션!에브리데이 주요 기능</b>
 * 운동, 공부, 외국어, 재테크, 취미, 다이어트 등 다양한 카테고리의 미션 가입
@@ -41,16 +44,10 @@
 * 좋아요, 댓글달기 등을 통해 친목도모 가능
 
 <b>5. 사용 기술 스택</b>
-* Java
-* JavaScript
-* AJAX
-* CSS
-* Spring Boot
-* MySQL  
-* Servlet
-* Bootstrap
-* JQuery
-* AWS
+* Java, JavaScript, jQuery, Bootstrap, HTML, CSS
+* Spring 4.11, Apache Tomcat 9.0, Mybatis, MySQL
+* MVC Pattern, Ajax
+* Git, AWS
 
 ## 사용방법
 
@@ -127,7 +124,7 @@
 * 댓글 삭제하기: /comment/delete
 
 ### 4. 트러블  슈팅
-[개인 블로그](https://calm-lee.tistory.com/category/%EA%B0%9C%EB%B0%9C%20%EC%97%AC%EC%A0%95/Error)에 프로젝트에서 발생하는 Error의 원인 및 해결방법을 기록했습니다.<br>
+[개인 블로그](https://calm-lee.tistory.com/category/%EA%B0%9C%EB%B0%9C%20%EC%97%AC%EC%A0%95/Error) 및 [Git Issue 페이지](https://github.com/calm-lee/Mission_Everyday/issues?q=is%3Aissue+is%3Aclosed)에 프로젝트에서 발생하는 Error의 원인/해결방법을 기록했습니다.<br>
 이런 기록들이 쌓이다보니, 나중에는 스스로 에러의 원인을 파악하고 해결책을 생각해내는 트러블 슈팅 능력을 기를 수 있었습니다.
 
 ### 5. 향후 추가할 만한 요소
