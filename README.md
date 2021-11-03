@@ -53,29 +53,27 @@
 
 ### 1. 회원가입 & 로그인
 > ID, PW, 이메일 기입 후 가입 가능합니다. (아이디 중복확인 필수)
-<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FAAQro%2FbtrgOurSXEK%2Fd2a5ZCCyLbRgFK3GFJEk51%2Fimg.png" alt="user">
+<img src="https://blog.kakaocdn.net/dn/bihAbt/btrg2UXSK0c/Y5KNqtmj8FZKCSW2Q2XV9K/img.gif" alt="user">
 
 ### 2. 카테고리 & 미션 페이지
 > 운동, 공부, 외국어, 다이어트, 취미, 재테크 등 다양한 카테고리의 미션들을 확인할 수 있습니다.
-<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FdgerpX%2FbtrgD3BEteO%2FUeihosVZA5nXjThpW15vVk%2Fimg.png" alt="category">
-<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FYsX2D%2FbtrgOurS5It%2FCTEZ87P8v4fLiuECHh5KpK%2Fimg.png" alt="mission">
+<img src="https://blog.kakaocdn.net/dn/6hMCi/btrg6vi7D5m/GR4H5C1dg9dKNzyu1OM9H1/img.gif" alt="category&mission">
 
 ### 3. 미션클럽 페이지
 > 미션에 가입해 포스트를 올리고, 좋아요&댓글달기가 가능합니다.
-
-<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FdKU5mT%2FbtrgP4l19tm%2FblBK9ZuYRfK3FkdX8ZriZ0%2Fimg.png" alt="post">
+<img src="https://blog.kakaocdn.net/dn/uQ017/btrg4KHCOL7/KlpwX0t1dZWwkFoWuVuJFk/img.gif" alt="post">
 
 ### 4-1. 마이 페이지 - 내가 참여한 미션 확인하기
 > 내가 참여 중인 미션과 가입일을 확인할 수 있습니다.
-<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fcz8rmc%2FbtrgWE0DTGQ%2Fl0gy3KmTULeTlScij5aFHk%2Fimg.png" alt="myMission">
+<img src="https://blog.kakaocdn.net/dn/t1JY5/btrg10dCx5p/RYAZxoyHPrwk0QNeDVeEx0/img.gif" alt="myMission">
 
 ### 4-2. 마이 페이지 - 내가 인증한 포스트 확인하기
 > 내가 올린 포스트를 한눈에 확인할 수 있습니다.
-<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FDfdDq%2FbtrgRTY19GI%2FvyFlB3ecCtPUePcdwpL060%2Fimg.png" alt="myPost">
+<img src="https://blog.kakaocdn.net/dn/cM7yPW/btrg7WUQxkh/0HmdMXc1YQtjWkAvw0Dyk1/img.gif" alt="myPost">
 
 ### 4-3. 마이 페이지 - 내 인증현황 확인하기
 > 미션별로 내 인증현황을 확인할 수 있습니다. (성공/실패/남은 일수)
-<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbeM2nP%2FbtrgRNj0NxD%2FeOb3NTBa7KrWm5C7QsURD1%2Fimg.png" alt="myPostStatus">
+<img src="https://blog.kakaocdn.net/dn/cvjdIz/btrg2UDE6oe/8mkEgc0a0m0UnC7sHulUO1/img.gif" alt="myPostStatus">
 
 
 ## 프로젝트 설계 과정
