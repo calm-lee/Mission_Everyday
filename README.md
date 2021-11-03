@@ -73,7 +73,7 @@
 
 ### 4-3. 마이 페이지 - 내 인증현황 확인하기
 > 미션별로 내 인증현황을 확인할 수 있습니다. (성공/실패/남은 일수)
-<img src="https://blog.kakaocdn.net/dn/cvjdIz/btrg2UDE6oe/8mkEgc0a0m0UnC7sHulUO1/img.gif" alt="myPostStatus">
+<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Ft0xA0%2FbtrjLyrRI43%2F2MFukeKk50BnJgylALkHdK%2Fimg.jpg" alt="myPostStatus" width="600px" height="310px">
 
 
 ## 프로젝트 설계 과정
