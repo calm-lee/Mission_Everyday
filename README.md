@@ -93,15 +93,15 @@
  
 ### 3. URL 설계
 > 정적 화면 설계
-* 로그인: user/sign_in_view
-* 회원가입: user/sign_up_view
-* 메인 홈: mission/main
-* 카테고리 상세 페이지: mission/category/[categoryId]
-* 미션클럽 페이지: mission/mission_club/[missionId]
-* 마이페이지 - 참여 중인 미션: my/mission
-* 마이페이지 - 내가 올린 포스트: my/post
-* 마이페이지 - 인증 현황: my/status
-* 마이페이지 - 인증 현황 상세: my/status/[missionId]
+* 로그인: /user/sign_in_view
+* 회원가입: /user/sign_up_view
+* 메인 홈: /mission/main
+* 카테고리 상세 페이지: /mission/category/[categoryId]
+* 미션클럽 페이지: /mission/mission_club/[missionId]
+* 마이페이지 - 참여 중인 미션: /my/mission
+* 마이페이지 - 내가 올린 포스트: /my/post
+* 마이페이지 - 인증 현황: /my/status
+* 마이페이지 - 인증 현황 상세: /my/status/[missionId]
 > 동적 API 설계
 1. User
 * 회원가입: /user/sign_up_for_submit
