@@ -22,17 +22,7 @@
 * DB 설계, URL 및 API 설계
 * 프로젝트 개발환경 구축
 * 프론트엔드 
-  - 페이지 UI 디자인 및 구현
 * 백엔드
-  - 로그인/회원가입 기능 구현
-  - 메인 홈, 카테고리 페이지, 미션클럽 페이지 구현
-  - 미션 가입/탈퇴 구현
-  - 포스팅 업로드/수정/삭제 구현
-  - 댓글 업로드/삭제 구현
-  - 좋아요 생성/해제 구현
-  - 마이페이지 마이 미션클럽 조회 기능 구현 
-  - 마이페이지 마이 포스트 조회 기능 구현
-  - 마이페이지 내 인증 현황 조회 기능 구현
 * 트러블슈팅
 * 동작 테스트
 * AWS 서버 구축
@@ -60,6 +50,7 @@
 
 <br/>
 <br/>
+
 ### 2. 카테고리 & 미션 페이지
 > 운동, 공부, 외국어, 다이어트, 취미, 재테크 등 다양한 카테고리의 미션들을 확인할 수 있습니다.
 
@@ -69,6 +60,7 @@
 <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FYsX2D%2FbtrgOurS5It%2FCTEZ87P8v4fLiuECHh5KpK%2Fimg.png" width="280" alt="category">  
 
 <br/>
+
 ### 3. 미션클럽 페이지
 > 미션에 가입해 포스트를 올리고, 좋아요&댓글달기가 가능합니다.
 
@@ -82,18 +74,21 @@
 
 <br/>
 <br/>
+
 ### 4-2. 마이 페이지 - 내가 인증한 포스트 확인하기
 > 내가 올린 포스트를 한눈에 확인할 수 있습니다.
 
 <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fdkj90a%2FbtrliMPwSHE%2Ffgrubx41yB98jkuE2Kk2y1%2Fimg.png" width="560" alt="myPost">
 
 <br/>
+
 ### 4-3. 마이 페이지 - 내 인증현황 확인하기
 > 미션별로 내 인증현황을 확인할 수 있습니다. (성공/실패/남은 일수)
 
 <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FGT2K6%2FbtrlnDLgCq7%2Fewvf2j1WDjezjunt5TgEOK%2Fimg.png" width="560" alt="myPostStatus">
 
 <br/>
+
 ## 프로젝트 설계 과정
 ### 1. 기획서
 > [카카오 오븐](https://ovenapp.io/)을 통해 [기획서](https://ovenapp.io/project/u1vPXyC6FPiBUZFJYClPuW5lQGtSjUf9#1HJPw)를 설계했습니다.
@@ -119,6 +114,7 @@
 <br/>
 <br/>
 <br/>
+
 ### 3. URL 설계
 > <b>정적 화면 설계</b>
 
@@ -176,6 +172,7 @@
 <br/>
 <br/>
 <br/>
+
 ### 4. 환경 구축
 >Spring Boot로 프로그램을 설계하고 Apache Tomcat을 통해 웹 서버로 연결했습니다.
 
@@ -191,6 +188,7 @@
 * Controller -> Service (BO) -> Repositry (DAO) -> XML Mapper(MyBatis) -> DB(MySQL) 순으로 Request 처리, View로 Response 전달
 
 <br/>
+
 ### 5. 배포
 >AWS 배포 구조
 
