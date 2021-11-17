@@ -102,51 +102,51 @@
 
 
 > <b>동적 API 설계</b>
-> 
+ 
 <b>1. User</b>
-* 회원가입: /user/sign_up_for_submit
+* 회원가입: /user/sign_up_for_submit (POST)
 <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fdersp9%2Fbtrk7EjA1rF%2FutoytQ21EpjNfBmjKW7jWK%2Fimg.png" alt="sign_up">   
 
-* 로그인: /user/sign_in_check
+* 로그인: /user/sign_in_check (POST)
 <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FrOZnD%2FbtrlbKXTLaL%2F1iI6r3MTaRNDzHkEJM8UQK%2Fimg.png" alt="sign_in">   
 
 * 로그아웃: /user/sign_out
 <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbgHT99%2FbtrlnTtMcAo%2FRgU30nkpkZgdKRoTP8wO71%2Fimg.png" alt="sign_in">   
 
-* 아이디 중복체크: /user/is_duplicated_id
+* 아이디 중복체크: /user/is_duplicated_id (GET)
 <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FchQRZB%2FbtrlsiMlHm9%2Fj4W8A9OBg7kChTEKWpUSi0%2Fimg.png" alt="duplicate_check">
 
 <br/>
 <b>2. Mission</b>  
  
-* 미션 가입하기: /mission/join
+* 미션 가입하기: /mission/join (POST)
 <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FSQIUx%2FbtrlqLutFWZ%2FLO0jEVoJJRle7kX9dgBLk1%2Fimg.png" alt="mission_join">   
 
-* 미션 탈퇴하기: /mission/out
+* 미션 탈퇴하기: /mission/out (DELETE)
 <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbPfebi%2FbtrliMaThUV%2FUSgIZkA0mj9Mp8JmbhCUdk%2Fimg.png" alt="mission_out">   
 
 <br/>
 <b>3. Post   </b>  
 
-*  글 올리기: /post/create
+*  글 올리기: /post/create (POST)
 <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbPfebi%2FbtrliMaThUV%2FUSgIZkA0mj9Mp8JmbhCUdk%2Fimg.png" alt="mission_out">   
 
-*  글 수정하기:  /post/update
+*  글 수정하기:  /post/update (PUT)
 <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FcEryRQ%2FbtrlhDrGSgu%2F2u0BXgXIBQov6NGta2sul0%2Fimg.png" alt="post_update">   
 
-* 글 삭제하기: /post/delete
+* 글 삭제하기: /post/delete (DELETE)
 <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fb3YgsG%2FbtrlqNy49QT%2Fhi5jLKS1vPC3IXFf02mCx1%2Fimg.png" alt="post_delete">   
 
-* 좋아요 반영: /post/like_stauts
+* 좋아요 반영: /post/like_stauts (GET)
 <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbtmYvw%2FbtrlnS9wzgP%2FKICR4e68JSgnTDLr6k6Emk%2Fimg.png" alt="like">   
 
 <br/>
 <b>4. Comment</b>  
 
-* 댓글 올리기: /comment/create
+* 댓글 올리기: /comment/create (POST)
 <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FMCkRc%2FbtrlqBFpP5k%2FhpWh5ddp5MAcJu8milrqD1%2Fimg.png" alt="comment_create">  
 
-* 댓글 삭제하기: /comment/delete
+* 댓글 삭제하기: /comment/delete (DELETE)
 <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbJybYo%2FbtrlpclPLPC%2FpO90HN8WgkK8zbkTm8lpVK%2Fimg.png" alt="comment_delete">
 
 ### 4. 환경 구축
