@@ -17,26 +17,24 @@
 2021.09.02 - 2021.10.02 (1개월)<br>
 
 <b>3. 수행 역할 (1인 프로젝트)</b><br>
-* 기획서 작성
-* 프로젝트 일정표 작성
-* DB 설계, URL 및 API 설계
-* 프로젝트 개발환경 구축
+* 기획서, 프로젝트 일정표 작성
+* DB, URL, API 설계
+* 프로젝트 개발환경 구축 (Spring Boot, Tomcat)
 * 프론트엔드 
 * 백엔드
 * 트러블슈팅
 * 동작 테스트
-* AWS 서버 구축
+* AWS 배포
 
 <b>4. 미션!에브리데이 주요 기능</b>
 * 운동, 공부, 외국어, 재테크, 취미, 다이어트 등 다양한 카테고리의 미션 가입
-* 1주, 2주 단위의 미션에 매일 인증 포스트 올리기
-* 마이페이지에서 인증현황 확인 가능
-* 좋아요, 댓글달기 등을 통해 친목도모 가능
+* 인증 포스트 올리기 (사진 첨부 필수)
+* 좋아요, 댓글달기 가능
+* 마이페이지에서 내 인증현황 확인 가능
 
 <b>5. 사용 기술 스택</b>
-* Java, JavaScript, jQuery, Bootstrap, HTML, CSS
+* Java, JavaScript, Ajax, HTML, CSS, jQuery, BootStrap
 * Spring 4.11, Apache Tomcat 9.0, Mybatis, MySQL
-* MVC Pattern, Ajax
 * Git, AWS
 
 ## 구현기능
@@ -121,6 +119,7 @@
 <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbrhR0O%2FbtrleqyjgF6%2Fm8dJXRusGYvvp8ugn8hbkk%2Fimg.png" alt="url">
 
 <br/>
+
 > <b>동적 API 설계</b>
  
 <b>1. User</b>
