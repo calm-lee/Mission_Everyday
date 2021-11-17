@@ -16,7 +16,7 @@
 <b>2. 개발 기간</b><br>
 2021.09.02 - 2021.10.02 (1개월)<br>
 
-<b>3. 수행 역할</b><br>
+<b>3. 수행 역할 (1인 프로젝트)</b><br>
 * 기획서 작성
 * 프로젝트 일정표 작성
 * DB 설계, URL 및 API 설계
@@ -49,7 +49,7 @@
 * MVC Pattern, Ajax
 * Git, AWS
 
-## 사용방법
+## 구현기능
 
 ### 1. 회원가입 & 로그인
 > ID, PW, 이메일 기입 후 가입 가능합니다. (아이디 중복확인 필수)
@@ -91,42 +91,93 @@
 * comment : 댓글 생성, 삭제에 사용
 * like : 글마다 눌러지는 좋아요 생성, 해제에 사용 
  
+</br>
+ <b>필드 ERD 구조</b></br>
+ https://dbdiagram.io/d/618e835a02cf5d186b53668f
+ <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2F1w9n8%2FbtrlgTF3MpW%2F2gej8xxZKW8o9efSlIDjN1%2Fimg.png" alt="DB_ERD">
+ 
 ### 3. URL 설계
-> 정적 화면 설계
-* 로그인: user/sign_in_view
-* 회원가입: user/sign_up_view
-* 메인 홈: mission/main
-* 카테고리 상세 페이지: mission/category/[categoryId]
-* 미션클럽 페이지: mission/mission_club/[missionId]
-* 마이페이지 - 참여 중인 미션: my/mission
-* 마이페이지 - 내가 올린 포스트: my/post
-* 마이페이지 - 인증 현황: my/status
-* 마이페이지 - 인증 현황 상세: my/status/[missionId]
-> 동적 API 설계
-1. User
-* 회원가입: /user/sign_up_for_submit
-* 로그인: /user/sign_in_check
+> <b>정적 화면 설계</b>
+<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbrhR0O%2FbtrleqyjgF6%2Fm8dJXRusGYvvp8ugn8hbkk%2Fimg.png" alt="url">
+
+
+> <b>동적 API 설계</b>
+ 
+<b>1. User</b>
+* 회원가입: /user/sign_up_for_submit (POST)
+<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fdersp9%2Fbtrk7EjA1rF%2FutoytQ21EpjNfBmjKW7jWK%2Fimg.png" alt="sign_up">   
+
+* 로그인: /user/sign_in_check (POST)
+<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FrOZnD%2FbtrlbKXTLaL%2F1iI6r3MTaRNDzHkEJM8UQK%2Fimg.png" alt="sign_in">   
+
 * 로그아웃: /user/sign_out
-* 아이디 중복체크: /user/is_duplicated_id
+<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbgHT99%2FbtrlnTtMcAo%2FRgU30nkpkZgdKRoTP8wO71%2Fimg.png" alt="sign_in">   
 
-2. Mission
-* 미션 가입하기: /mission/join
-* 미션 탈퇴하기: /mission/out
+* 아이디 중복체크: /user/is_duplicated_id (GET)
+<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FchQRZB%2FbtrlsiMlHm9%2Fj4W8A9OBg7kChTEKWpUSi0%2Fimg.png" alt="duplicate_check">
 
-3. Post
-* 글 올리기: /post/create
-* 글 수정하기:  /post/update
-* 글 삭제하기: /post/delete
-* 좋아요 반영: /post/like_stauts
+<br/>
+<b>2. Mission</b>  
+ 
+* 미션 가입하기: /mission/join (POST)
+<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FSQIUx%2FbtrlqLutFWZ%2FLO0jEVoJJRle7kX9dgBLk1%2Fimg.png" alt="mission_join">   
 
-4. Comment
-* 댓글 올리기: /comment/create
-* 댓글 삭제하기: /comment/delete
+* 미션 탈퇴하기: /mission/out (DELETE)
+<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbPfebi%2FbtrliMaThUV%2FUSgIZkA0mj9Mp8JmbhCUdk%2Fimg.png" alt="mission_out">   
 
-### 4. 트러블  슈팅
+<br/>
+<b>3. Post   </b>  
+
+*  글 올리기: /post/create (POST)
+<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbPfebi%2FbtrliMaThUV%2FUSgIZkA0mj9Mp8JmbhCUdk%2Fimg.png" alt="mission_out">   
+
+*  글 수정하기:  /post/update (PUT)
+<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FcEryRQ%2FbtrlhDrGSgu%2F2u0BXgXIBQov6NGta2sul0%2Fimg.png" alt="post_update">   
+
+* 글 삭제하기: /post/delete (DELETE)
+<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fb3YgsG%2FbtrlqNy49QT%2Fhi5jLKS1vPC3IXFf02mCx1%2Fimg.png" alt="post_delete">   
+
+* 좋아요 반영: /post/like_stauts (GET)
+<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbtmYvw%2FbtrlnS9wzgP%2FKICR4e68JSgnTDLr6k6Emk%2Fimg.png" alt="like">   
+
+<br/>
+<b>4. Comment</b>  
+
+* 댓글 올리기: /comment/create (POST)
+<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FMCkRc%2FbtrlqBFpP5k%2FhpWh5ddp5MAcJu8milrqD1%2Fimg.png" alt="comment_create">  
+
+* 댓글 삭제하기: /comment/delete (DELETE)
+<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbJybYo%2FbtrlpclPLPC%2FpO90HN8WgkK8zbkTm8lpVK%2Fimg.png" alt="comment_delete">
+
+### 4. 환경 구축
+>Spring Boot로 프로그램을 설계하고 Apache Tomcat을 통해 웹 서버로 연결했습니다.
+<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FcxA4wo%2FbtrlpVKUCiy%2FVupLCCxdXvdOKZukq0GHDK%2Fimg.png" alt="setting">
+
+>MVC pattern을 통해 Model<->View(JSP)<->Controller가 상호작용하도록 처리했습니다.
+<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FMjNpH%2FbtrloyCFNcm%2Fh5KqEvlMxqErWJN7uebOZk%2Fimg.png" alt="mvc">
+
+* JSP를 통해 View 화면 구축
+* JavaScript를 통해 동적 화면 구축
+* AJAX를 통해 Request 전달
+* Controller -> Service (BO) -> Repositry (DAO) -> XML Mapper(MyBatis) -> DB(MySQL) 순으로 Request 처리, View로 Response 전달
+
+### 5. 배포
+>AWS 배포 구조
+<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbzOWyb%2Fbtrloej8vta%2F5A2ByFkEx9i1nYXHWZBVCK%2Fimg.png" alt="release">  
+
+* AWS 세팅
+
+* PUTTY로 tomcat manager 설정 조정 (CLI)
+
+* STS에서 war export
+  - build.gradle의 plugins 항목에 id `war` 추가
+  - Applicaton.java에서 SpringBootServletInitializer extends
+  - 프로젝트 export
+
+### 6. 트러블  슈팅
 [개인 블로그](https://calm-lee.tistory.com/category/%EA%B0%9C%EB%B0%9C%20%EC%97%AC%EC%A0%95/Error) 및 [Git Issue 페이지](https://github.com/calm-lee/Mission_Everyday/issues?q=is%3Aissue+is%3Aclosed)에 프로젝트에서 발생하는 Error의 원인/해결방법을 기록했습니다.<br>
 이런 기록들이 쌓이다보니, 나중에는 스스로 에러의 원인을 파악하고 해결책을 생각해내는 트러블 슈팅 능력을 기를 수 있었습니다.
 
-### 5. 향후 추가할 만한 요소
+### 7. 향후 추가할 만한 요소
 1. 유저가 직접 미션 개설
 2. 주 n회 포스팅 제한 기능
