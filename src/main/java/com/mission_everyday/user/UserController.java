@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/user")
 public class UserController {
-
+	
 	// 로그인하기
 	@RequestMapping("/sign_in")
 	public String SignIn(Model model) {
@@ -38,4 +38,6 @@ public class UserController {
 		model.addAttribute("viewName", "mission/category");
 		return "redirect:/user/sign_in";
 	}
+	
+	
 }

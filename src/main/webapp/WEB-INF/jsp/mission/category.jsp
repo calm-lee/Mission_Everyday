@@ -64,29 +64,3 @@
 		</div>
 	</div>
 </div>
-<script>
-/* $(document).ready(function)({
-	
-	$('.imgBtn').on('click',function(e){
-		let categoryId = $(this).data('category-id');
-		
-		$.ajax({
-			type:'GET',
-			data: {"categoryId": categoryId},
-			success: function(data){
-				if(result == success){
-					alert("운동");
-				} else {
-					alert("오류발생");
-				}
-			}
-			error: function(jqXHR, textStatus, errorThrown) {
-				var errorMsg = jqXHR.responseJSON.status;
-				alert(errorMsg + ":" + textStatus);
-			}
-		});
-		
-	});
-	
-}); */
-</script>

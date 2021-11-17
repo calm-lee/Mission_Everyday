@@ -11,7 +11,7 @@ import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 
 @Configuration
-@MapperScan(basePackages="com.mission_everyday.*")  // interface(mapper)°¡ ÀÖ´Â ÆÐÅ°Áö °æ·Î
+@MapperScan(basePackages="com.mission_everyday.*")  // interface(mapper)ê°€ ìžˆëŠ” íŒ¨í‚¤ì§€ ê²½ë¡œ
 public class DatabaseConfig {
 
     @Bean

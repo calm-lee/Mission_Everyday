@@ -70,10 +70,10 @@
 			// 화면을 중복시키지 않고 AJAX 통신으로 중복 여부 확인하고 동적으로 문구 노출
 			$.ajax({
 				url: "/user/is_duplicated_id"
-				, type: 'POST'
+				, type: 'GET'
 				, data: {"loginId": loginId}
 				, success: function(data){
-					if(data.result == true){ // 중복일 경우
+					if(data.result == "true"){ // 중복일 경우
 						$('#idCheckDuplicated').removeClass('d-none');
 						$('#idCheckLength').addClass('d-none');
 						$('#idCheckOk').addClass('d-none');

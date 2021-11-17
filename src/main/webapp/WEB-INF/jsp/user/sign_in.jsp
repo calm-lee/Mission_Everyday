@@ -37,7 +37,6 @@
 			</div>		
 	</form>			
 </div>
-
 <script>
 $(document).ready(function(){
 	$('#loginBtn').on('click',function(e){
@@ -74,7 +73,5 @@ $(document).ready(function(){
 		});
 		
 	});
-	
 });
-
 </script>

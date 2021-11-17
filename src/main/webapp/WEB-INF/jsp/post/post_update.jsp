@@ -73,7 +73,7 @@ $(document).ready(function(){
 		formData.append("file", $('input[name=image]')[0].files[0]);
 
 		$.ajax({
-			type : 'POST'
+			type : 'PUT'
 			,url : "/post/update"
 			,data: formData
 			
@@ -85,7 +85,7 @@ $(document).ready(function(){
 			, success: function(data){
 				if(data.result == 'success'){
 					alert("수정이 완료되었습니다.");
-					location.href="/mission/main";
+					location.reload();
 				} else {
 					alert("오류가 발생했습니다.")
 				}

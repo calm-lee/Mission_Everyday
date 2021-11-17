@@ -245,9 +245,7 @@ $(document).ready(function(){
 				if(data.result == "success"){
 					alert("미션 탈퇴가 완료되었습니다.");
 					location.reload();
-				} else { 
-					alert("미션 탈퇴에 실패했습니다.");
-				}
+				} 
 			}
 			, error: function(e){
 				alert("미션 탈퇴에 실패했습니다. 관리자에게 문의해주십시오." + e);
@@ -355,7 +353,7 @@ $(document).ready(function(){
 		
 		$.ajax({
 			url: "/comment/delete"
-			, type: 'POST'
+			, type: 'DELETE'
 			, data: {"id":id}
 			, success: function(data){
 				if(data.result == "success"){
@@ -378,7 +376,7 @@ $(document).ready(function(){
 		let postId = $(this).data('post-id');
 		
 		$.ajax({
-			type:'POST',
+			type:'GET',
 			url:'/post/like_status',
 			data: {"postId": postId},
 			success: function(data) {
@@ -424,7 +422,7 @@ $(document).ready(function(){
 		let postId = $(this).data('post-id');
 		
   		$.ajax({
-			type:'POST',
+			type:'DELETE',
 			url:'/post/delete',
 			data: {"id": postId},
 			success: function(data) {
