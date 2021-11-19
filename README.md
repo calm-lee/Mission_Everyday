@@ -42,7 +42,7 @@
 ### 1. 회원가입
 > ID, PW, 이메일 기입 후 가입 가능합니다. (아이디 중복확인 필수)
 
-<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FblfEzi%2FbtrlnUlWM2F%2Fb25hrkRt6SUqLOrUibs0i1%2Fimg.png" alt="user" width="560
+<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbkxyBv%2FbtrlqM72Nx5%2FVW01uLogBqIkSdd1pEJG01%2Fimg.png" alt="user" width="800
 ">
 
 
@@ -53,21 +53,20 @@
 > 운동, 공부, 외국어, 다이어트, 취미, 재테크 등 다양한 카테고리의 미션들을 확인할 수 있습니다.
 
 <br/>
-<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FdgerpX%2FbtrgD3BEteO%2FUeihosVZA5nXjThpW15vVk%2Fimg.png" width="280
-" alt="category">
-<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FYsX2D%2FbtrgOurS5It%2FCTEZ87P8v4fLiuECHh5KpK%2Fimg.png" width="280" alt="category">  
+<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fb1Bfbs%2FbtrlEJXWYqO%2FJoKKJDV51qZsOKiyeALOK0%2Fimg.png" width="800
+" alt="category_mission">  
 
 <br/>
 
 ### 3. 미션클럽 페이지
 > 미션에 가입해 포스트를 올리고, 좋아요&댓글달기가 가능합니다.
 
-<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2F770RV%2FbtrgWEl2xgS%2FXNgF20S90mu5n8e84klABk%2Fimg.png" width="480" alt="post">
+<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FmKz9u%2FbtrlFa8N4cc%2FvRqKQO57nNPaUny7xcOrXk%2Fimg.png" width="800" alt="post">
 
 ### 4-1. 마이 페이지 - 내가 참여한 미션 확인하기
 > 내가 참여 중인 미션과 가입일을 확인할 수 있습니다.
 
-<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FAuekf%2FbtrlqNsk2JD%2Flg4m27kqQEoL6DFha6P9rK%2Fimg.png" width="560" alt="myMission">
+<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FTTDos%2FbtrlEnAPxLn%2FXPraNPvfLpKgKOq2bK2AZ1%2Fimg.png" width="800" alt="myMission">
 
 
 <br/>
@@ -76,14 +75,14 @@
 ### 4-2. 마이 페이지 - 내가 인증한 포스트 확인하기
 > 내가 올린 포스트를 한눈에 확인할 수 있습니다.
 
-<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fdkj90a%2FbtrliMPwSHE%2Ffgrubx41yB98jkuE2Kk2y1%2Fimg.png" width="560" alt="myPost">
+<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbK64OM%2FbtrlEIEJU0g%2FUkhu7u1V6kt0gBT4WjPHf0%2Fimg.png" width="800" alt="myPost">
 
 <br/>
 
 ### 4-3. 마이 페이지 - 내 인증현황 확인하기
 > 미션별로 내 인증현황을 확인할 수 있습니다. (성공/실패/남은 일수)
 
-<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FGT2K6%2FbtrlnDLgCq7%2Fewvf2j1WDjezjunt5TgEOK%2Fimg.png" width="560" alt="myPostStatus">
+<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FkGkJj%2FbtrlFJ4eLW5%2F2ia4CgjpmdOOjnknhDGm2k%2Fimg.png" width="800" alt="myPostStatus">
 
 <br/>
 
