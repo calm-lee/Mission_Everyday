@@ -116,7 +116,7 @@
 ### 3. URL 설계
 > <b>정적 화면 설계</b>
 
-<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbrhR0O%2FbtrleqyjgF6%2Fm8dJXRusGYvvp8ugn8hbkk%2Fimg.png" alt="url">
+<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbOAGi1%2FbtrlDdMrw2l%2FRTSFtZV9nyteUFx2w7Fx80%2Fimg.png" alt="url_structure">
 
 <br/>
 
