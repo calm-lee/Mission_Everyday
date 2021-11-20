@@ -295,7 +295,7 @@ $(document).ready(function(){
 		
 		$.ajax({
 			url: "/post/create"
-			, method: "post"
+			, method: "POST"
 			, data: formData
 			
 			// 파일 업로드 시 필수 파라미터 
