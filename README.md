@@ -74,6 +74,7 @@
 ### 4-3. 마이 페이지 - 내 인증현황 확인하기
 > 미션별로 내 인증현황을 확인할 수 있습니다. (성공/실패/남은 일수)
 <img src="https://blog.kakaocdn.net/dn/cvjdIz/btrg2UDE6oe/8mkEgc0a0m0UnC7sHulUO1/img.gif" alt="myPostStatus">
+인증현황을 나타내는 박스는 로직에 대한 고민이 많았던 부분으로, 다음과 같이 인증현황 Model을 따로 생성하고 Service에서 2중 반복문을 사용하여 해결했습니다.
 <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FmY1Rn%2FbtrlGIFlkhX%2FJ299IBKI424CdNqgEFTMiK%2Fimg.png" alt="myPostStatus_detail">  
 
 <br/><br/>
